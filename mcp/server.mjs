@@ -23,7 +23,7 @@ import { McpServer } from '@modelcontextprotocol/server'
 import { serveStdio } from '@modelcontextprotocol/server/stdio'
 import * as z from 'zod/v4'
 
-const SITE = 'https://yeonkyupark.github.io/KDT-Namparang'
+const SITE = 'https://yeonkyupark.github.io/KDT'
 
 // 사이트 자체 CDN 캐시가 10분(Cache-Control: max-age=600)이라 그보다 짧게 맞춘다.
 // 도구를 여러 번 연달아 부를 때마다 168KB를 새로 받는 낭비를 막는다.

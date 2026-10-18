@@ -450,7 +450,7 @@ namparang-photos/                   (Public 또는 Private, 사진 전용)
 | 단계 | 내용 | 산출물 | 예상 |
 |---|---|---|---|
 | ~~1. 데이터 확보~~ | ~~공식 GPX 90개 확보·검증, 외부 참고자료 조사~~ | ✅ **완료** | ~~1일~~ |
-| ~~0. 준비~~ | ~~`data/SOURCE.md`, git init, Vite 스캐폴딩, 리포 생성, Pages+Actions~~ | ✅ **완료** — https://yeonkyupark.github.io/KDT-Namparang/ | ~~0.5일~~ |
+| ~~0. 준비~~ | ~~`data/SOURCE.md`, git init, Vite 스캐폴딩, 리포 생성, Pages+Actions~~ | ✅ **완료** — https://yeonkyupark.github.io/KDT/ | ~~0.5일~~ |
 | ~~2a. 고도 확보~~ | ~~opentopodata 조회, 캐시 커밋, 임계값 캘리브레이션~~ | ✅ **완료** — 29,660점 / 328요청 / null 0. 창3/3m 채택, DEM/실측 1.06 | ~~1일~~ |
 | ~~2b. 전처리~~ | ~~파싱·단순화·거리/고도/시간/난이도, 지점명 보정~~ | ✅ **완료** — `courses.json` 118KB, `course/*.json` 코스당 8.1KB | ~~1일~~ |
 | ~~3. 랜딩 지도~~ | ~~Leaflet, 90개 전체 표시, 타일 토글, 시작점 마커, 코스 정보 카드~~ | ✅ **완료** — JS 47.2KB gzip / CSS 7.8KB / 데이터 32.6KB gzip | ~~1일~~ |
@@ -486,8 +486,8 @@ namparang-photos/                   (Public 또는 Private, 사진 전용)
 
 ## 9. 현재 상태 / 다음 액션
 
-**리포**: https://github.com/yeonkyupark/KDT-Namparang
-**배포**: https://yeonkyupark.github.io/KDT-Namparang/ (push → Actions → Pages 자동)
+**리포**: https://github.com/yeonkyupark/KDT (2026-10-18 `KDT-Namparang` 에서 이름 변경)
+**배포**: https://yeonkyupark.github.io/KDT/ (push → Actions → Pages 자동)
 
 단계 0 완료. 다음은:
 

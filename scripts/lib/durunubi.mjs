@@ -22,7 +22,7 @@ import { existsSync, readFileSync } from 'node:fs'
 
 const PUBLIC_API = 'https://apis.data.go.kr/B551011/Durunubi'
 const SITE = 'https://www.durunubi.kr'
-const APP_NAME = 'KDT-Namparang'
+const APP_NAME = 'KDT'
 
 /** 요청 사이 간격. 두루누비 서버에 부담을 주지 않는다. */
 const DELAY_MS = 300

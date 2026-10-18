@@ -3,7 +3,7 @@
 부산 오륙도에서 전남 해남 땅끝탑까지, 남해안을 따라 이어지는 **남파랑길 90개 코스**를
 지도에서 보고 구간을 골라 계획하고, 걸으면서 찍은 사진과 메모를 위치에 남기는 개인용 웹앱.
 
-**https://yeonkyupark.github.io/KDT-Namparang/**
+**https://yeonkyupark.github.io/KDT/**
 
 ## 무엇을 하는가
 
@@ -154,7 +154,7 @@ GitHub 계정 문제나 정책 변경에 대한 탈출구다. 클라우드 동�
 
 `mcp/server.mjs` — **배포된 사이트의 JSON을 그대로 fetch** 해서
 [MCP](https://modelcontextprotocol.io) 도구로 감싼다. 로컬 파일을 읽지 않는다 —
-`https://yeonkyupark.github.io/KDT-Namparang/data/courses.json` 이 이미 CORS가 열린
+`https://yeonkyupark.github.io/KDT/data/courses.json` 이 이미 CORS가 열린
 공개 데이터라 리포를 clone 할 필요조차 없다. `mcp/server.mjs` 파일 하나만 있으면
 어디서든 실행된다. 로컬 stdio 로만 서빙하고, 개인 기록(사진·메모)은 다루지 않는다.
 
@@ -178,14 +178,14 @@ Desktop(앱)에서만 동작한다.
 
 ```bash
 mkdir namparang-mcp && cd namparang-mcp
-curl -O https://raw.githubusercontent.com/yeonkyupark/KDT-Namparang/main/mcp/server.mjs
+curl -O https://raw.githubusercontent.com/yeonkyupark/KDT/main/mcp/server.mjs
 ```
 
 curl이 없으면(Windows PowerShell):
 
 ```powershell
 mkdir namparang-mcp; cd namparang-mcp
-Invoke-WebRequest https://raw.githubusercontent.com/yeonkyupark/KDT-Namparang/main/mcp/server.mjs -OutFile server.mjs
+Invoke-WebRequest https://raw.githubusercontent.com/yeonkyupark/KDT/main/mcp/server.mjs -OutFile server.mjs
 ```
 
 또는 그 주소를 브라우저로 열어 "다른 이름으로 저장"해도 된다.

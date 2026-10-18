@@ -30,7 +30,7 @@ const KEY = 'namparang.sync'
 
 const DEFAULTS = {
   owner: 'yeonkyupark',
-  repo: 'KDT-Namparang',
+  repo: 'KDT',
   photoRepo: 'photo-repo',
   /**
    * 사진 리포 안에서 이 프로젝트가 쓰는 최상위 폴더.
@@ -76,7 +76,10 @@ const el = (tag, cls, text) => {
 export function loadSettings() {
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? { ...DEFAULTS, ...JSON.parse(raw) } : { ...DEFAULTS }
+    const s = raw ? { ...DEFAULTS, ...JSON.parse(raw) } : { ...DEFAULTS }
+    // 리포 이름을 KDT-Namparang → KDT 로 바꿨다(2026-10-18). 저장된 옛 이름을 새 이름으로 읽는다.
+    if (s.repo === 'KDT-Namparang') s.repo = 'KDT'
+    return s
   } catch {
     // 시크릿 모드 등에서 접근이 막힐 수 있다
     return { ...DEFAULTS }
