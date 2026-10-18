@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "namparang-gil": {
+    "korea-dulle-gil": {
       "command": "node",
       "args": ["mcp/server.mjs"]
     }

@@ -13,20 +13,25 @@
 | 길 | 구간 | 코스 | 상태 |
 |---|---|---|---|
 | **남파랑길** | 부산 오륙도 → 해남 땅끝 | 90 | ✅ 지원 · 매주 자동 갱신 |
-| 해파랑길 | 부산 오륙도 → 강원 고성 | 50 | 다음 작업 |
-| 서해랑길 | 해남 땅끝 → 인천 강화 | 본선 103 + 지선 6 | 예정 |
+| **해파랑길** | 부산 오륙도 → 고성 통일전망대 | 50 | ✅ 지원 · 매주 자동 갱신 (지점명은 공식 주소로 표시) |
+| 서해랑길 | 해남 땅끝 → 인천 강화 | 본선 103 + 지선 6 | 다음 작업 |
 | DMZ 평화의 길 | 인천 강화 → 강원 고성 | 본선 34 + 우회로 13 · 지선 1 | 예정 |
 
-**지금 앱은 남파랑길만 그린다.** 아래 기능 설명의 수치(90개 코스 등)는 남파랑길 기준이다.
+머리말의 메뉴에서 길을 고른다. 주소에 `?trail=haeparang` 처럼 남고, 다음에 열면 마지막으로 본 길이 열린다.
+길 없이 구간만 적힌 예전 주소(`?from=17&to=23`)는 남파랑길로 열린다.
 확장 순서·길별 특수 사항·진행 현황은 **[TRAILS.md](TRAILS.md)**.
 
 ## 무엇을 하는가
 
-- **길의 코스 전체를 지도에** 난이도별 색으로 표시
+- **길을 골라 그 길의 코스 전체를 지도에** 난이도별 색으로 표시. 다른 길 데이터는 받지 않는다
 - **시작 코스 ~ 종료 코스를 골라** 구간의 거리 · 예상 소요시간 · 누적 상승/하강 · 난이도를 한 번에 확인.
-  선택 구간은 진하게, 나머지는 흐리게. 상태는 URL에 남아 공유·북마크가 된다 (`?from=17&to=23`)
+  선택 구간은 진하게, 나머지는 흐리게. 상태는 URL에 남아 공유·북마크가 된다 (`?trail=haeparang&from=19&to=23`)
+- **코스 정보 카드** — 시·종점 주소와 교통편, 공식 부제(영덕 블루로드 · 바우길), 스탬프함 위치(해파랑길),
+  길 끝 코스에서는 **이어지는 길** 링크(남파랑길 1코스 시점 = 해파랑길 1코스 시점)
 - **고도 프로필** — 인라인 SVG. 마우스를 올리면 지도에 그 지점 커서가 뜬다
-- **사진과 메모를 위치에 기록** — 지도 핀이 곧 사진 썸네일이다
+- **사진과 메모를 위치에 기록** — 지도 핀이 곧 사진 썸네일이다. **고른 길의 기록만** 보인다
+  - 사진 위치가 다른 길 코스에 더 가까우면 그 길 기록으로 할지 묻는다. 수정 화면에서 길을 옮길 수 있다
+  - 길을 나누기 전에 만든 기록(`trail` 없음)은 남파랑길 기록으로 보인다
   - EXIF GPS가 있으면 자동으로 위치를 잡고 가장 가까운 코스에 매핑
   - 좌표가 없으면 **지도를 클릭해 지정**. 메신저·SNS를 거친 사진은 EXIF가 지워지므로 이게 기본 경로다
   - 좌표 대신 **주소만 기록된 사진**(갤럭시 등)은 주소를 보여주고 그 구간으로 지도를 옮겨준다
@@ -52,10 +57,19 @@
 | 사진 | 긴 변 1024px WebP(미지원 브라우저는 JPEG)로 축소·EXIF 제거, 업로드 후 로컬 사본 삭제 | — |
 | 호스팅 | GitHub Pages | — |
 
-첫 로딩은 **JS 64KB + CSS 10KB + 데이터 38KB (gzip)**. 차트·HTTP·상태관리 라이브러리를 쓰지 않는다.
+첫 로딩은 **JS 70KB + CSS 11KB (gzip)** 에 고른 길의 데이터(남파랑길 42KB, 해파랑길 22KB)다.
+차트·HTTP·상태관리 라이브러리를 쓰지 않는다.
 
 GPX는 **빌드 타임에 한 번** JSON으로 전처리한다. 브라우저는 GPX를 파싱하지 않는다.
-랜딩은 `courses.json` 하나만 받고, 코스 상세는 구간을 고를 때 받는다.
+랜딩은 `trails.json`(길 목록)과 고른 길의 `<길>/courses.json` 만 받고, 코스 상세는 구간을 고를 때 받는다.
+
+```
+public/data/trails.json               길 목록 · 합계 · 출처 · 길 사이 연결
+public/data/<길>/courses.json         코스 메타 + 오버뷰 라인
+public/data/<길>/course/{id}.json     코스 상세 (지연 로딩)
+public/data/notes.json                사진·메모 기록 — 모든 길이 한 파일 (각 기록에 trail)
+public/data/courses.json · course/    남파랑길 사본 — 캐시된 옛 앱과 옛 MCP 사본 호환용
+```
 
 ## 실행
 
@@ -74,7 +88,7 @@ npm run build
 
 코스 데이터는 두루누비에서 **매주 자동으로 점검**한다(`.github/workflows/sync-durunubi.yml`, 월요일 04:00 KST).
 바뀐 것이 있으면 데이터를 다시 만들어 커밋하고 배포까지 한다. 바뀐 것이 없으면 아무것도 하지 않는다.
-점검 대상은 `scripts/lib/trails.mjs` 에서 `enabled` 가 켜진 길이다(지금은 남파랑길).
+점검 대상은 `scripts/lib/trails.mjs` 에서 `enabled` 가 켜진 길이다(지금은 남파랑길·해파랑길).
 길별 대조표는 `data/durunubi/<길>.json` 이다.
 
 ```
@@ -96,11 +110,12 @@ Settings → Secrets and variables → Actions → New repository secret → 이
 
 ```bash
 npm run sync:durunubi              # 바뀐 것만 받는다 (--full: 전부 다시 비교, --dry-run: 보기만)
-npm run build:ele                  # 바뀐 GPX 의 DEM 고도만 다시 조회 -> data/cache/ele/
+npm run build:ele                  # 바뀐 GPX 의 DEM 고도만 다시 조회 -> data/cache/ele/ (--dry-run: 예상 요청 수만)
 npm run build:data                 # -> public/data/
 ```
 
-공식 자료에 오타가 있으면 `data/courses.meta.csv` 에 그 칸만 적어 덮어쓴다(근거는 파일 머리말).
+공식 자료에 오타가 있으면 보정 CSV 에 그 칸만 적어 덮어쓴다(근거는 파일 머리말).
+남파랑길은 `data/courses.meta.csv`, 다른 길은 `data/courses.meta.<길>.csv` 다(`trails.mjs` 의 `metaCsv`).
 
 ## 데이터 출처
 
@@ -109,7 +124,7 @@ npm run build:data                 # -> public/data/
 | 길 | 두루누비 코스 목록 | 노선 GPX 위치 |
 |---|---|---|
 | 남파랑길 | https://www.durunubi.kr/namparang-course-list.do | [data/gpx_durunubi/](data/gpx_durunubi/) |
-| 해파랑길 | https://www.durunubi.kr/haeparang-course-list.do | `data/durunubi/gpx/haeparang/` (예정) |
+| 해파랑길 | https://www.durunubi.kr/haeparang-course-list.do | [data/durunubi/gpx/haeparang/](data/durunubi/gpx/haeparang/) |
 | 서해랑길 | https://www.durunubi.kr/seohaerang-course-list.do | `data/durunubi/gpx/seohaerang/` (예정) |
 | DMZ 평화의 길 | https://www.durunubi.kr/dmz-course-list.do | `data/durunubi/gpx/dmz/` (예정) |
 
@@ -127,7 +142,10 @@ API 에 빠진 코스는 두루누비 사이트의 코스 목록으로 보충한
 출처·라이선스·수집 방법은 **[data/SOURCE.md](data/SOURCE.md)** 에 전부 기록했다.
 개인 비상업적 용도로만 사용하며, 권리자가 요청하면 즉시 삭제한다.
 
-계산 기준은 모든 길에 같게 적용한다. 아래 검증 수치는 남파랑길 90개 코스 결과다.
+계산 기준은 모든 길에 같게 적용한다. 아래 검증 수치는 남파랑길 90개 코스 결과다(해파랑길은 TRAILS.md 4.1).
+
+- **지점명**: 남파랑길은 공식 여행자정보의 시점·종점 이름을 쓴다. **해파랑길 여행자정보에는 시점·종점 줄이 없어**
+  두루누비 사이트 목록의 공식 시·종점 주소를 줄여 표시한다(예: `기장읍 대변리`). 화면에 그 사실을 적는다.
 
 - **난이도·소요시간**: 두루누비 공식값. 내가 만든 공식(거리 + 상승/100)은 공식 등급과
   남파랑길 90개 중 41개만 일치했다 — 운영기관 등급이 더 신뢰할 만하다.
@@ -146,8 +164,8 @@ API 에 빠진 코스는 두루누비 사이트의 코스 목록으로 보충한
 
    **이 리포는 코리아둘레길 4개 길이 함께 씁니다.** 사진 파일명이 노트 UUID 라
    길이 섞여도 충돌하지 않고, 경로가 `{폴더}/{연도}/{id}.jpg` 로 나뉩니다.
-   다른 길을 붙여도 리포를 새로 만들 필요가 없습니다.
-   그래서 이름을 특정 길에 묶이지 않게(예: `trail-photos`) 짓는 편이 좋습니다.
+   남파랑길은 설정의 사진 폴더(기본 `namparang`), 다른 길은 길 이름 폴더(`haeparang`)를 씁니다.
+   그래서 이름을 특정 길에 묶이지 않게(기본값 `photo-repo`처럼) 짓는 편이 좋습니다.
 
    ⚠️ **두 가지 주의**
    - **README 를 포함해 만드세요.** 커밋이 하나도 없는 리포에는 기본 브랜치가 없어서
@@ -164,7 +182,7 @@ API 에 빠진 코스는 두루누비 사이트의 코스 목록으로 보충한
 4. **동기화** 버튼을 누른다
 
 저장 위치
-- 메모: 메인 리포 `public/data/notes.json` (한 파일, sha 낙관적 락 + 재시도)
+- 메모: 메인 리포 `public/data/notes.json` (한 파일, sha 낙관적 락 + 재시도). 모든 길의 기록이 들어 있고 기록마다 `trail` 이 있다
 - 사진: 사진 리포 `{폴더}/{연도}/{id}.jpg`, `{폴더}/{연도}/{id}_t.jpg`
   (URL 은 저장된 값이 아니라 **현재 설정에서 조립**하므로 리포 이름을 바꿔도 깨지지 않습니다)
 - 읽기는 `raw.githubusercontent.com` 으로 갑니다 — 즉시 반영되고 API 한도에 걸리지 않습니다
@@ -185,15 +203,18 @@ GitHub 계정 문제나 정책 변경에 대한 탈출구다. 클라우드 동�
 공개 데이터라 리포를 clone 할 필요조차 없다. `mcp/server.mjs` 파일 하나만 있으면
 어디서든 실행된다. 로컬 stdio 로만 서빙하고, 개인 기록(사진·메모)은 다루지 않는다.
 
-지금 도구는 **남파랑길 데이터만** 다룬다. 길을 고르는 `trail` 인자와 `list_trails` 도구는
-다중 길 구조와 함께 붙인다(TRAILS.md 3.6). 서버 등록 이름 `namparang-gil` 도 그때 바꾼다.
+모든 도구에 `trail` 인자가 있다(`namparang` 기본, `haeparang`). 생략하면 남파랑길이다.
 
 | 도구 | 하는 일 |
 |---|---|
-| `get_courses(from, to?)` | 번호 범위의 코스 상세 + 구간 합계(거리·소요시간·상승/하강) |
-| `list_courses(region?)` | 코스 목록(남파랑길 90개). 지역으로 필터링 가능 |
-| `search_courses(query)` | 지역명·지점명·별칭으로 검색 |
-| `get_trail_summary()` | 전체 개요(총거리·총상승) + 출처·주의사항 |
+| `list_trails()` | 길 목록 — id · 구간 · 코스 수 · 총거리 · 길 사이 연결 |
+| `get_courses(trail?, from, to?)` | 번호 범위의 코스 상세 + 구간 합계(거리·소요시간·상승/하강) |
+| `list_courses(trail?, region?)` | 코스 목록. 지역으로 필터링 가능 |
+| `search_courses(trail?, query)` | 지역명·지점명·별칭·부제(블루로드, 바우길)로 검색 |
+| `get_trail_summary(trail?)` | 길 전체 개요(총거리·총상승) + 출처·주의사항 |
+
+예전에 받은 `server.mjs` 사본(남파랑길 전용)도 계속 동작한다 — 사이트가 남파랑길 데이터를 옛 경로에도 둔다.
+해파랑길을 쓰려면 파일을 다시 받는다.
 
 로컬 stdio 서버라 **claude.ai(웹)에서는 못 쓴다.** Claude Code(CLI) 또는 Claude
 Desktop(앱)에서만 동작한다.
@@ -235,7 +256,7 @@ npm install @modelcontextprotocol/server zod
 **Claude Code** — 이 폴더 경로를 그대로 쓴다:
 
 ```bash
-claude mcp add namparang-gil --scope user -- node "$(pwd)/server.mjs"
+claude mcp add korea-dulle-gil --scope user -- node "$(pwd)/server.mjs"
 ```
 
 (Windows PowerShell이면 `"$(pwd)/server.mjs"` 대신 `"$PWD\server.mjs"`.) 절대경로로
@@ -250,7 +271,7 @@ claude mcp add namparang-gil --scope user -- node "$(pwd)/server.mjs"
 ```json
 {
   "mcpServers": {
-    "namparang-gil": {
+    "korea-dulle-gil": {
       "command": "node",
       "args": ["/절대/경로/kdt-mcp/server.mjs"]
     }
@@ -266,6 +287,8 @@ claude mcp add namparang-gil --scope user -- node "$(pwd)/server.mjs"
 위 1단계는 건너뛰고 `mcp/server.mjs` 경로를 그대로 쓰면 된다 — `.mcp.json` 이 이미
 리포에 있어서 이 폴더에서 `claude` 를 실행하면 자동 인식된다(다른 사람의 리포를
 처음 여는 것이므로 신뢰 승인 프롬프트가 한 번 뜬다).
+
+예전에 `namparang-gil` 이름으로 등록했다면 그대로 써도 된다. 이름은 Claude 가 부르는 별칭일 뿐이다.
 
 ### 직접 확인
 
@@ -295,7 +318,7 @@ npx @modelcontextprotocol/inspector node server.mjs
 
 ## 라이선스
 
-앱 소스 코드는 MIT. **코스 데이터는 제외** — `data/gpx_durunubi/`, `data/durunubi/`, `data/courses.meta.csv`
+앱 소스 코드는 MIT. **코스 데이터는 제외** — `data/gpx_durunubi/`, `data/durunubi/`(길별 GPX 포함), `data/courses.meta*.csv`
 와 이를 가공한 `public/data/` 의 코스 파일은 두루누비(한국관광공사) 자료로 **공공누리 제4유형**
 (출처표시 + 상업적 이용금지 + 변경금지)을 따른다. `data/reference/` 의 외부 참고자료도 제외다.
 자세한 조건은 [data/SOURCE.md](data/SOURCE.md).

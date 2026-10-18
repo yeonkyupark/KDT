@@ -33,6 +33,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 function toRemote(note) {
   return {
     id: note.id,
+    // 코리아둘레길 중 어느 길의 기록인지. 없으면 남파랑길이다(길을 나누기 전 기록).
+    trail: note.trail || 'namparang',
     lat: note.lat,
     lng: note.lng,
     courseId: note.courseId ?? '',
@@ -161,8 +163,10 @@ export function createSync(getSettings) {
       if (!full || !n.thumb) continue
 
       const year = (n.takenAt ?? n.createdAt ?? '').slice(0, 4) || 'misc'
-      // 사진 리포는 여러 트레일이 공유할 수 있다. 접두어로 구분한다.
-      const dir = prefix ? `${prefix}/${year}` : year
+      // 사진 리포는 4개 길이 함께 쓴다. 길마다 폴더를 나눈다.
+      // 남파랑길은 설정의 사진 폴더(기본 namparang)를 그대로 쓰고, 다른 길은 길 id 가 폴더다.
+      const folder = n.trail && n.trail !== 'namparang' ? n.trail : prefix
+      const dir = folder ? `${folder}/${year}` : year
       const paths = { full: `${dir}/${n.id}.jpg`, thumb: `${dir}/${n.id}_t.jpg` }
 
       const a = await photosClient.putBlobIfAbsent(paths.full, full, `사진 추가 ${n.id}`)

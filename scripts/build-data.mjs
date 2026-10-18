@@ -2,22 +2,26 @@
  * 단계 2b — GPX + 고도 캐시 → public/data/
  *
  * 브라우저는 GPX를 절대 파싱하지 않는다. 여기서 한 번 구워둔 JSON만 받는다.
+ * 켜진(enabled) 길마다 따로 만든다. 화면은 한 번에 한 길만 받는다.
  *
  * 산출물
- *   public/data/courses.json      90개 메타 + 저해상도 오버뷰 라인 (랜딩에서 이것만 받는다)
- *   public/data/course/{id}.json  상세 라인 + 고도 프로필 (코스 선택 시 lazy fetch)
- *   public/data/meta.json         생성 정보 · 출처 · 합계
+ *   public/data/trails.json               길 목록 · 합계 · 출처 · 길 사이 연결 (화면이 맨 먼저 받는다)
+ *   public/data/<길>/courses.json         코스 메타 + 저해상도 오버뷰 라인
+ *   public/data/<길>/course/{id}.json     상세 라인 + 고도 프로필 (코스 선택 시 lazy fetch)
+ *   public/data/<길>/meta.json            생성 정보 · 출처 · 합계
+ *   public/data/courses.json, meta.json, course/   남파랑길 사본 — 옛 경로를 읽는 캐시된 앱과
+ *                                                   옛 MCP 서버 사본(README 설치 방법)이 깨지지 않게 둔다
  *
  * 사용법: node scripts/build-data.mjs   (npm run build:data)
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, cpSync } from 'node:fs'
 import { join } from 'node:path'
 import { listCourses, parseGpx, sourceSha1 } from './lib/gpx.mjs'
 import { chainFill, normalizeJunctions, normalizeRegions } from './lib/names.mjs'
-import { parseTravelerInfo } from './lib/durunubi.mjs'
-import { trailById } from './lib/trails.mjs'
-import { pathLength, simplify, movingAverage, ascentDescent } from './lib/geo.mjs'
+import { parseTravelerInfo, parseStampAndAccess } from './lib/durunubi.mjs'
+import { TRAILS, listUrl } from './lib/trails.mjs'
+import { pathLength, simplify, movingAverage, ascentDescent, haversine } from './lib/geo.mjs'
 import {
   ELE_SPACING,
   ELE_DATASET,
@@ -31,9 +35,10 @@ import {
 } from './lib/config.mjs'
 
 const ELE_CACHE = 'data/cache/ele'
-const META_CSV = 'data/courses.meta.csv'
-const OUT_DIR = 'public/data'
-const OUT_COURSE = join(OUT_DIR, 'course')
+const OUT_ROOT = 'public/data'
+
+/** 이 거리 안에서 두 길의 끝점이 만나면 "이어지는 길"로 안내한다. */
+const LINK_M = 1000
 
 /** CSV 로 덮어쓸 수 있는 필드. 여기 없는 열은 무시된다. */
 const OVERRIDE_FIELDS = [
@@ -83,10 +88,10 @@ function parseCsvLine(line) {
   return out
 }
 
-/** 수기 보정 CSV를 읽는다. 빈 칸은 덮어쓰지 않는다. */
-function loadOverrides() {
-  if (!existsSync(META_CSV)) return new Map()
-  const lines = readFileSync(META_CSV, 'utf8')
+/** 수기 보정 CSV를 읽는다. 빈 칸은 덮어쓰지 않는다. 파일이 없으면 보정 없음. */
+function loadOverrides(path) {
+  if (!path || !existsSync(path)) return new Map()
+  const lines = readFileSync(path, 'utf8')
     .split(/\r?\n/)
     .map((l) => l.trim())
     .filter((l) => l && !l.startsWith('#'))
@@ -113,14 +118,14 @@ function loadOverrides() {
  * 난이도와 소요시간은 **공식값을 쓴다.** 운영기관이 매긴 등급이 내가 만든
  * 공식(거리 + 상승/100)보다 신뢰도가 높다 — 실제로 90개 중 41개만 일치했다.
  * 거리는 GPX 실측값을 쓴다: 지도에 그리는 선과 숫자가 어긋나면 안 된다.
- * 노선도 공식 GPX 라 90개 중 86개가 공식 표기 거리와 5% 안쪽이다 (가장 큰 차이 약 6%).
+ * 노선도 공식 GPX 라 남파랑길은 90개 중 86개가 공식 표기 거리와 5% 안쪽이다 (가장 큰 차이 약 6%).
  */
-function loadOfficial(trailId = 'namparang') {
-  const path = trailById(trailId).manifest
+function loadOfficial(trail) {
+  const path = trail.manifest
   if (!existsSync(path)) throw new Error(`${path} 가 없다. 먼저 npm run sync:durunubi 를 실행하라.`)
   const map = new Map()
   for (const r of JSON.parse(readFileSync(path, 'utf8')).courses) {
-    if (r.sub) continue // 지선·우회 노선은 아직 다루지 않는다
+    if (r.sub) continue // 지선·우회 노선은 아직 다루지 않는다 (TRAILS.md 4.2)
     map.set(String(r.seq), {
       crsIdx: r.crsIdx,
       km: r.km,
@@ -128,24 +133,58 @@ function loadOfficial(trailId = 'namparang') {
       level: r.level, // 1 쉬움 / 2 보통 / 3 어려움
       levelLabel: r.levelLabel,
       sigun: r.sigun,
+      label: r.label ?? '',
+      siteStartAddr: r.startAddress ?? '',
+      siteEndAddr: r.endAddress ?? '',
       ...parseTravelerInfo(r.travelerInfo),
+      ...parseStampAndAccess(r.travelerInfo),
     })
   }
   return map
 }
 
-/** 공식 기록의 시점·종점·지역을 코스 필드로 옮긴다. 값이 없으면 비워 두고 연쇄 보정·CSV 에 맡긴다. */
+/**
+ * 주소를 지점 표기로 줄인다. 지점명이 공식 자료에 없을 때만 쓴다.
+ *   '부산광역시 기장군 기장읍 대변리 203-22' → '기장읍 대변리'
+ *   '부산광역시 남구 용호동 산196-10'        → '용호동'
+ */
+function placeFromAddr(addr) {
+  const tokens = String(addr ?? '').split(/\s+/).filter((t) => t && !/\d/.test(t))
+  const local = tokens.filter((t) => /(읍|면|동|리|가)$/.test(t)).slice(-2)
+  return (local.length ? local : tokens.slice(-2)).join(' ')
+}
+
+/**
+ * 공식 기록의 시점·종점·지역을 코스 필드로 옮긴다. 값이 없으면 비워 두고 연쇄 보정·CSV 에 맡긴다.
+ *
+ * 남파랑길은 여행자정보에 "- 시점 : 이름 (주소) / 교통편)" 이 있다.
+ * 해파랑길은 그 줄이 없다. 주소는 사이트 목록의 시·종점 주소, 교통편은 여행자정보의 교통 줄
+ * (코스 시점까지 가는 방법)을 쓰고, 지점명은 주소를 줄여 채운다(출처 'addr').
+ */
 function officialPlaces(off) {
   if (!off) return {}
-  return {
+  // 사이트 주소는 여행자정보에 시점·종점 줄이 아예 없을 때만 쓴다. 줄은 있는데 주소만 빠진
+  // 경우(남파랑길 12코스 '암아교차로')는 지금처럼 이웃 코스에서 연쇄로 채운다.
+  const startAddr = (off.start ? off.start.addr : off.siteStartAddr) || ''
+  const endAddr = (off.end ? off.end.addr : off.siteEndAddr) || ''
+  const p = {
     region: off.sigun || '',
     start: off.start?.name || '',
-    startAddr: off.start?.addr || '',
-    startAccess: off.start?.access || '',
+    startAddr,
+    startAccess: off.start?.access || (off.start ? '' : off.access) || '',
     end: off.end?.name || '',
-    endAddr: off.end?.addr || '',
+    endAddr,
     endAccess: off.end?.access || '',
   }
+  if (!p.start && startAddr) {
+    p.start = placeFromAddr(startAddr)
+    p.startSource = 'addr'
+  }
+  if (!p.end && endAddr) {
+    p.end = placeFromAddr(endAddr)
+    p.endSource = 'addr'
+  }
+  return p
 }
 
 function difficultyOf(km, ascentM) {
@@ -181,15 +220,20 @@ function durationMin(km, ascentM) {
   return Math.round(min / 10) * 10
 }
 
-function main() {
-  // 앱은 아직 남파랑길만 그린다. 길별 출력은 다중 길 구조(TRAILS.md 3.3)에서 나눈다
-  const courses = listCourses(trailById('namparang'))
-  const overrides = loadOverrides()
-  const official = loadOfficial()
+/** 길 하나를 빌드해 public/data/<길>/ 에 쓴다. trails.json 에 넣을 요약을 돌려준다. */
+function buildTrail(trail) {
+  const outDir = join(OUT_ROOT, trail.id)
+  const outCourse = join(outDir, 'course')
+  const all = listCourses(trail)
+  const subs = all.filter((c) => c.sub)
+  const courses = all.filter((c) => !c.sub)
+  const overrides = loadOverrides(trail.metaCsv)
+  const official = loadOfficial(trail)
 
   // ── 1. GPX 파싱 + 고도 캐시 결합 ─────────────────────────
   const built = []
   const warnings = []
+  if (subs.length) warnings.push(`지선·우회로 ${subs.length}개는 아직 다루지 않는다 (TRAILS.md 4.2)`)
 
   for (const c of courses) {
     const { name, points, nonstandard, duplicateTracks } = parseGpx(c.path)
@@ -201,7 +245,7 @@ function main() {
 
     const cachePath = join(ELE_CACHE, `${c.key}.json`)
     if (!existsSync(cachePath)) {
-      throw new Error(`${c.file}: 고도 캐시가 없다. 먼저 npm run build:ele 를 실행하라.`)
+      throw new Error(`${c.file}: 고도 캐시가 없다. 먼저 npm run build:ele -- --trail=${trail.id} 를 실행하라.`)
     }
     const cache = JSON.parse(readFileSync(cachePath, 'utf8'))
     // 다른 GPX(예: 교체 전 노선)로 만든 캐시면 고도 프로필이 선과 맞지 않는다.
@@ -212,12 +256,15 @@ function main() {
 
     const smooth = movingAverage(cache.ele, ELE_SMOOTH_WINDOW)
     const { ascentM, descentM } = ascentDescent(smooth, ELE_THRESHOLD_M)
+    const off = official.get(c.id)
 
     built.push({
       ...c,
       trackName: name,
-      // 지점명·주소·교통편·지역은 공식 여행자정보에서. 틀린 곳만 아래 CSV 가 고친다.
-      ...officialPlaces(official.get(c.id)),
+      // 지점명·주소·교통편·지역은 공식 자료에서. 틀린 곳만 아래 CSV 가 고친다.
+      ...officialPlaces(off),
+      label: off?.label ?? '',
+      stamp: off?.stamp ?? null,
       lengthM,
       km: r1(lengthM / 1000),
       ascentM: Math.round(ascentM),
@@ -241,6 +288,7 @@ function main() {
   }
 
   // ── 2. 지점명 보정 ───────────────────────────────────────
+  // "앞 코스 종점 = 다음 코스 시점" 은 본선에만 성립한다. 지선·우회로는 위에서 뺐다.
   const chained = chainFill(built)
   const junctions = normalizeJunctions(built)
   const regionFixes = normalizeRegions(built)
@@ -288,22 +336,29 @@ function main() {
   }
 
   // ── 4. 출력 ──────────────────────────────────────────────
-  if (existsSync(OUT_COURSE)) rmSync(OUT_COURSE, { recursive: true })
-  mkdirSync(OUT_COURSE, { recursive: true })
+  if (existsSync(outCourse)) rmSync(outCourse, { recursive: true })
+  mkdirSync(outCourse, { recursive: true })
 
   const index = built.map((c) => ({
     id: c.id,
     seq: c.seq,
-    // 우회 노선은 없다. 이 필드를 검사하는 옛 MCP 서버 사본(README 의 설치 방법)이 깨지지 않게 남긴다.
+    // 우회 노선은 아직 없다. 이 필드를 검사하는 옛 MCP 서버 사본(README 의 설치 방법)이 깨지지 않게 남긴다.
     isAlt: false,
     name: c.name,
+    // 공식 코스명의 부제 (예: '영덕 블루로드 1, 2코스', '바우길 09구간')
+    label: c.label || '',
     region: c.region || '',
     start: c.start || '',
     end: c.end || '',
+    // 'addr' 이면 지점명이 공식 자료에 없어 주소를 줄여 쓴 것이다
+    startSource: c.startSource === 'addr' ? 'addr' : undefined,
+    endSource: c.endSource === 'addr' ? 'addr' : undefined,
     startAddr: c.startAddr || '',
     startAccess: c.startAccess || '',
     endAddr: c.endAddr || '',
     endAccess: c.endAccess || '',
+    // 코리아둘레길 스탬프함 위치 (해파랑길 여행자정보). 없으면 null
+    stamp: c.stamp || null,
     alias: c.alias || '',
     note: c.note || '',
     distanceKm: c.km,
@@ -327,11 +382,11 @@ function main() {
     eleLow: lowResProfile(c.eleProfile),
   }))
 
-  writeFileSync(join(OUT_DIR, 'courses.json'), JSON.stringify(index))
+  writeFileSync(join(outDir, 'courses.json'), JSON.stringify(index))
 
   for (const c of built) {
     writeFileSync(
-      join(OUT_COURSE, `${c.id}.json`),
+      join(outCourse, `${c.id}.json`),
       JSON.stringify({
         id: c.id,
         line: c.detail.map((p) => [r5(p[0]), r5(p[1])]),
@@ -340,16 +395,20 @@ function main() {
     )
   }
 
+  const totalKm = r1(built.reduce((s, c) => s + c.lengthM, 0) / 1000)
+  const totalAscentM = built.reduce((s, c) => s + c.ascentM, 0)
   writeFileSync(
-    join(OUT_DIR, 'meta.json'),
+    join(outDir, 'meta.json'),
     JSON.stringify(
       {
-        generatedAt: new Date().toISOString(),
+        generatedAt: GENERATED_AT,
+        trail: trail.id,
+        trailName: trail.name,
         courseCount: built.length,
         mainCourseCount: built.length,
         // 코스별 반올림값을 더하면 오차가 쌓인다. 원시 미터로 합산한 뒤 반올림한다.
-        totalKm: r1(built.reduce((s, c) => s + c.lengthM, 0) / 1000),
-        totalAscentM: built.reduce((s, c) => s + c.ascentM, 0),
+        totalKm,
+        totalAscentM,
         elevation: {
           source: `${ELE_DATASET} (opentopodata)`,
           note: 'DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.',
@@ -371,12 +430,12 @@ function main() {
           breaks: DIFFICULTY_BREAKS,
         },
         official: {
-          source: '두루누비 — https://www.durunubi.kr/namparang-course-list.do',
+          source: `두루누비 — ${listUrl(trail)}`,
           license: '공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)',
           note: '난이도·소요시간은 공식값. 거리는 지도 선과 맞추기 위해 GPX 실측값을 쓴다.',
         },
         source: {
-          gpx: '두루누비(한국관광공사) 코스별 공식 GPX — https://www.durunubi.kr/namparang-course-list.do',
+          gpx: `두루누비(한국관광공사) 코스별 공식 GPX — ${listUrl(trail)}`,
           license: '공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)',
           detail: 'data/SOURCE.md',
         },
@@ -389,12 +448,9 @@ function main() {
   // ── 5. 리포트 ────────────────────────────────────────────
   const sum = (f) => built.reduce((s, c) => s + f(c), 0)
   const size = (p) => (readFileSync(p).length / 1024).toFixed(1) + 'KB'
-  const courseDirKB = built.reduce(
-    (s, c) => s + readFileSync(join(OUT_COURSE, `${c.id}.json`)).length,
-    0,
-  )
+  const courseDirKB = built.reduce((s, c) => s + readFileSync(join(outCourse, `${c.id}.json`)).length, 0)
 
-  console.log(`전처리 완료 — ${built.length}개 코스\n`)
+  console.log(`\n# ${trail.name} — ${built.length}개 코스\n`)
   console.log('합계')
   console.log(`  거리        ${r1(sum((c) => c.lengthM) / 1000).toLocaleString()} km`)
   console.log(`  누적 상승   ${sum((c) => c.ascentM).toLocaleString()} m  (${(sum((c) => c.ascentM) / sum((c) => c.km)).toFixed(1)} m/km)`)
@@ -425,6 +481,8 @@ function main() {
     `  CSV 후 연쇄 시점 ${chainedAfterCsv.start} · 종점 ${chainedAfterCsv.end}` +
       (regionsAfterCsv.length ? ` · 지역 ${regionsAfterCsv.length}` : ''),
   )
+  const fromAddr = built.filter((c) => c.startSource === 'addr' || c.endSource === 'addr').length
+  if (fromAddr) console.log(`  주소로 쓴 지점명 ${fromAddr}개 코스 (공식 지점명 없음)`)
   const withAccess = built.filter((c) => c.startAccess || c.endAccess).length
   if (withAccess) console.log(`  교통편 정보  ${withAccess}개 코스`)
   const noPlace = built.filter((c) => !c.start || !c.end)
@@ -433,14 +491,107 @@ function main() {
   if (noRegion.length) console.log(`  지역 미확인 ${noRegion.length}개: ${noRegion.map((c) => c.id).join(',')}`)
 
   console.log('\n산출물')
-  console.log(`  courses.json   ${size(join(OUT_DIR, 'courses.json'))}   <- 랜딩에서 이것만 받는다`)
-  console.log(`  course/*.json  ${(courseDirKB / 1024).toFixed(1)}KB 총 / 코스당 평균 ${(courseDirKB / built.length / 1024).toFixed(1)}KB   <- lazy fetch`)
-  console.log(`  meta.json      ${size(join(OUT_DIR, 'meta.json'))}`)
+  console.log(`  ${trail.id}/courses.json   ${size(join(outDir, 'courses.json'))}   <- 그 길을 고르면 이것만 받는다`)
+  console.log(`  ${trail.id}/course/*.json  ${(courseDirKB / 1024).toFixed(1)}KB 총 / 코스당 평균 ${(courseDirKB / built.length / 1024).toFixed(1)}KB   <- lazy fetch`)
 
   if (warnings.length) {
     console.log(`\n경고 ${warnings.length}건`)
     for (const w of warnings) console.log(`  - ${w}`)
   }
+
+  const first = built[0]
+  const last = built.at(-1)
+  return {
+    id: trail.id,
+    name: trail.name,
+    span: trail.span,
+    courseCount: built.length,
+    totalKm,
+    totalAscentM,
+    bbox: [
+      Math.min(...built.map((c) => c.bbox[0])),
+      Math.min(...built.map((c) => c.bbox[1])),
+      Math.max(...built.map((c) => c.bbox[2])),
+      Math.max(...built.map((c) => c.bbox[3])),
+    ],
+    source: listUrl(trail),
+    // 길 사이 연결을 찾는 데 쓴다 (trails.json 에는 links 로 정리해 넣는다)
+    ends: {
+      start: { courseId: first.id, latlng: first.startLatLng },
+      end: { courseId: last.id, latlng: last.endLatLng },
+    },
+  }
+}
+
+/**
+ * 길 끝점끼리 LINK_M 안에서 만나면 "이어지는 길"로 묶는다.
+ * 예: 남파랑길 1코스 시점 = 해파랑길 1코스 시점 (부산 오륙도)
+ * 좌표로 잰다. 끝점이 어긋난 길을 이어진 것처럼 안내하지 않는다.
+ */
+function linkTrails(summaries) {
+  for (const a of summaries) {
+    a.links = []
+    for (const b of summaries) {
+      if (a === b) continue
+      for (const at of ['start', 'end']) {
+        for (const toAt of ['start', 'end']) {
+          const distM = Math.round(haversine(a.ends[at].latlng, b.ends[toAt].latlng))
+          if (distM > LINK_M) continue
+          a.links.push({
+            at,
+            courseId: a.ends[at].courseId,
+            trail: b.id,
+            trailName: b.name,
+            toAt,
+            toCourseId: b.ends[toAt].courseId,
+            distM,
+          })
+        }
+      }
+    }
+  }
+}
+
+/** 데이터 생성 시각. 모든 길의 meta.json 과 trails.json 이 같은 값을 쓴다 (vite.config.js 의 캐시 버스터). */
+const GENERATED_AT = new Date().toISOString()
+
+function main() {
+  const trails = TRAILS.filter((t) => t.enabled)
+  const summaries = trails.map(buildTrail)
+  linkTrails(summaries)
+
+  writeFileSync(
+    join(OUT_ROOT, 'trails.json'),
+    JSON.stringify(
+      {
+        generatedAt: GENERATED_AT,
+        // 화면이 처음 여는 길. 길을 적지 않은 옛 주소(?from=17&to=23)도 이 길로 해석한다
+        defaultTrail: 'namparang',
+        license: '공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)',
+        trails: summaries.map(({ ends, ...t }) => t),
+      },
+      null,
+      1,
+    ),
+  )
+
+  // 남파랑길은 옛 경로에도 둔다. 옛 앱(캐시된 index.html)과 옛 MCP 서버 사본이 이 경로를 읽는다.
+  const legacy = 'namparang'
+  if (trails.some((t) => t.id === legacy)) {
+    const legacyCourse = join(OUT_ROOT, 'course')
+    if (existsSync(legacyCourse)) rmSync(legacyCourse, { recursive: true })
+    cpSync(join(OUT_ROOT, legacy, 'course'), legacyCourse, { recursive: true })
+    for (const f of ['courses.json', 'meta.json']) cpSync(join(OUT_ROOT, legacy, f), join(OUT_ROOT, f))
+  }
+
+  console.log(`\n길 ${summaries.length}개 — ${summaries.map((s) => `${s.name} ${s.courseCount}코스 ${s.totalKm}km`).join(' · ')}`)
+  for (const s of summaries) {
+    for (const l of s.links) {
+      const side = (x) => (x === 'start' ? '시점' : '종점')
+      console.log(`  연결  ${s.name} ${l.courseId}코스 ${side(l.at)} = ${l.trailName} ${l.toCourseId}코스 ${side(l.toAt)} (${l.distM}m)`)
+    }
+  }
+  console.log('  trails.json · 남파랑길 사본 public/data/courses.json, meta.json, course/')
 }
 
 main()

@@ -1,9 +1,9 @@
 {
-  "name": "namparang",
+  "name": "kdt",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "남파랑길 90개 코스 가이드 — 개인용 트레킹 기록 웹앱",
+  "description": "코리아둘레길 코스 가이드 — 개인용 트레킹 기록 웹앱",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

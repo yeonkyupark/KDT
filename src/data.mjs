@@ -3,6 +3,9 @@
  *
  * 경로는 반드시 `document.baseURI` 기준으로 만든다. GitHub Pages 하위 경로
  * (`/KDT/`)와 로컬 루트(`/`) 양쪽에서 같은 코드가 동작해야 한다.
+ *
+ * 길마다 데이터가 따로 있다(`data/<길>/…`). 화면은 한 번에 한 길만 받는다.
+ * `trails.json` 은 길 목록이라 맨 먼저 받고, 나머지는 `useTrail()` 로 고른 길에서 받는다.
  */
 
 /**
@@ -23,18 +26,36 @@ async function getJson(path) {
   return res.json()
 }
 
-let indexPromise = null
+let trailsPromise = null
 
-/** 90개 코스 메타 + 오버뷰 라인. 랜딩에서 받는 유일한 데이터. */
-export function loadIndex() {
-  indexPromise ??= getJson('courses.json')
-  return indexPromise
+/** 길 목록 · 합계 · 출처 · 길 사이 연결. */
+export function loadTrails() {
+  trailsPromise ??= getJson('trails.json')
+  return trailsPromise
+}
+
+let current = null
+
+/** 이후의 loadIndex / loadMeta / loadCourse 가 이 길의 데이터를 받는다. */
+export function useTrail(id) {
+  current = id
+}
+
+const indexCache = new Map()
+
+/**
+ * 길 하나의 코스 메타 + 오버뷰 라인. 랜딩에서는 고른 길 것만 받는다.
+ * 다른 길 것은 기록을 등록할 때(사진이 다른 길에 더 가까운지 볼 때)만 받는다.
+ */
+export function loadIndex(trailId = current) {
+  if (!indexCache.has(trailId)) indexCache.set(trailId, getJson(`${trailId}/courses.json`))
+  return indexCache.get(trailId)
 }
 
 let metaPromise = null
 
 export function loadMeta() {
-  metaPromise ??= getJson('meta.json')
+  metaPromise ??= getJson(`${current}/meta.json`)
   return metaPromise
 }
 
@@ -42,6 +63,6 @@ const detailCache = new Map()
 
 /** 코스 상세(고해상도 라인 + 고도 프로필). 한 번 받으면 캐시한다. */
 export function loadCourse(id) {
-  if (!detailCache.has(id)) detailCache.set(id, getJson(`course/${id}.json`))
+  if (!detailCache.has(id)) detailCache.set(id, getJson(`${current}/course/${id}.json`))
   return detailCache.get(id)
 }

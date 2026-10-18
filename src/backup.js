@@ -88,7 +88,7 @@ export async function exportZip(onProgress, { remoteUrl } = {}) {
     zip(files, { level: 6 }, (err, data) => (err ? reject(err) : resolve(data)))
   })
 
-  const name = `namparang-backup-${stamp()}.zip`
+  const name = `kdt-backup-${stamp()}.zip`
   const blob = new Blob([bytes], { type: 'application/zip' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')

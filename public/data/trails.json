@@ -1,0 +1,59 @@
+{
+ "generatedAt": "2026-10-18T05:30:34.257Z",
+ "defaultTrail": "namparang",
+ "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)",
+ "trails": [
+  {
+   "id": "namparang",
+   "name": "남파랑길",
+   "span": "부산 오륙도 → 해남 땅끝탑",
+   "courseCount": 90,
+   "totalKm": 1428.6,
+   "totalAscentM": 27776,
+   "bbox": [
+    126.52152,
+    34.28714,
+    129.12371,
+    35.21437
+   ],
+   "source": "https://www.durunubi.kr/namparang-course-list.do",
+   "links": [
+    {
+     "at": "start",
+     "courseId": "1",
+     "trail": "haeparang",
+     "trailName": "해파랑길",
+     "toAt": "start",
+     "toCourseId": "1",
+     "distM": 0
+    }
+   ]
+  },
+  {
+   "id": "haeparang",
+   "name": "해파랑길",
+   "span": "부산 오륙도 → 고성 통일전망대",
+   "courseCount": 50,
+   "totalKm": 730.6,
+   "totalAscentM": 9575,
+   "bbox": [
+    128.37349,
+    35.09969,
+    129.58322,
+    38.5846
+   ],
+   "source": "https://www.durunubi.kr/haeparang-course-list.do",
+   "links": [
+    {
+     "at": "start",
+     "courseId": "1",
+     "trail": "namparang",
+     "trailName": "남파랑길",
+     "toAt": "start",
+     "toCourseId": "1",
+     "distM": 0
+    }
+   ]
+  }
+ ]
+}

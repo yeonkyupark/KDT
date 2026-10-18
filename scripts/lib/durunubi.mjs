@@ -158,6 +158,31 @@ export function parseCourseName(name) {
   return { seq: Number(seq), sub: sub ? Number(sub) : 0, label: (paren ? paren[1] : rest).trim() }
 }
 
+/**
+ * 여행자정보에 시점·종점 줄이 없는 길(해파랑길)에서 쓸 만한 것을 뽑는다.
+ *
+ *   *해파랑길 스탬프함 위치
+ *   해운대구 해운대해변로 264(해운대 종합관광봉사센터 내)
+ *   → stamp: { addr: '해운대구 해운대해변로 264', place: '해운대 종합관광봉사센터 내' }
+ *
+ *   - 부산역에서 급행버스 1003번 이용, 해운대해수욕장 하차 후 도보이동(약 160m)
+ *   → access: 교통 수단이 나오는 첫 줄 (코스 시점까지 가는 방법이다)
+ *
+ * 스탬프 위치 설명("자판기 옆", "건너편")은 지점명으로 쓰지 않는다. 따로 보여 준다.
+ */
+export function parseStampAndAccess(text) {
+  const t = cleanText(text)
+  const line = /스탬프함\s*위치\s*\n([^\n]+)/.exec(t)?.[1]?.trim() ?? ''
+  const m = /^(.*?)\s*\(([^()]*)\)\s*$/.exec(line)
+  const stamp = line ? { addr: (m ? m[1] : line).trim(), place: (m ? m[2] : '').trim() } : null
+  const access =
+    t
+      .split('\n')
+      .find((l) => /^-/.test(l) && /(버스|지하철|열차|기차|터미널|하차|역에서)/.test(l))
+      ?.replace(/^-\s*/, '') ?? ''
+  return { stamp, access }
+}
+
 const LEVEL_LABEL = { 1: '쉬움', 2: '보통', 3: '어려움' }
 
 /**
@@ -214,6 +239,10 @@ export function mergeCourses(trail, publicItems, siteItems) {
       contents: cleanText(p?.crsContents ?? s.contents),
       tourInfo: cleanText(p?.crsTourInfo ?? s.tourInfo),
       warning: cleanText(s.warning_notice),
+      // 사이트 목록의 시·종점 주소. 남파랑길은 여행자정보에 지점명·주소가 함께 있지만
+      // 해파랑길 여행자정보에는 시점·종점 줄이 없어 이 주소가 유일한 공식 시·종점 표기다.
+      startAddress: (s.startAddress ?? '').trim(),
+      endAddress: (s.endAddress ?? '').trim(),
       startLatLng: [Number(s.startLat), Number(s.startLon)],
       endLatLng: [Number(s.endLat), Number(s.endLon)],
       publicModified: p?.modifiedtime ?? p?.modifitedtime ?? null,

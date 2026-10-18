@@ -21,8 +21,10 @@ const ON = { weight: 4, opacity: 1, casing: 8, casingOpacity: 0.8 }
 const OFF = { weight: 2, opacity: 0.45, casing: 5, casingOpacity: 0.3 }
 
 // 공공누리 제4유형: 출처표시 의무. 노선·코스 정보 모두 두루누비(한국관광공사) 공식 자료다.
-const GPX_ATTR =
-  '노선 <a href="https://www.durunubi.kr/namparang-course-list.do" target="_blank" rel="noopener">두루누비(한국관광공사)</a> · 공공누리 제4유형'
+// 링크는 지금 보고 있는 길의 두루누비 코스 목록 페이지다(trails.json 의 source).
+const DEFAULT_SOURCE = 'https://www.durunubi.kr/namparang-course-list.do'
+const gpxAttr = (href) =>
+  `노선 <a href="${encodeURI(href)}" target="_blank" rel="noopener">두루누비(한국관광공사)</a> · 공공누리 제4유형`
 
 export const TILE_NAMES = ['기본', '지형', '위성']
 
@@ -37,7 +39,8 @@ export const TILE_NAMES = ['기본', '지형', '위성']
  */
 const TILE_OPACITY = { 기본: 0.85, 지형: 0.85, 위성: 0.75 }
 
-function tileLayers() {
+function tileLayers(sourceUrl = DEFAULT_SOURCE) {
+  const GPX_ATTR = gpxAttr(sourceUrl)
   return {
     기본: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -56,13 +59,13 @@ function tileLayers() {
 }
 
 /**
- * 지도를 만들고 90개 코스를 그린다.
+ * 지도를 만들고 고른 길의 코스를 그린다.
  *
  * 코스 하나를 폴리라인 2개로 그린다 — 아래에 굵은 흰 테두리(casing), 위에 난이도 색.
  * 위성 영상이나 지형도 위에서 선이 배경에 묻히는 것을 막는다.
  */
-export function createMap(el, courses, { onSelect, getInsets } = {}) {
-  const layers = tileLayers()
+export function createMap(el, courses, { onSelect, getInsets, sourceUrl } = {}) {
+  const layers = tileLayers(sourceUrl)
 
   const map = L.map(el, {
     zoomControl: false,
@@ -553,6 +556,7 @@ function tooltipHtml(c) {
   return (
     `<div class="tip"><b>${esc(c.name)}</b>` +
     (c.region ? ` <span class="tip-region">${esc(c.region)}</span>` : '') +
+    (c.label ? `<div class="tip-alias">${esc(c.label)}</div>` : '') +
     (c.alias ? `<div class="tip-alias">${esc(c.alias)}</div>` : '') +
     `<div class="tip-route">${route}</div>` +
     `<div class="tip-stats">${bits.join(' · ')}</div>` +

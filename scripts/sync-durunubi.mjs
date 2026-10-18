@@ -48,7 +48,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 /** manifest 에서 비교할 메타데이터. 이 값이 바뀌면 GPX 가 같아도 빌드를 다시 한다. */
 const META_KEYS = [
   'name', 'seq', 'sub', 'label', 'source', 'km', 'minutes', 'level', 'levelLabel', 'cycle', 'sigun',
-  'travelerInfo', 'summary', 'contents', 'tourInfo', 'warning', 'startLatLng', 'endLatLng',
+  'travelerInfo', 'summary', 'contents', 'tourInfo', 'warning', 'startAddress', 'endAddress', 'startLatLng', 'endLatLng',
   'publicModified', 'gpxFilePath', 'file',
 ]
 

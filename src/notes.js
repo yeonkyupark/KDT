@@ -7,6 +7,10 @@
  *
  * 좌표가 없는 사진이 예외가 아니라 기본이다(메신저·SNS를 거치면 EXIF가 지워진다).
  * 지도 클릭 경로를 곁가지가 아니라 정식 경로로 취급한다.
+ *
+ * 기록은 길마다 나뉜다(`note.trail`). 지금 보고 있는 길의 기록만 지도·목록에 보인다.
+ * 필드가 없는 기록(길을 나누기 전에 만든 것)은 남파랑길 기록이다. 저장·동기화·백업은 길과
+ * 관계없이 전부 다룬다 — 거르는 것은 화면에서만 한다.
  */
 
 import { allNotes, saveNote, deleteNote, getPhoto, newId, usage } from './store.js'
@@ -34,6 +38,10 @@ function imageSrc(blob, url) {
   return { src: url || null, revoke: () => {} }
 }
 
+/** `trail` 필드가 없는 기록은 남파랑길 기록이다. 옮기지 않아도 된다. */
+const DEFAULT_TRAIL = 'namparang'
+const trailOf = (n) => n?.trail || DEFAULT_TRAIL
+
 const fmtDate = (iso) => {
   if (!iso) return ''
   const d = new Date(iso)
@@ -46,9 +54,15 @@ const fmtDate = (iso) => {
  * @param {object} deps
  * @param {HTMLElement} deps.host  사이드바 안의 기록 섹션 컨테이너
  * @param {object} deps.view       createMap 이 돌려준 지도 뷰
- * @param {Array}  deps.courses    courses.json
+ * @param {Array}  deps.courses    지금 길의 courses.json
+ * @param {string} deps.trail      지금 길 id
+ * @param {Array}  deps.trails     trails.json 의 길 목록 (등록·수정 화면에서 길을 고를 때)
+ * @param {(id: string) => Promise<Array>} deps.loadIndex  다른 길의 courses.json
  */
-export function createNotes({ host, view, courses, sync }) {
+export function createNotes({ host, view, courses, sync, trail = DEFAULT_TRAIL, trails = [], loadIndex }) {
+  const trailName = (id) => trails.find((t) => t.id === id)?.name ?? id
+  const coursesOf = (id) => (id === trail ? Promise.resolve(courses) : (loadIndex?.(id) ?? Promise.resolve([])))
+
   /**
    * 원격 사진 URL. 동기화 설정에서 조립하므로 리포 이름을 바꿔도 깨지지 않는다.
    * 동기화가 없으면 노트에 저장된 절대 URL 로 폴백한다.
@@ -215,10 +229,10 @@ export function createNotes({ host, view, courses, sync }) {
    * 오버뷰 라인(코스당 43점)으로만 재기 때문에 정확한 최단거리가 아니라
    * "어느 코스 근처냐"를 가리는 수준이다. 그 용도에는 충분하다.
    */
-  function nearestCourse(latlng) {
+  function nearestCourse(latlng, list = courses) {
     let best = null
     let bestD = Infinity
-    for (const c of courses) {
+    for (const c of list) {
       for (const p of c.overview) {
         const d = haversine(latlng, p)
         if (d < bestD) {
@@ -228,6 +242,29 @@ export function createNotes({ host, view, courses, sync }) {
       }
     }
     return bestD <= 3000 ? { course: best, distM: bestD } : null
+  }
+
+  /**
+   * 다른 길의 코스가 더 가까운지 본다. 오륙도(남파랑길·해파랑길 시점)처럼 길 경계에서 찍은 사진은
+   * 어느 길 기록인지 사람이 정해야 한다. 다른 길 데이터는 이때만 받는다.
+   * @returns {Promise<{trail: string, course: object, distM: number}|null>}
+   */
+  async function nearestElsewhere(latlng, here) {
+    let best = null
+    for (const t of trails) {
+      if (t.id === trail) continue
+      let list
+      try {
+        list = await coursesOf(t.id)
+      } catch {
+        continue // 받지 못하면 묻지 않는다. 지금 길로 저장된다
+      }
+      const n = nearestCourse(latlng, list)
+      if (n && (!best || n.distM < best.distM)) best = { trail: t.id, ...n }
+    }
+    // 지금 길의 코스가 같거나 더 가까우면 묻지 않는다
+    if (!best || (here && here.distM <= best.distM)) return null
+    return best
   }
 
   // ── 등록 ─────────────────────────────────────────────
@@ -259,9 +296,11 @@ export function createNotes({ host, view, courses, sync }) {
     }
 
     const near = nearestCourse(latlng)
+    const elsewhere = trails.length > 1 ? await nearestElsewhere(latlng, near) : null
     openForm({
       draft: {
         id: newId(),
+        trail,
         lat: latlng[0],
         lng: latlng[1],
         courseId: near?.course?.id ?? '',
@@ -274,6 +313,7 @@ export function createNotes({ host, view, courses, sync }) {
       },
       image,
       near,
+      elsewhere,
       exif,
     })
   }
@@ -281,7 +321,7 @@ export function createNotes({ host, view, courses, sync }) {
   /**
    * 주소 문자열을 우리 코스 데이터와 맞춰 본다.
    *
-   * 외부 지오코딩 서비스를 쓰지 않는다. 우리에겐 이미 17개 시·군과 90개 코스의
+   * 외부 지오코딩 서비스를 쓰지 않는다. 우리에겐 이미 이 길의 시·군과 코스별
    * 시작·종료 지점명이 있다. "거제시 학동고개" 같은 주소면 거제시 구간으로
    * 지도를 옮겨주는 것만으로 클릭할 자리를 크게 좁힐 수 있다.
    *
@@ -396,7 +436,7 @@ export function createNotes({ host, view, courses, sync }) {
 
     // ── 좌표 또는 주소 직접 입력 ──────────────────────────
     // 외부 지오코딩 서비스는 쓰지 않는다. 좌표는 그대로 쓰고, 주소는
-    // matchAddress()로 우리 90개 코스의 지점명·지역과 맞춰 지도만 옮긴다 —
+    // matchAddress()로 이 길 코스의 지점명·지역과 맞춰 지도만 옮긴다 —
     // 정확한 지점은 여전히 지도 클릭으로 짚는다.
     const manualRow = el('div', 'pick-manual')
     const manualIn = document.createElement('input')
@@ -474,7 +514,7 @@ export function createNotes({ host, view, courses, sync }) {
   }
 
   // ── 입력 폼 ──────────────────────────────────────────
-  function openForm({ draft, image, near, existingThumbUrl, exif }) {
+  function openForm({ draft, image, near, elsewhere, existingThumbUrl, exif }) {
     const back = el('div', 'modal-back')
     const box = el('div', 'modal form-modal')
 
@@ -507,19 +547,68 @@ export function createNotes({ host, view, courses, sync }) {
 
     const meta = el('div', 'form-meta')
     const courseSel = document.createElement('select')
-    const none = document.createElement('option')
-    none.value = ''
-    none.textContent = '코스 지정 없음'
-    courseSel.append(none)
-    for (const c of courses) {
-      const o = document.createElement('option')
-      o.value = c.id
-      o.textContent = `${c.seq}코스 · ${c.region || '—'}`
-      courseSel.append(o)
+    /** 코스 목록을 그 길의 코스로 채운다. 길을 바꾸면 다시 채운다. */
+    const fillCourses = (list, selected) => {
+      courseSel.textContent = ''
+      const none = document.createElement('option')
+      none.value = ''
+      none.textContent = '코스 지정 없음'
+      courseSel.append(none)
+      for (const c of list) {
+        const o = document.createElement('option')
+        o.value = c.id
+        o.textContent = `${c.seq}코스 · ${c.region || '—'}`
+        courseSel.append(o)
+      }
+      courseSel.value = list.some((c) => c.id === selected) ? selected : ''
     }
-    courseSel.value = draft.courseId ?? ''
+    const draftTrail = trailOf(draft)
+    fillCourses(draftTrail === trail ? courses : [], draft.courseId ?? '')
+
+    // 길 선택. 등록할 때는 지금 길이 기본이고, 잘못 지정한 기록은 수정 화면에서 옮길 수 있다.
+    let trailSel = null
+    if (trails.length > 1) {
+      trailSel = document.createElement('select')
+      for (const t of trails) {
+        const o = document.createElement('option')
+        o.value = t.id
+        o.textContent = t.name
+        trailSel.append(o)
+      }
+      trailSel.value = draftTrail
+      trailSel.onchange = async () => {
+        const id = trailSel.value
+        let list = []
+        try {
+          list = await coursesOf(id)
+        } catch {
+          toast(`${trailName(id)} 코스 목록을 받지 못했습니다 — 코스는 비워 두고 저장됩니다`)
+        }
+        // 좌표가 있으면 그 길에서 가장 가까운 코스를 다시 고른다
+        const n = Number.isFinite(draft.lat) ? nearestCourse([draft.lat, draft.lng], list) : null
+        fillCourses(list, n?.course?.id ?? '')
+      }
+      meta.append(labelled('길', trailSel))
+    }
 
     meta.append(labelled('코스', courseSel))
+
+    if (elsewhere && trailSel) {
+      const ask = el('div', 'form-elsewhere')
+      ask.append(
+        `이 위치는 ${trailName(elsewhere.trail)} ${elsewhere.course.name}에 더 가깝습니다 (${Math.round(elsewhere.distM)}m). `,
+      )
+      const move = el('button', 'link-btn', `${trailName(elsewhere.trail)} 기록으로`)
+      move.type = 'button'
+      move.onclick = async () => {
+        trailSel.value = elsewhere.trail
+        await trailSel.onchange()
+        courseSel.value = elsewhere.course.id
+        ask.remove()
+      }
+      ask.append(move)
+      meta.append(ask)
+    }
     const infoBits = []
     if (draft.takenAt) infoBits.push(`촬영 ${fmtDate(draft.takenAt)}`)
     infoBits.push(
@@ -619,6 +708,7 @@ export function createNotes({ host, view, courses, sync }) {
         const rec = await saveNote(
           {
             ...draft,
+            trail: trailSel?.value ?? draftTrail,
             courseId: courseSel.value,
             title: titleIn.value.trim(),
             memo: memoIn.value.trim(),
@@ -628,7 +718,12 @@ export function createNotes({ host, view, courses, sync }) {
           },
           image ? image.full : null,
         )
-        notes.set(rec.id, rec)
+        // 다른 길로 저장했으면 이 길 화면에서는 빠진다
+        if (trailOf(rec) === trail) notes.set(rec.id, rec)
+        else {
+          notes.delete(rec.id)
+          toast(`${trailName(trailOf(rec))} 기록으로 저장했습니다 — 그 길을 고르면 보입니다`)
+        }
         view.syncNotePins(pinSource(), { onClick: openViewer })
         renderList()
         refreshUsage()
@@ -805,8 +900,8 @@ export function createNotes({ host, view, courses, sync }) {
           'li',
           'notes-empty',
           sync?.configured?.()
-            ? '이 브라우저에 기록이 없습니다. 사진을 올리거나, 동기화를 눌러 GitHub 에 저장된 기록을 받아오세요.'
-            : '아직 기록이 없습니다. 사진을 올리면 지도에 위치가 표시됩니다.',
+            ? `이 브라우저에 ${trailName(trail)} 기록이 없습니다. 사진을 올리거나, 동기화를 눌러 GitHub 에 저장된 기록을 받아오세요.`
+            : `아직 ${trailName(trail)} 기록이 없습니다. 사진을 올리면 지도에 위치가 표시됩니다.`,
         ),
       )
       return
@@ -881,9 +976,15 @@ export function createNotes({ host, view, courses, sync }) {
   }
 
   // ── 초기 로딩 ────────────────────────────────────────
+  /** 저장소에서 지금 길의 기록만 다시 읽는다. 다른 길로 옮긴 기록은 여기서 빠진다. */
+  async function readTrailNotes() {
+    notes.clear()
+    for (const n of await allNotes()) if (trailOf(n) === trail) notes.set(n.id, n)
+  }
+
   async function load() {
     try {
-      for (const n of await allNotes()) notes.set(n.id, n)
+      await readTrailNotes()
     } catch (e) {
       usageLine.textContent = `저장소를 열 수 없습니다 — ${e.message}`
       return
@@ -906,7 +1007,7 @@ export function createNotes({ host, view, courses, sync }) {
       try {
         const r = await sync.pullPublic()
         if (r.pulled) {
-          for (const n of await allNotes()) notes.set(n.id, n)
+          await readTrailNotes()
           view.syncNotePins(pinSource(), { onClick: openViewer })
           renderList()
           refreshUsage()

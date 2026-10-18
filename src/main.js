@@ -1,9 +1,9 @@
 import './style.css'
-import { loadIndex, loadMeta, loadCourse } from './data.mjs'
+import { loadTrails, useTrail, loadIndex, loadMeta, loadCourse } from './data.mjs'
 import { createMap, TILE_NAMES, formatDuration } from './map.js'
 import { createSidebar } from './sidebar.js'
 import { createProfile } from './profile.js'
-import { readState, writeState } from './state.js'
+import { readState, writeState, readTrail, rememberTrail, trailHref } from './state.js'
 import { configureDifficulty } from './metrics.js'
 import { cumulative, pointAtFraction } from './geo.js'
 import { createNotes } from './notes.js'
@@ -28,7 +28,31 @@ const el = (tag, cls, text) => {
   return n
 }
 
-function renderShell() {
+/** 정보 카드가 쓰는 길 정보. main() 이 길을 정한 뒤 채운다. */
+const cardCtx = { trail: null }
+
+const SIDE = { start: '시점', end: '종점' }
+
+/**
+ * 머리말의 길 선택. 길을 바꾸면 그 길의 주소로 다시 연다 — 지도·목록·고도·기록을 제자리에서
+ * 갈아 끼우는 것보다 단순하고 확실하다. JS 는 캐시돼 있어 금방 뜨고, 다른 길 데이터는 받지 않는다.
+ */
+function trailPicker(trails, current) {
+  const sel = el('select', 'trail-select')
+  sel.setAttribute('aria-label', '길 선택')
+  for (const t of trails) {
+    const o = document.createElement('option')
+    o.value = t.id
+    // 이름만 둔다. 좁은 화면에서 메뉴 폭이 가장 긴 항목을 따라 넓어지기 때문이다(코스 수·거리는 부제에)
+    o.textContent = t.name
+    sel.append(o)
+  }
+  sel.value = current.id
+  sel.onchange = () => location.assign(trailHref(sel.value))
+  return sel
+}
+
+function renderShell(trails, trail) {
   const app = document.getElementById('app')
   app.textContent = ''
   app.className = 'shell'
@@ -41,8 +65,11 @@ function renderShell() {
   header.append(sideBtn)
 
   const brand = el('div', 'brand')
-  brand.append(el('b', null, '남파랑길'))
-  brand.append(el('span', 'brand-sub', '부산 오륙도 → 해남 땅끝탑'))
+  // 길이 하나뿐이면 메뉴 대신 이름만 둔다
+  brand.append(trails.length > 1 ? trailPicker(trails, trail) : el('b', null, trail.name))
+  brand.append(
+    el('span', 'brand-sub', `${trail.span} · ${trail.courseCount}코스 ${Math.round(trail.totalKm).toLocaleString()}km`),
+  )
   header.append(brand)
 
   const tools = el('div', 'tools')
@@ -86,6 +113,7 @@ function renderInfoCard(host, course) {
   head.append(close)
   card.append(head)
 
+  if (course.label) card.append(el('div', 'ic-alias', course.label))
   if (course.alias) card.append(el('div', 'ic-alias', course.alias))
   card.append(
     el(
@@ -132,6 +160,23 @@ function renderInfoCard(host, course) {
     card.append(box)
   }
 
+  // 코리아둘레길 스탬프함 위치 (해파랑길은 코스마다 공식 안내가 있다)
+  if (course.stamp) {
+    const where = [course.stamp.place, course.stamp.addr].filter(Boolean).join(' · ')
+    card.append(el('div', 'ic-stamp', `스탬프함 ${where}`))
+  }
+
+  // 길 끝 코스면 이어지는 길로 안내한다. 연결은 빌드가 끝점 좌표로 잰 것이다(trails.json 의 links).
+  for (const l of cardCtx.trail?.links ?? []) {
+    if (l.courseId !== course.id) continue
+    const row = el('div', 'ic-link')
+    row.append(`이 코스 ${SIDE[l.at]}에서 이어지는 길 · `)
+    const a = el('a', null, `${l.trailName} ${l.toCourseId}코스 ${SIDE[l.toAt]}`)
+    a.href = trailHref(l.trail, { from: l.toCourseId, to: l.toCourseId })
+    row.append(a)
+    card.append(row)
+  }
+
   // 공식 GPX 실측 거리와 두루누비 표기 거리가 눈에 띄게 다르면 그 사실을 숨기지 않는다.
   if (course.officialKm && Math.abs(course.distanceKm - course.officialKm) >= 1) {
     card.append(
@@ -143,6 +188,9 @@ function renderInfoCard(host, course) {
     )
   }
 
+  if (course.startSource === 'addr' || course.endSource === 'addr') {
+    card.append(el('div', 'ic-note', '공식 자료에 지점명이 없어 시점·종점을 주소로 표시합니다.'))
+  }
   if (course.note) card.append(el('div', 'ic-note', course.note))
   card.append(
     el(
@@ -169,19 +217,28 @@ function renderError(message) {
 }
 
 async function main() {
+  let trails
+  let trail
   let courses
   let meta
   try {
+    trails = await loadTrails()
+    const id = readTrail(trails.trails.map((t) => t.id), trails.defaultTrail)
+    trail = trails.trails.find((t) => t.id === id)
+    useTrail(trail.id)
+    rememberTrail(trail.id)
     ;[courses, meta] = await Promise.all([loadIndex(), loadMeta()])
   } catch (e) {
     renderError(e.message)
     return
   }
 
+  cardCtx.trail = trail
+  document.title = `${trail.name} — 코리아둘레길 가이드`
   configureDifficulty(meta.difficulty?.breaks)
 
   const byId = new Map(courses.map((c) => [c.id, c]))
-  const { tileGroup, tools, stage, mapwrap, mapEl, mapOverlay, sideBtn } = renderShell()
+  const { tileGroup, tools, stage, mapwrap, mapEl, mapOverlay, sideBtn } = renderShell(trails.trails, trail)
 
   /**
    * fitBounds가 피해야 하는 영역.
@@ -192,6 +249,7 @@ async function main() {
 
   const view = createMap(mapEl, courses, {
     getInsets,
+    sourceUrl: trail.source,
     onSelect: (c) => renderInfoCard(mapOverlay, c),
   })
 
@@ -219,7 +277,7 @@ async function main() {
 
   // ── 구간 적용 ────────────────────────────────────────
   const maxSeq = Math.max(...courses.map((c) => c.seq))
-  const opts = { maxSeq, tiles: TILE_NAMES }
+  const opts = { maxSeq, tiles: TILE_NAMES, defaultTrail: trails.defaultTrail }
   const initial = readState(opts)
   let layer = initial.layer
 
@@ -241,7 +299,7 @@ async function main() {
     view.setSelection(ids.size === courses.length ? null : ids)
     if (fit) view.fitIds(ids)
 
-    writeState({ from, to, layer }, opts)
+    writeState({ trail: trail.id, from, to, layer }, opts)
     profile.setSegments(profileSegments(from, to))
 
     // 구간이 바뀌면 열려 있던 정보 카드가 옛 코스를 그대로 들고 있게 된다.
@@ -327,7 +385,15 @@ async function main() {
     if (st.phase === 'done') syncApi.lastSyncedAtValue = st.at
   })
 
-  const notes = createNotes({ host: sidebar.notesHost, view, courses, sync: syncApi })
+  const notes = createNotes({
+    host: sidebar.notesHost,
+    view,
+    courses,
+    sync: syncApi,
+    trail: trail.id,
+    trails: trails.trails,
+    loadIndex,
+  })
 
   // ── 타일 토글 ────────────────────────────────────────
   const buttons = TILE_NAMES.map((name) => {
@@ -338,7 +404,7 @@ async function main() {
       layer = name
       view.setTile(name)
       for (const other of buttons) other.classList.toggle('is-on', other.textContent === name)
-      writeState({ ...sidebar.getRange(), layer }, opts)
+      writeState({ trail: trail.id, ...sidebar.getRange(), layer }, opts)
     }
     tileGroup.append(b)
     return b
@@ -421,6 +487,8 @@ async function main() {
   notes.load()
 
   window.addEventListener('popstate', () => {
+    // 뒤로가기로 다른 길의 주소에 왔으면 그 길로 다시 연다
+    if (readTrail(trails.trails.map((t) => t.id), trails.defaultTrail) !== trail.id) return location.reload()
     const s = readState(opts)
     layer = s.layer
     view.setTile(layer)

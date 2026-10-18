@@ -33,12 +33,12 @@ const DEFAULTS = {
   repo: 'KDT',
   photoRepo: 'photo-repo',
   /**
-   * 사진 리포 안에서 이 프로젝트가 쓰는 최상위 폴더.
+   * 사진 리포 안에서 남파랑길 사진이 들어가는 최상위 폴더.
    *
-   * 사진 리포는 **여러 트레일이 공유할 수 있게** 설계했다 — 노트 ID 가 UUID 라
-   * 트레일이 섞여도 파일명이 충돌하지 않는다. 다만 접두어가 없으면 리포를 열어봐도
-   * 어느 트레일 사진인지 알 수 없으므로 경로를 `{prefix}/{연도}/{id}.jpg` 로 둔다.
-   * 해파랑길·서해랑길을 같은 구조로 만들면 `haeparang`, `seohaerang` 만 바꾸면 된다.
+   * 사진 리포는 **코리아둘레길 4개 길이 함께 쓴다** — 노트 ID 가 UUID 라
+   * 길이 섞여도 파일명이 충돌하지 않는다. 다만 접두어가 없으면 리포를 열어봐도
+   * 어느 길 사진인지 알 수 없으므로 경로를 `{폴더}/{연도}/{id}.jpg` 로 둔다.
+   * 다른 길 사진은 길 id 가 폴더다(`haeparang/2026/…`, sync.js 의 uploadPhotos).
    */
   photoPrefix: 'namparang',
   branch: 'main',
@@ -145,10 +145,10 @@ export function openSettings({ current, onSave, onCheck }) {
   const ownerIn = field('GitHub 계정', current.owner)
   const repoIn = field('메모 리포지토리', current.repo, { hint: 'public/data/notes.json 에 기록을 저장합니다' })
   const photoIn = field('사진 리포지토리', current.photoRepo, {
-    hint: '여러 트레일이 공유할 수 있습니다. 비워두면 사진을 올리지 않습니다',
+    hint: '코리아둘레길 4개 길이 함께 씁니다. 비워두면 사진을 올리지 않습니다',
   })
   const prefixIn = field('사진 폴더', current.photoPrefix, {
-    hint: '사진 리포 안에서 이 트레일이 쓸 폴더. 경로는 {폴더}/{연도}/{id}.jpg 가 됩니다',
+    hint: '남파랑길 사진 폴더. 경로는 {폴더}/{연도}/{id}.jpg 이고, 다른 길은 길 이름 폴더(haeparang 등)를 씁니다',
   })
   const tokenIn = field('Personal Access Token', current.token, {
     type: 'password',
