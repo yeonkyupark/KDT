@@ -66,7 +66,7 @@ export const TRAILS = [
     metaCsv: 'data/courses.meta.dmz.csv',
     keyPrefix: 'dmz',
     cautions: true,
-    enabled: false,
+    enabled: true,
   },
 ]
 

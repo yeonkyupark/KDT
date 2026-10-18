@@ -63,7 +63,7 @@ const loadMeta = async (id) => cachedFetch(`data/${(await trailInfo(id)).id}/met
 const TrailArg = z
   .string()
   .optional()
-  .describe('길 id. namparang(남파랑길, 기본) · haeparang(해파랑길) · seohaerang(서해랑길). 전체 목록은 list_trails')
+  .describe('길 id. namparang(남파랑길, 기본) · haeparang(해파랑길) · seohaerang(서해랑길) · dmz(DMZ 평화의 길). 전체 목록은 list_trails')
 
 /** 도구 실행 중 오류(모르는 길 등)를 MCP 오류 응답으로 바꾼다. */
 const guarded = (fn) => async (args) => {

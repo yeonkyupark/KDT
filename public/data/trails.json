@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T07:01:21.965Z",
+ "generatedAt": "2026-10-18T15:12:27.405Z",
  "defaultTrail": "namparang",
  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)",
  "trails": [
@@ -63,6 +63,15 @@
      "toAt": "start",
      "toCourseId": "1",
      "distM": 0
+    },
+    {
+     "at": "end",
+     "courseId": "50",
+     "trail": "dmz",
+     "trailName": "DMZ 평화의 길",
+     "toAt": "end",
+     "toCourseId": "34",
+     "distM": 43
     }
    ]
   },
@@ -90,6 +99,51 @@
      "toAt": "end",
      "toCourseId": "90",
      "distM": 1
+    },
+    {
+     "at": "end",
+     "courseId": "103",
+     "trail": "dmz",
+     "trailName": "DMZ 평화의 길",
+     "toAt": "start",
+     "toCourseId": "1",
+     "distM": 9
+    }
+   ]
+  },
+  {
+   "id": "dmz",
+   "name": "DMZ 평화의 길",
+   "span": "인천 강화 → 강원 고성",
+   "courseCount": 34,
+   "subCourseCount": 14,
+   "totalKm": 492.1,
+   "totalAscentM": 8749,
+   "bbox": [
+    126.43456,
+    37.59281,
+    128.47511,
+    38.58471
+   ],
+   "source": "https://www.durunubi.kr/dmz-course-list.do",
+   "links": [
+    {
+     "at": "end",
+     "courseId": "34",
+     "trail": "haeparang",
+     "trailName": "해파랑길",
+     "toAt": "end",
+     "toCourseId": "50",
+     "distM": 43
+    },
+    {
+     "at": "start",
+     "courseId": "1",
+     "trail": "seohaerang",
+     "trailName": "서해랑길",
+     "toAt": "end",
+     "toCourseId": "103",
+     "distM": 9
     }
    ]
   }

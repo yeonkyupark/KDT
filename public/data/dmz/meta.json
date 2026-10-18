@@ -1,0 +1,210 @@
+{
+ "generatedAt": "2026-10-18T15:12:27.405Z",
+ "trail": "dmz",
+ "trailName": "DMZ 평화의 길",
+ "courseCount": 48,
+ "mainCourseCount": 34,
+ "groups": [
+  {
+   "seq": 2,
+   "kind": "detour",
+   "ids": [
+    "2-1",
+    "3-1"
+   ],
+   "from": {
+    "courseId": "1",
+    "seq": 1,
+    "distM": 1
+   },
+   "to": {
+    "courseId": "4",
+    "seq": 4,
+    "distM": 2
+   },
+   "ascentM": 338,
+   "durationMin": 450,
+   "km": 21.1
+  },
+  {
+   "seq": 4,
+   "kind": "spur",
+   "ids": [
+    "4-1"
+   ],
+   "from": null,
+   "to": {
+    "courseId": "4",
+    "seq": 4,
+    "distM": 3
+   },
+   "ascentM": 169,
+   "durationMin": 360,
+   "km": 17.6
+  },
+  {
+   "seq": 8,
+   "kind": "detour",
+   "ids": [
+    "8-1"
+   ],
+   "from": {
+    "courseId": "7",
+    "seq": 7,
+    "distM": 1
+   },
+   "to": {
+    "courseId": "8",
+    "seq": 8,
+    "distM": 0
+   },
+   "ascentM": 148,
+   "durationMin": 210,
+   "km": 11.1
+  },
+  {
+   "seq": 15,
+   "kind": "detour",
+   "ids": [
+    "15-1"
+   ],
+   "from": {
+    "courseId": "14",
+    "seq": 14,
+    "distM": 1
+   },
+   "to": null,
+   "ascentM": 188,
+   "durationMin": 420,
+   "km": 21.3
+  },
+  {
+   "seq": 16,
+   "kind": "detour",
+   "ids": [
+    "16-1",
+    "16-2"
+   ],
+   "from": {
+    "courseId": "15",
+    "seq": 15,
+    "distM": 1
+   },
+   "to": {
+    "courseId": "17",
+    "seq": 17,
+    "distM": 2
+   },
+   "ascentM": 293,
+   "durationMin": 570,
+   "km": 27.6
+  },
+  {
+   "seq": 19,
+   "kind": "detour",
+   "ids": [
+    "19-1"
+   ],
+   "from": {
+    "courseId": "19",
+    "seq": 19,
+    "distM": 4
+   },
+   "to": {
+    "courseId": "20",
+    "seq": 20,
+    "distM": 1
+   },
+   "ascentM": 685,
+   "durationMin": 540,
+   "km": 26.3
+  },
+  {
+   "seq": 26,
+   "kind": "detour",
+   "ids": [
+    "26-1"
+   ],
+   "from": {
+    "courseId": "25",
+    "seq": 25,
+    "distM": 1
+   },
+   "to": {
+    "courseId": "27",
+    "seq": 27,
+    "distM": 0
+   },
+   "ascentM": 355,
+   "durationMin": 270,
+   "km": 12.6
+  },
+  {
+   "seq": 30,
+   "kind": "detour",
+   "ids": [
+    "30-1",
+    "30-2",
+    "31-1",
+    "32-1",
+    "33-1"
+   ],
+   "from": {
+    "courseId": "29",
+    "seq": 29,
+    "distM": 0
+   },
+   "to": {
+    "courseId": "33",
+    "seq": 33,
+    "distM": 4
+   },
+   "ascentM": 1083,
+   "durationMin": 1950,
+   "km": 96.3
+  }
+ ],
+ "totalKm": 492.1,
+ "totalAscentM": 8749,
+ "elevation": {
+  "source": "srtm30m (opentopodata)",
+  "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",
+  "spacing": 50,
+  "smoothWindow": 3,
+  "thresholdM": 3
+ },
+ "duration": {
+  "note": "두루누비(한국관광공사) 공식 권장 소요시간.",
+  "naismithNote": "참고용 계산값은 naismithMin 에 함께 담았다.",
+  "walkSpeedKmh": 4,
+  "ascentSpeedMh": 600
+ },
+ "difficulty": {
+  "source": "두루누비(한국관광공사) 공식 등급",
+  "formula": "참고용 계산값(difficultyScore): 거리km + 상승m/100",
+  "breaks": [
+   {
+    "max": 16,
+    "label": "쉬움"
+   },
+   {
+    "max": 22,
+    "label": "보통"
+   },
+   {
+    "max": null,
+    "label": "어려움"
+   }
+  ]
+ },
+ "official": {
+  "source": "두루누비 — https://www.durunubi.kr/dmz-course-list.do",
+  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)",
+  "note": "난이도·소요시간은 공식값. 거리는 지도 선과 맞추기 위해 GPX 실측값을 쓴다."
+ },
+ "source": {
+  "gpx": "두루누비(한국관광공사) 코스별 공식 GPX — https://www.durunubi.kr/dmz-course-list.do",
+  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)",
+  "detail": "data/SOURCE.md"
+ }
+}

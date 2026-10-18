@@ -96,6 +96,9 @@ export function normalizeJunctions(rows) {
     const a = rows[i]
     const b = rows[i + 1]
     if (!a.end || !b.start || a.end === b.start) continue
+    // 공식 지점명이 없어 주소를 줄여 쓴 표기(해파랑길·DMZ 평화의 길)는 맞추지 않는다.
+    // 두 코스의 공식 주소가 지번·도로명으로 달리 적혀 있을 뿐이라, 한쪽을 고르면 그 코스의 주소와 어긋난다
+    if (a.endSource === 'addr' || b.startSource === 'addr') continue
 
     const pick = a.end.length >= b.start.length ? a.end : b.start
     const other = pick === a.end ? b.start : a.end

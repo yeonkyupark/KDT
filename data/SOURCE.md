@@ -13,9 +13,9 @@
 | 남파랑길 | https://www.durunubi.kr/namparang-course-list.do | `data/gpx_durunubi/` | `data/durunubi/namparang.json` | 수집 중 (90개) |
 | 해파랑길 | https://www.durunubi.kr/haeparang-course-list.do | `data/durunubi/gpx/haeparang/` | `data/durunubi/haeparang.json` | 수집 중 (50개) |
 | 서해랑길 | https://www.durunubi.kr/seohaerang-course-list.do | `data/durunubi/gpx/seohaerang/` | `data/durunubi/seohaerang.json` | 수집 중 (109개) |
-| DMZ 평화의 길 | https://www.durunubi.kr/dmz-course-list.do | `data/durunubi/gpx/dmz/` | `data/durunubi/dmz.json` | 예정 (48개) |
+| DMZ 평화의 길 | https://www.durunubi.kr/dmz-course-list.do | `data/durunubi/gpx/dmz/` | `data/durunubi/dmz.json` | 수집 중 (48개) |
 
-길 정의(공공 API `routeIdx`, 사이트 `serviceFlag`)는 `scripts/lib/trails.mjs`. 1번은 남파랑길, 1-2번은 해파랑길, 1-3번은 서해랑길의
+길 정의(공공 API `routeIdx`, 사이트 `serviceFlag`)는 `scripts/lib/trails.mjs`. 1번은 남파랑길, 1-2번은 해파랑길, 1-3번은 서해랑길, 1-4번은 DMZ 평화의 길의
 검증 결과다. 3번의 예시 수치는 남파랑길 기준이다. 다른 길을 붙이면 그 길의 검증 결과를 같은 형식으로 더한다.
 
 ---
@@ -144,6 +144,34 @@ git 이력에는 남아 있다.
 
 ---
 
+## 1-4. GPX 노선 — DMZ 평화의 길 (`data/durunubi/gpx/dmz/`)
+
+출처·저작권·라이선스·받는 방법·준수 방식은 1번(남파랑길)과 같다. 다른 점만 적는다.
+
+| 항목 | 내용 |
+|---|---|
+| **처음 받은 날** | 2026-10-18 (`npm run sync:durunubi -- --trail=dmz`, 이후 매주 자동 점검) |
+| **파일 수** | 48개 — 본선 34 + 우회로 13 + 지선 1 (`DMZ_평화의_길_1코스.gpx` 등, 두루누비가 주는 이름 그대로) |
+| **기록** | `data/durunubi/dmz.json` — 코스별 GPX 경로 · SHA1 · 크기 · 연결성 점검 결과 |
+| **출처 표기** | `data/durunubi/gpx/dmz/README.md`, 이 문서, README, 앱 지도 하단(길별 목록 페이지 링크) |
+
+### 검증 결과 (2026-10-19)
+
+| 항목 | 결과 |
+|---|---|
+| 코스 번호 | 본선 1~34 빠짐없음 + 우회로 13 · 지선 1 (공공 API 34 · 사이트 목록 보충 14) |
+| 본선 총 거리 | **492.1 km** (공식 표기 합계 493.7 km, -0.32%) |
+| 공식 거리와 2% 안쪽 | 44 / 48 코스 (5% 안쪽 46개). 6코스 9.9/10.9km, 8-1코스 11.1/10.2km |
+| 본선 접합부 33곳 | 모두 **12m 이내** · 시·종점 ↔ 공식 좌표 최대 11m |
+| 점 간격 | 300m 넘는 곳은 11코스 한 곳(386m) |
+| 우회로 | 번호를 넘나들며 이어진다(30-1→30-2→31-1→32-1→33-1, 접합부 0~5m). 빌드가 이어진 것끼리 묶어 갈라짐·합류 본선 코스를 좌표로 찾는다 |
+| 중복 트랙 | 5·12·23코스 — 파서가 첫 트랙만 읽는다 |
+| 공식 `<ele>` | 10개 코스에 누락·0값·음수 → 쓰지 않는다. DEM 14,590점 / 170요청 / null 0 (5번) |
+| 지점명 | 여행자정보에 시점·종점 줄이 없다 → 해파랑길처럼 사이트 목록의 공식 시·종점 주소를 줄여 표시(3번 이용 방침) |
+| 출입 안내 | 여행자정보의 민간인 통제·신분증·예약·검문소 줄을 그대로 옮겨 코스 카드 위에 표시(14개 코스) |
+
+---
+
 ## 2. 코스별 누적상승 참고자료 — 남파랑길만 (`data/reference/gpsroute-ascent.json`)
 
 | 항목 | 내용 |
@@ -210,7 +238,7 @@ DMZ 평화의 길 34/48). 빠진 코스에 규칙이 없어 ②로 보충한다.
 - 지점명·주소·교통편은 여행자정보(`travelerInfo`)에서 자동으로 뽑는다. 공식 안내문의 명백한 오타만
   보정 CSV(남파랑길 `data/courses.meta.csv`, 다른 길 `data/courses.meta.<길>.csv`)로 고친다(근거는 파일 머리말).
   공식 자료가 고쳐지면 그 줄을 지운다.
-- **해파랑길 여행자정보에는 시점·종점 줄이 없다.** 시·종점 주소는 ② 사이트 목록의 `startAddress`·`endAddress` 를
+- **해파랑길·DMZ 평화의 길 여행자정보에는 시점·종점 줄이 없다.** 시·종점 주소는 ② 사이트 목록의 `startAddress`·`endAddress` 를
   쓰고(동기화가 대조표에 남긴다), 지점명은 그 주소를 읍·면·동으로 줄여 표시한다. 화면에 "공식 자료에 지점명이 없어
   주소로 표시" 라고 적는다. 시점 교통편은 여행자정보의 교통 줄, 스탬프함 위치는 `스탬프함 위치` 항목에서 옮긴다.
   지어낸 지점명은 넣지 않는다.
