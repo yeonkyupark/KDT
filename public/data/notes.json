@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-18T05:55:06.732Z",
+ "updatedAt": "2026-10-18T05:55:30.030Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -110,13 +110,13 @@
    "courseId": "30",
    "takenAt": "2026-10-03T00:49:25.000Z",
    "createdAt": "2026-10-03T00:53:28.797Z",
-   "updatedAt": "2026-10-03T00:53:28.797Z",
+   "updatedAt": "2026-10-18T05:55:16.856Z",
    "title": "",
    "memo": "",
    "rating": 0,
    "locationSource": "gps",
    "address": "",
-   "deleted": false,
+   "deleted": true,
    "photo": {
     "full": "namparang/2026/be82fab3-27e2-4dc8-bcbd-6f0db9699245.jpg",
     "thumb": "namparang/2026/be82fab3-27e2-4dc8-bcbd-6f0db9699245_t.jpg",
