@@ -9,7 +9,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:ele": "node scripts/build-ele.mjs",
-    "calibrate:ele": "node scripts/calibrate-ele.mjs",
     "build:data": "node scripts/build-data.mjs",
     "mcp": "node mcp/server.mjs"
   },

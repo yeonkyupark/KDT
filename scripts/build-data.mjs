@@ -4,7 +4,7 @@
  * 브라우저는 GPX를 절대 파싱하지 않는다. 여기서 한 번 구워둔 JSON만 받는다.
  *
  * 산출물
- *   public/data/courses.json      92개 메타 + 저해상도 오버뷰 라인 (랜딩에서 이것만 받는다)
+ *   public/data/courses.json      90개 메타 + 저해상도 오버뷰 라인 (랜딩에서 이것만 받는다)
  *   public/data/course/{id}.json  상세 라인 + 고도 프로필 (코스 선택 시 lazy fetch)
  *   public/data/meta.json         생성 정보 · 출처 · 합계
  *
@@ -13,8 +13,8 @@
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
-import { listCourses, parseGpx } from './lib/gpx.mjs'
-import { parseTrackName, chainFill, normalizeJunctions, normalizeRegions } from './lib/names.mjs'
+import { listCourses, parseGpx, sourceSha1 } from './lib/gpx.mjs'
+import { chainFill, normalizeJunctions, normalizeRegions } from './lib/names.mjs'
 import { pathLength, simplify, movingAverage, ascentDescent } from './lib/geo.mjs'
 import {
   ELE_SPACING,
@@ -110,8 +110,8 @@ function loadOverrides() {
  *
  * 난이도와 소요시간은 **공식값을 쓴다.** 운영기관이 매긴 등급이 내가 만든
  * 공식(거리 + 상승/100)보다 신뢰도가 높다 — 실제로 90개 중 41개만 일치했다.
- * 거리는 우리 GPX 값을 유지한다: 지도에 그리는 선과 숫자가 어긋나면 안 된다.
- * (우리 노선이 공식과 다른 16개 코스는 `note` 에 기록돼 있다)
+ * 거리는 GPX 실측값을 쓴다: 지도에 그리는 선과 숫자가 어긋나면 안 된다.
+ * 노선도 공식 GPX 라 90개 중 86개가 공식 표기 거리와 5% 안쪽이다 (가장 큰 차이 약 6%).
  */
 function loadOfficial() {
   if (!existsSync(OFFICIAL)) return new Map()
@@ -173,17 +173,22 @@ function main() {
   const warnings = []
 
   for (const c of courses) {
-    const { name, points, nonstandard } = parseGpx(c.path)
+    const { name, points, nonstandard, duplicateTracks } = parseGpx(c.path)
     if (nonstandard) warnings.push(`${c.file}: 비표준 세그먼트 태그 (파서가 흡수)`)
+    if (duplicateTracks) warnings.push(`${c.file}: 같은 노선 트랙 ${duplicateTracks + 1}개 — 첫 트랙만 사용`)
 
     const latlng = points.map((p) => [p.lat, p.lng])
     const lengthM = pathLength(latlng)
 
-    const cachePath = join(ELE_CACHE, `${c.file.replace(/\.gpx$/, '')}.json`)
+    const cachePath = join(ELE_CACHE, `${c.key}.json`)
     if (!existsSync(cachePath)) {
       throw new Error(`${c.file}: 고도 캐시가 없다. 먼저 npm run build:ele 를 실행하라.`)
     }
     const cache = JSON.parse(readFileSync(cachePath, 'utf8'))
+    // 다른 GPX(예: 교체 전 노선)로 만든 캐시면 고도 프로필이 선과 맞지 않는다.
+    if (cache.sourceSha1 !== sourceSha1(c.path)) {
+      throw new Error(`${c.file}: 고도 캐시가 이 GPX 에서 나온 것이 아니다. npm run build:ele 를 다시 실행하라.`)
+    }
     if (cache.ele.some((v) => v == null)) warnings.push(`${c.file}: 고도 null 포함`)
 
     const smooth = movingAverage(cache.ele, ELE_SMOOTH_WINDOW)
@@ -191,8 +196,8 @@ function main() {
 
     built.push({
       ...c,
+      // 지점명·지역은 트랙 이름에서 뽑지 않는다 — 아래 CSV(공식 안내문)로 채운다
       trackName: name,
-      ...parseTrackName(name, { isAlt: c.isAlt }),
       lengthM,
       km: r1(lengthM / 1000),
       ascentM: Math.round(ascentM),
@@ -216,10 +221,9 @@ function main() {
   }
 
   // ── 2. 지점명 보정 ───────────────────────────────────────
-  const mainCourses = built.filter((c) => !c.isAlt)
-  const chained = chainFill(mainCourses)
-  const junctions = normalizeJunctions(mainCourses)
-  const regionFixes = normalizeRegions(mainCourses)
+  const chained = chainFill(built)
+  const junctions = normalizeJunctions(built)
+  const regionFixes = normalizeRegions(built)
 
   // CSV 덮어쓰기는 맨 마지막 (수기 보정이 최우선)
   let overridden = 0
@@ -239,14 +243,14 @@ function main() {
   // 이게 없으면 1코스 종점에 '부산역'을 적어도 2코스 시점은 여전히 비어 있어,
   // 접합부마다 같은 값을 두 번씩 적어야 한다(89곳 중복 입력).
   // chainFill 은 빈 값만 채우므로 CSV 값을 덮어쓸 위험이 없다.
-  const chainedAfterCsv = chainFill(mainCourses)
-  const regionsAfterCsv = normalizeRegions(mainCourses)
+  const chainedAfterCsv = chainFill(built)
+  const regionsAfterCsv = normalizeRegions(built)
 
   // ── 3. 파생 지표 ─────────────────────────────────────────
   for (const c of built) {
-    const off = c.isAlt ? null : official.get(c.id)
+    const off = official.get(c.id)
 
-    // 우리 계산값은 참고용으로 남겨둔다 (공식값이 없는 임시노선의 대비책도 된다)
+    // 우리 계산값은 참고용으로 남겨둔다 (공식값이 빠진 코스의 대비책도 된다)
     const computed = difficultyOf(c.km, c.ascentM)
     c.difficultyScore = computed.score
     c.naismithMin = durationMin(c.km, c.ascentM)
@@ -260,7 +264,7 @@ function main() {
     // 공식 거리는 표시용 참고값. 지도 선과 일치해야 하므로 distanceKm 은 우리 값을 쓴다.
     c.officialKm = off?.km ?? null
 
-    if (!c.name) c.name = c.isAlt ? `${c.id}코스 (우회)` : `${c.seq}코스`
+    if (!c.name) c.name = `${c.seq}코스`
   }
 
   // ── 4. 출력 ──────────────────────────────────────────────
@@ -270,7 +274,8 @@ function main() {
   const index = built.map((c) => ({
     id: c.id,
     seq: c.seq,
-    isAlt: c.isAlt,
+    // 우회 노선은 없다. 이 필드를 검사하는 옛 MCP 서버 사본(README 의 설치 방법)이 깨지지 않게 남긴다.
+    isAlt: false,
     name: c.name,
     region: c.region || '',
     start: c.start || '',
@@ -315,26 +320,25 @@ function main() {
     )
   }
 
-  const mainOnly = built.filter((c) => !c.isAlt)
   writeFileSync(
     join(OUT_DIR, 'meta.json'),
     JSON.stringify(
       {
         generatedAt: new Date().toISOString(),
         courseCount: built.length,
-        mainCourseCount: mainOnly.length,
+        mainCourseCount: built.length,
         // 코스별 반올림값을 더하면 오차가 쌓인다. 원시 미터로 합산한 뒤 반올림한다.
-        totalKm: r1(mainOnly.reduce((s, c) => s + c.lengthM, 0) / 1000),
-        totalAscentM: mainOnly.reduce((s, c) => s + c.ascentM, 0),
+        totalKm: r1(built.reduce((s, c) => s + c.lengthM, 0) / 1000),
+        totalAscentM: built.reduce((s, c) => s + c.ascentM, 0),
         elevation: {
           source: `${ELE_DATASET} (opentopodata)`,
-          note: 'DEM 추정값. 원본 GPX에는 고도가 사실상 없다.',
+          note: 'DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.',
           spacing: ELE_SPACING,
           smoothWindow: ELE_SMOOTH_WINDOW,
           thresholdM: ELE_THRESHOLD_M,
         },
         duration: {
-          note: '두루누비(한국관광공사) 공식 권장 소요시간. 임시노선만 네이스미스 계산값.',
+          note: '두루누비(한국관광공사) 공식 권장 소요시간.',
           naismithNote: '참고용 계산값은 naismithMin 에 함께 담았다.',
           walkSpeedKmh: WALK_SPEED_KMH,
           ascentSpeedMh: ASCENT_SPEED_MH,
@@ -343,7 +347,7 @@ function main() {
         // JSON에는 Infinity가 없어서 마지막 max 는 null 로 직렬화된다.
         difficulty: {
           source: '두루누비(한국관광공사) 공식 등급',
-          formula: '공식 등급이 없는 임시노선만 거리km + 상승m/100',
+          formula: '참고용 계산값(difficultyScore): 거리km + 상승m/100',
           breaks: DIFFICULTY_BREAKS,
         },
         official: {
@@ -352,7 +356,8 @@ function main() {
           note: '난이도·소요시간은 공식값. 거리는 지도 선과 맞추기 위해 GPX 실측값을 쓴다.',
         },
         source: {
-          gpx: 'Daum 카페 "도보여행(섬&산) 좋은사람들" — https://cafe.daum.net/mtsingles/LN1X/1631',
+          gpx: '두루누비(한국관광공사) 코스별 공식 GPX — https://www.durunubi.kr/namparang-course-list.do',
+          license: '공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)',
           detail: 'data/SOURCE.md',
         },
       },
@@ -362,34 +367,33 @@ function main() {
   )
 
   // ── 5. 리포트 ────────────────────────────────────────────
-  const sum = (f) => mainOnly.reduce((s, c) => s + f(c), 0)
+  const sum = (f) => built.reduce((s, c) => s + f(c), 0)
   const size = (p) => (readFileSync(p).length / 1024).toFixed(1) + 'KB'
   const courseDirKB = built.reduce(
     (s, c) => s + readFileSync(join(OUT_COURSE, `${c.id}.json`)).length,
     0,
   )
 
-  console.log(`전처리 완료 — ${built.length}개 코스 (본 코스 ${mainOnly.length} + 임시노선 ${built.length - mainOnly.length})\n`)
-  console.log('합계 (본 코스 90개만)')
+  console.log(`전처리 완료 — ${built.length}개 코스\n`)
+  console.log('합계')
   console.log(`  거리        ${r1(sum((c) => c.lengthM) / 1000).toLocaleString()} km`)
   console.log(`  누적 상승   ${sum((c) => c.ascentM).toLocaleString()} m  (${(sum((c) => c.ascentM) / sum((c) => c.km)).toFixed(1)} m/km)`)
   console.log(`  예상 시간   ${Math.round(sum((c) => c.durationMin) / 60).toLocaleString()} 시간`)
   const diff = {}
-  for (const c of mainOnly) diff[c.difficulty] = (diff[c.difficulty] ?? 0) + 1
+  for (const c of built) diff[c.difficulty] = (diff[c.difficulty] ?? 0) + 1
   console.log(`  난이도      ${Object.entries(diff).map(([k, v]) => `${k} ${v}`).join(' / ')}`)
 
   console.log('\n좌표 단순화')
   console.log(`  원본        ${sum((c) => c.rawPoints).toLocaleString()}점`)
-  console.log(`  오버뷰 ε${SIMPLIFY_OVERVIEW_M}m  ${sum((c) => c.overview.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.overview.length) / mainOnly.length)})`)
-  console.log(`  상세   ε${SIMPLIFY_DETAIL_M}m   ${sum((c) => c.detail.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.detail.length) / mainOnly.length)})`)
+  console.log(`  오버뷰 ε${SIMPLIFY_OVERVIEW_M}m  ${sum((c) => c.overview.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.overview.length) / built.length)})`)
+  console.log(`  상세   ε${SIMPLIFY_DETAIL_M}m   ${sum((c) => c.detail.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.detail.length) / built.length)})`)
 
   console.log('\n지점명')
-  console.log(`  자동 파싱   ${mainOnly.filter((c) => c.parsed).length} / ${mainOnly.length}`)
   console.log(`  연쇄 보정   시점 ${chained.start} · 종점 ${chained.end} · 지역 ${chained.region}`)
   console.log(`  접합부 통일 ${junctions.length}곳`)
   for (const j of junctions) {
     // 자동 통일 뒤에 CSV가 다시 덮어썼을 수 있으므로 최종값을 보여준다
-    const final = mainOnly.find((c) => c.seq === j.seq)?.end
+    const final = built.find((c) => c.seq === j.seq)?.end
     const tag = final !== j.to ? `  (CSV가 재교정: "${final}")` : ''
     console.log(`      ${j.seq}/${j.seq + 1}  "${j.from}" -> "${j.to}"${tag}`)
   }
@@ -403,7 +407,7 @@ function main() {
   )
   const withAccess = built.filter((c) => c.startAccess || c.endAccess).length
   if (withAccess) console.log(`  교통편 정보  ${withAccess}개 코스`)
-  const noPlace = built.filter((c) => !c.isAlt && (!c.start || !c.end))
+  const noPlace = built.filter((c) => !c.start || !c.end)
   console.log(`  지점명 미확인 ${noPlace.length}개: ${noPlace.map((c) => c.id).join(',') || '없음'}`)
   const noRegion = built.filter((c) => !c.region)
   if (noRegion.length) console.log(`  지역 미확인 ${noRegion.length}개: ${noRegion.map((c) => c.id).join(',')}`)

@@ -54,7 +54,6 @@ function brief(c) {
   return {
     id: c.id,
     seq: c.seq,
-    isAlt: c.isAlt,
     name: c.name,
     region: c.region,
     start: c.start,
@@ -72,7 +71,6 @@ function detail(c) {
   return {
     id: c.id,
     seq: c.seq,
-    isAlt: c.isAlt,
     name: c.name,
     region: c.region,
     alias: c.alias || null,
@@ -99,7 +97,6 @@ function detail(c) {
 const BriefSchema = z.object({
   id: z.string(),
   seq: z.number(),
-  isAlt: z.boolean(),
   name: z.string(),
   region: z.string(),
   start: z.string(),
@@ -111,7 +108,6 @@ const BriefSchema = z.object({
 const DetailSchema = z.object({
   id: z.string(),
   seq: z.number(),
-  isAlt: z.boolean(),
   name: z.string(),
   region: z.string(),
   alias: z.string().nullable(),
@@ -143,7 +139,7 @@ function buildServer() {
     {
       title: '남파랑길 코스 목록',
       description:
-        '남파랑길 90개 코스(+임시우회 2개) 전체를 간단히 나열한다. 지역으로 필터링할 수 있다. ' +
+        '남파랑길 90개 코스 전체를 간단히 나열한다. 지역으로 필터링할 수 있다. ' +
         '자세한 코스 정보가 필요하면 get_courses 를 쓴다.',
       inputSchema: z.object({
         region: z.string().optional().describe('시/군 이름으로 필터링 (예: "거제시", "통영시")'),
@@ -183,18 +179,16 @@ function buildServer() {
           totalDescentM: z.number(),
         }),
         courses: z.array(DetailSchema),
-        alternateRoutes: z.array(DetailSchema),
       }),
       annotations: { readOnlyHint: true },
     },
     async ({ from, to }) => {
       const courses = await loadCourses()
-      const main = courses.filter((c) => !c.isAlt)
-      const maxSeq = Math.max(...main.map((c) => c.seq))
+      const maxSeq = Math.max(...courses.map((c) => c.seq))
       const lo = Math.min(from, to ?? from)
       const hi = Math.max(from, to ?? from)
 
-      const sel = main.filter((c) => c.seq >= lo && c.seq <= hi)
+      const sel = courses.filter((c) => c.seq >= lo && c.seq <= hi)
       if (!sel.length) {
         return {
           content: [
@@ -206,10 +200,6 @@ function buildServer() {
           isError: true,
         }
       }
-      // 임시·우회 노선(17-1, 61-1)은 본 코스와 같은 seq 를 쓴다. 구간 합계에서는
-      // 빼고 별도로 보여준다 — 웹앱 사이드바(`renderSummary`)와 같은 규칙이다.
-      const alts = courses.filter((c) => c.isAlt && c.seq >= lo && c.seq <= hi)
-
       const totalDistanceKm =
         Math.round((sel.reduce((s, c) => s + c.distanceM, 0) / 1000) * 10) / 10
       const summary = {
@@ -223,7 +213,6 @@ function buildServer() {
       const payload = {
         summary,
         courses: sel.map(detail),
-        alternateRoutes: alts.map(detail),
       }
       return {
         content: [{ type: 'text', text: JSON.stringify(payload, null, 1) }],

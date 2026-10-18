@@ -321,7 +321,6 @@ body {
   border-left: 3px solid transparent;
 }
 .course-item:hover { background: var(--hover); border-left-color: var(--accent); }
-.course-item.is-alt { opacity: .72; }
 
 .dot { width: 8px; height: 8px; border-radius: 50%; display: block; }
 .ci-num {
@@ -420,7 +419,6 @@ body {
 .tip-alias { color: var(--accent); font-size: .76rem; }
 .tip-route { color: var(--fg-dim); font-size: .78rem; margin-top: .15rem; }
 .tip-stats { font-variant-numeric: tabular-nums; margin-top: .2rem; }
-.tip-note { color: var(--fg-dim); font-size: .74rem; margin-top: .2rem; }
 
 .leaflet-control-attribution {
   background: var(--panel-blur) !important;

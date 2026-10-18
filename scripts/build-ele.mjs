@@ -1,14 +1,18 @@
 /**
  * 단계 2a — DEM 고도 확보
  *
- * 원본 GPX에는 고도가 사실상 없다 (92개 중 82개가 전부 0.00, 실측은 nam-23~27 5개뿐).
- * 따라서 모든 고도 지표를 SRTM 30m DEM에서 직접 산출한다.
+ * 모든 고도 지표를 SRTM 30m DEM에서 직접 산출한다.
+ *
+ * 두루누비 공식 GPX 에도 <ele> 가 있지만 쓰지 않는다. 37개 코스에 고도가 빠진 점이 있고
+ * (55코스는 26/614점), 49코스는 대부분 0, 5·51코스는 해수면 아래(-7m)로 내려간다.
+ * 제작 도구도 4종이 섞여 있어 코스마다 기준이 다르다. DEM 은 90개가 같은 기준이다.
  *
  * 전략
- *  - 134,697개 원본 트랙포인트를 전부 조회하지 않는다. 50m 균일 간격으로
+ *  - 124,173개 원본 트랙포인트를 전부 조회하지 않는다. 50m 균일 간격으로
  *    재샘플링해 약 30,000점으로 줄인다 (opentopodata 일일 한도 1,000요청 안쪽).
  *  - 코스 하나가 끝나면 즉시 캐시에 쓴다. 중단되면 다시 실행하면 이어서 진행한다.
  *  - 캐시를 리포에 커밋하므로 재빌드 때 재조회가 없고 오프라인 빌드가 된다.
+ *  - 캐시에 원본 GPX 의 SHA1 을 남긴다. GPX 가 바뀌면(노선 교체 등) 그 코스만 다시 조회한다.
  *
  * 사용법
  *   node scripts/build-ele.mjs                # 캐시 없는 코스만
@@ -18,7 +22,7 @@
 
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { listCourses } from './lib/gpx.mjs'
+import { listCourses, sourceSha1 } from './lib/gpx.mjs'
 import { resample, pathLength } from './lib/geo.mjs'
 
 const CACHE_DIR = 'data/cache/ele'
@@ -81,11 +85,12 @@ async function fetchBatch(points) {
 }
 
 async function buildCourse(course) {
-  const out = join(CACHE_DIR, `${course.file.replace(/\.gpx$/, '')}.json`)
+  const out = join(CACHE_DIR, `${course.key}.json`)
+  const sha1 = sourceSha1(course.path)
 
   if (!FORCE && existsSync(out)) {
     const cached = JSON.parse(readFileSync(out, 'utf8'))
-    if (cached.spacing === SPACING && cached.dataset === DATASET) {
+    if (cached.spacing === SPACING && cached.dataset === DATASET && cached.sourceSha1 === sha1) {
       return { ...course, skipped: true, samples: cached.ele.length }
     }
   }
@@ -98,7 +103,7 @@ async function buildCourse(course) {
 
   const batches = Math.ceil(samples.length / BATCH)
   process.stdout.write(
-    `  ${course.file.padEnd(15)} ${(lengthM / 1000).toFixed(2).padStart(6)}km  ` +
+    `  ${course.key.padEnd(7)}${(lengthM / 1000).toFixed(2).padStart(6)}km  ` +
       `${String(samples.length).padStart(4)}점 / ${String(batches).padStart(2)}요청 `,
   )
 
@@ -117,6 +122,7 @@ async function buildCourse(course) {
     JSON.stringify({
       file: course.file,
       id: course.id,
+      sourceSha1: sha1,
       dataset: DATASET,
       interpolation: INTERPOLATION,
       spacing: SPACING,
@@ -175,7 +181,7 @@ async function main() {
       (nulls ? `\n⚠ 고도 null ${nulls}점 — DEM 공백 구간이다. 보간 필요.` : ''),
   )
   console.log(`캐시: ${CACHE_DIR}/  (커밋해서 재조회를 없앤다)`)
-  console.log('다음: node scripts/calibrate-ele.mjs 로 임계값을 캘리브레이션한다.')
+  console.log('다음: npm run build:data')
 }
 
 main()

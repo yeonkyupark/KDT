@@ -18,8 +18,7 @@ const el = (tag, cls, text) => {
  * 드래그 제스처는 넣지 않았다 — 탭만으로 세 상태를 다 갈 수 있고 코드가 훨씬 적다.
  */
 export function createSidebar(root, courses, { onRangeChange, onPick, onHover } = {}) {
-  const main = courses.filter((c) => !c.isAlt)
-  const maxSeq = Math.max(...main.map((c) => c.seq))
+  const maxSeq = Math.max(...courses.map((c) => c.seq))
 
   const panel = el('aside', 'panel')
   panel.id = 'sidepanel' // 상단바 접기 버튼의 aria-controls 대상
@@ -42,7 +41,7 @@ export function createSidebar(root, courses, { onRangeChange, onPick, onHover } 
     const wrap = el('label', 'field')
     wrap.append(el('span', 'field-label', labelText))
     const sel = el('select')
-    for (const c of main) {
+    for (const c of courses) {
       const opt = document.createElement('option')
       opt.value = String(c.seq)
       opt.textContent = `${c.seq}. ${c.region || '—'}`
@@ -102,8 +101,7 @@ export function createSidebar(root, courses, { onRangeChange, onPick, onHover } 
   function renderSummary() {
     summary.textContent = ''
 
-    const sel = main.filter(inRange)
-    const alts = courses.filter((c) => c.isAlt && inRange(c))
+    const sel = courses.filter(inRange)
 
     // 반올림된 distanceKm 을 더하면 90개에서 0.5km 어긋난다. 원시 미터로 합산한다.
     const km = sel.reduce((s, c) => s + (c.distanceM ?? c.distanceKm * 1000), 0) / 1000
@@ -131,23 +129,21 @@ export function createSidebar(root, courses, { onRangeChange, onPick, onHover } 
       summary.append(r)
     }
 
-    const notes = ['고도는 DEM 추정값 · 난이도와 소요시간은 공식(두루누비) 기준']
-    if (alts.length) notes.unshift(`임시·우회 노선 ${alts.length}개 합계 제외`)
-    summary.append(el('div', 'sum-note', notes.join(' · ')))
+    summary.append(el('div', 'sum-note', '고도는 DEM 추정값 · 노선·난이도·소요시간은 공식(두루누비) 기준'))
   }
 
   function renderList() {
     list.textContent = ''
-    const sel = courses.filter(inRange).sort((a, b) => a.seq - b.seq || (a.isAlt ? 1 : -1))
+    const sel = courses.filter(inRange).sort((a, b) => a.seq - b.seq)
     listHead.textContent = `구간 코스 ${sel.length}개`
 
     for (const c of sel) {
-      const li = el('li', 'course-item' + (c.isAlt ? ' is-alt' : ''))
+      const li = el('li', 'course-item')
 
       const dot = el('i', 'dot')
-      dot.style.background = c.isAlt ? '#8b8f98' : DIFFICULTY_COLOR[c.difficulty]
+      dot.style.background = DIFFICULTY_COLOR[c.difficulty] ?? '#8b8f98'
 
-      const num = el('span', 'ci-num', c.isAlt ? c.id : String(c.seq))
+      const num = el('span', 'ci-num', String(c.seq))
 
       const mid = el('span', 'ci-mid')
       mid.append(el('span', 'ci-name', c.name))

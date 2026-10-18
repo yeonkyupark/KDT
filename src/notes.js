@@ -49,8 +49,6 @@ const fmtDate = (iso) => {
  * @param {Array}  deps.courses    courses.json
  */
 export function createNotes({ host, view, courses, sync }) {
-  const mainCourses = courses.filter((c) => !c.isAlt)
-
   /**
    * 원격 사진 URL. 동기화 설정에서 조립하므로 리포 이름을 바꿔도 깨지지 않는다.
    * 동기화가 없으면 노트에 저장된 절대 URL 로 폴백한다.
@@ -220,7 +218,7 @@ export function createNotes({ host, view, courses, sync }) {
   function nearestCourse(latlng) {
     let best = null
     let bestD = Infinity
-    for (const c of mainCourses) {
+    for (const c of courses) {
       for (const p of c.overview) {
         const d = haversine(latlng, p)
         if (d < bestD) {
@@ -292,7 +290,7 @@ export function createNotes({ host, view, courses, sync }) {
   function matchAddress(address) {
     if (!address) return null
     const text = address.replace(/\s+/g, '')
-    const regions = [...new Set(mainCourses.map((c) => c.region).filter(Boolean))]
+    const regions = [...new Set(courses.map((c) => c.region).filter(Boolean))]
 
     // 1) 지점명 토큰으로 좁힌다.
     //    지점명 전체(`거제시 동부면 학동리 학동고개`)를 그대로 찾으면 안 맞는다 —
@@ -302,7 +300,7 @@ export function createNotes({ host, view, courses, sync }) {
       place
         .split(/\s+/)
         .filter((t) => t.length >= 3 && !regions.includes(t))
-    const byPlace = mainCourses.filter((c) =>
+    const byPlace = courses.filter((c) =>
       [c.start, c.end].filter(Boolean).some((p) => specific(p).some((t) => text.includes(t))),
     )
     if (byPlace.length) {
@@ -319,7 +317,7 @@ export function createNotes({ host, view, courses, sync }) {
     // 2) 시·군 단위
     const hit = regions.find((r) => text.includes(r.replace(/\s+/g, '')))
     if (hit) {
-      const ids = mainCourses.filter((c) => c.region === hit).map((c) => c.id)
+      const ids = courses.filter((c) => c.region === hit).map((c) => c.id)
       return { ids: new Set(ids), label: `${hit} 구간 ${ids.length}개` }
     }
     return null
@@ -513,7 +511,7 @@ export function createNotes({ host, view, courses, sync }) {
     none.value = ''
     none.textContent = '코스 지정 없음'
     courseSel.append(none)
-    for (const c of mainCourses) {
+    for (const c of courses) {
       const o = document.createElement('option')
       o.value = c.id
       o.textContent = `${c.seq}코스 · ${c.region || '—'}`

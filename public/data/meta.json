@@ -1,25 +1,25 @@
 {
- "generatedAt": "2026-08-27T05:40:26.703Z",
- "courseCount": 92,
+ "generatedAt": "2026-10-18T03:20:35.505Z",
+ "courseCount": 90,
  "mainCourseCount": 90,
- "totalKm": 1463.9,
- "totalAscentM": 29217,
+ "totalKm": 1428.6,
+ "totalAscentM": 27776,
  "elevation": {
   "source": "srtm30m (opentopodata)",
-  "note": "DEM 추정값. 원본 GPX에는 고도가 사실상 없다.",
+  "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",
   "spacing": 50,
   "smoothWindow": 3,
   "thresholdM": 3
  },
  "duration": {
-  "note": "두루누비(한국관광공사) 공식 권장 소요시간. 임시노선만 네이스미스 계산값.",
+  "note": "두루누비(한국관광공사) 공식 권장 소요시간.",
   "naismithNote": "참고용 계산값은 naismithMin 에 함께 담았다.",
   "walkSpeedKmh": 4,
   "ascentSpeedMh": 600
  },
  "difficulty": {
   "source": "두루누비(한국관광공사) 공식 등급",
-  "formula": "공식 등급이 없는 임시노선만 거리km + 상승m/100",
+  "formula": "참고용 계산값(difficultyScore): 거리km + 상승m/100",
   "breaks": [
    {
     "max": 16,
@@ -41,7 +41,8 @@
   "note": "난이도·소요시간은 공식값. 거리는 지도 선과 맞추기 위해 GPX 실측값을 쓴다."
  },
  "source": {
-  "gpx": "Daum 카페 \"도보여행(섬&산) 좋은사람들\" — https://cafe.daum.net/mtsingles/LN1X/1631",
+  "gpx": "두루누비(한국관광공사) 코스별 공식 GPX — https://www.durunubi.kr/namparang-course-list.do",
+  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)",
   "detail": "data/SOURCE.md"
  }
 }

@@ -132,19 +132,17 @@ function renderInfoCard(host, course) {
     card.append(box)
   }
 
-  // 우리 노선과 공식 노선의 거리가 눈에 띄게 다르면 그 사실을 숨기지 않는다.
+  // 공식 GPX 실측 거리와 두루누비 표기 거리가 눈에 띄게 다르면 그 사실을 숨기지 않는다.
   if (course.officialKm && Math.abs(course.distanceKm - course.officialKm) >= 1) {
     card.append(
       el(
         'div',
         'ic-note',
-        `표시 거리는 이 앱이 그리는 노선 기준입니다. 공식 거리는 ${course.officialKm} km 로, ` +
-          `이 코스는 두 노선이 다릅니다.`,
+        `표시 거리는 공식 GPX 를 실측한 값입니다. 두루누비 안내 거리는 ${course.officialKm} km 입니다.`,
       ),
     )
   }
 
-  if (course.isAlt) card.append(el('div', 'ic-note', '임시·우회 노선 — 구간 합계에서 제외됩니다.'))
   if (course.note) card.append(el('div', 'ic-note', course.note))
   card.append(
     el(
@@ -220,15 +218,15 @@ async function main() {
   })
 
   // ── 구간 적용 ────────────────────────────────────────
-  const maxSeq = Math.max(...courses.filter((c) => !c.isAlt).map((c) => c.seq))
+  const maxSeq = Math.max(...courses.map((c) => c.seq))
   const opts = { maxSeq, tiles: TILE_NAMES }
   const initial = readState(opts)
   let layer = initial.layer
 
-  /** 프로필은 본 코스만 이어 붙인다. 임시노선은 경로를 두 번 세게 만든다. */
+  /** 구간의 코스를 순서대로 이어 붙인 고도 프로필. */
   function profileSegments(from, to) {
     return courses
-      .filter((c) => !c.isAlt && c.seq >= from && c.seq <= to)
+      .filter((c) => c.seq >= from && c.seq <= to)
       .sort((a, b) => a.seq - b.seq)
       .map((c) => {
         const detail = view.rendered.get(c.id)?.eleDetail
@@ -249,7 +247,7 @@ async function main() {
     // 구간이 바뀌면 열려 있던 정보 카드가 옛 코스를 그대로 들고 있게 된다.
     // 새 구간의 시작 코스로 갱신한다. (카드가 닫혀 있으면 굳이 열지 않는다)
     if (document.querySelector('.infocard')) {
-      const head = courses.find((c) => !c.isAlt && c.seq === from)
+      const head = courses.find((c) => c.seq === from)
       if (head) renderInfoCard(mapOverlay, head)
     }
 

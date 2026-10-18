@@ -144,7 +144,7 @@ export function createProfile(root, { onHover } = {}) {
           class: 'pf-xlabel',
           'text-anchor': 'middle',
         })
-        t.textContent = seg.course.isAlt ? seg.course.id : String(seg.course.seq)
+        t.textContent = String(seg.course.seq)
         svg.append(t)
       }
       acc += seg.lengthM

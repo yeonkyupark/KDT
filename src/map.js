@@ -8,7 +8,8 @@ export const DIFFICULTY_COLOR = {
   어려움: '#cf4436',
 }
 
-const ALT_COLOR = '#8b8f98'
+/** 난이도 등급이 없는 코스(공식 데이터 누락 대비). */
+const NO_LEVEL_COLOR = '#8b8f98'
 
 /**
  * 선택된 코스 / 선택 밖 코스의 선 두께·투명도.
@@ -19,8 +20,9 @@ const ALT_COLOR = '#8b8f98'
 const ON = { weight: 4, opacity: 1, casing: 8, casingOpacity: 0.8 }
 const OFF = { weight: 2, opacity: 0.45, casing: 5, casingOpacity: 0.3 }
 
+// 공공누리 제4유형: 출처표시 의무. 노선·코스 정보 모두 두루누비(한국관광공사) 공식 자료다.
 const GPX_ATTR =
-  'GPX <a href="https://cafe.daum.net/mtsingles/LN1X/1631" target="_blank" rel="noopener">도보여행(섬&산) 좋은사람들</a>'
+  '노선 <a href="https://www.durunubi.kr/namparang-course-list.do" target="_blank" rel="noopener">두루누비(한국관광공사)</a> · 공공누리 제4유형'
 
 export const TILE_NAMES = ['기본', '지형', '위성']
 
@@ -54,7 +56,7 @@ function tileLayers() {
 }
 
 /**
- * 지도를 만들고 92개 코스를 그린다.
+ * 지도를 만들고 90개 코스를 그린다.
  *
  * 코스 하나를 폴리라인 2개로 그린다 — 아래에 굵은 흰 테두리(casing), 위에 난이도 색.
  * 위성 영상이나 지형도 위에서 선이 배경에 묻히는 것을 막는다.
@@ -127,7 +129,7 @@ export function createMap(el, courses, { onSelect, getInsets } = {}) {
   for (const c of courses) {
     if (!c.overview?.length) continue
 
-    const color = c.isAlt ? ALT_COLOR : (DIFFICULTY_COLOR[c.difficulty] ?? ALT_COLOR)
+    const color = DIFFICULTY_COLOR[c.difficulty] ?? NO_LEVEL_COLOR
 
     const casing = L.polyline(c.overview, {
       color: '#ffffff',
@@ -142,7 +144,6 @@ export function createMap(el, courses, { onSelect, getInsets } = {}) {
       color,
       weight: ON.weight,
       opacity: ON.opacity,
-      dashArray: c.isAlt ? '7 6' : null,
       lineJoin: 'round',
       lineCap: 'round',
     }).addTo(lineGroup)
@@ -555,7 +556,6 @@ function tooltipHtml(c) {
     (c.alias ? `<div class="tip-alias">${esc(c.alias)}</div>` : '') +
     `<div class="tip-route">${route}</div>` +
     `<div class="tip-stats">${bits.join(' · ')}</div>` +
-    (c.isAlt ? '<div class="tip-note">임시/우회 노선 · 합계 제외</div>' : '') +
     '</div>'
   )
 }

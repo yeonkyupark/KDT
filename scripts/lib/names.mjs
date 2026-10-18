@@ -1,50 +1,12 @@
 /**
- * `<trk><name>` 에서 코스 메타데이터를 뽑는다.
+ * 코스 지점명·지역 보정.
  *
- * 92개의 이름 형식이 통일되어 있지 않다. 실제 분포:
+ * 지점명·주소·교통편은 두루누비 공식 안내문에서 옮긴 `data/courses.meta.csv` 가 원천이다.
+ * 공식 GPX 의 트랙 이름(`<trk><name>`)은 대부분 `GPX`·`Path` 이고 나머지도 형식이
+ * 제각각이라 지점명을 뽑지 않는다.
  *
- *   70개  `017-거제시 고현버스터미널~거제시 장목면 장목파출소`      (표준)
- *    5개  `004 [1203 수정] 감천사거리~신평동교차로 (20191009 윤)`  (앞뒤 군더더기)
- *   11개  `남파랑길 36코스 (남해바래길 03코스 동대만길) 20200906`  (지점명 없음, 별칭만)
- *    3개  `남파랑길-001코스-부산 19.2km_노선수정`                  (정보 거의 없음)
- *    1개  `GPX`                                                    (nam-03, 한국관광공사 원본)
- *    2개  임시노선 (17-1, 61-1)
- *
- * 지점명을 지어내지 않는다. 못 뽑으면 빈 값으로 두고 `data/courses.meta.csv`로 보정한다.
+ * 여기 남은 것은 CSV 값을 서로 맞추는 보정뿐이다. 지점명을 지어내지 않는다.
  */
-
-/** 이름 앞쪽의 코스번호·"남파랑길"·대괄호 메모를 걷어낸다. */
-function stripLead(s) {
-  let t = s
-  for (let i = 0; i < 6; i++) {
-    const before = t
-    t = t
-      .replace(/^\s*[-–]\s*/, '')
-      .replace(/^남파랑길\s*/, '')
-      // 코스번호 접두어. `(?:코스)?` 로 묶어야 한다 — `코스?` 는 '코' + 선택적 '스' 가 된다.
-      .replace(/^0*\d{1,3}\s*(?:\(\d+\))?\s*(?:코스)?\s*[-–]?\s*/, '')
-      .replace(/^\[[^\]]*[\]}]\s*/, '') // [1203 수정] — 닫는 괄호가 } 로 오타난 경우도 있다
-    if (t === before) break
-  }
-  return t.trim()
-}
-
-/** 이름 뒤쪽의 날짜·거리·수정메모를 걷어낸다. */
-function stripTail(s) {
-  let t = s
-  for (let i = 0; i < 6; i++) {
-    const before = t
-    t = t
-      .replace(/\s*\(\s*\d{6,8}[^)]*\)\s*$/, '') // (20191009 윤)
-      .replace(/\s*\((?:시종점변경|시점변경|종점변경)\)\s*$/, '')
-      .replace(/\s*[-–]?\s*\d+(?:\.\d+)?\s*km.*$/i, '') // 27.6km(...)  / 13.7km_20201101(...)
-      .replace(/\s*_\s*(?:노선수정|우회노선활용|\d+.*)$/, '')
-      .replace(/\s*\d{8}\s*$/, '')
-      .replace(/\s*[-–]\s*$/, '')
-    if (t === before) break
-  }
-  return t.trim()
-}
 
 /**
  * 지점명에서 앞머리 행정구역(시/군/구)을 뽑는다.
@@ -62,39 +24,6 @@ export function extractRegion(place) {
   return m2 ? m2[1] : ''
 }
 
-/** 남해바래길처럼 병기된 코스 별칭을 뽑는다. */
-export function extractAlias(name) {
-  const m = /\(\s*남해바래길\s*0*\d+\s*코스\s*([^)]+?)\s*\)/.exec(name)
-  if (m) return m[1].trim()
-  // '04코스 고사리밭길(남37)' / '07코스 화전별곡길(40)'
-  const m2 = /^0*\d{1,2}코스\s+([가-힣]+길)/.exec(name)
-  return m2 ? m2[1] : ''
-}
-
-/**
- * @returns {{start:string, end:string, region:string, alias:string, parsed:boolean}}
- */
-export function parseTrackName(name, { isAlt = false } = {}) {
-  const alias = extractAlias(name)
-  const raw = (name ?? '').trim()
-
-  // 임시노선의 이름은 구간 표기가 아니라 설명문이다. 지점 추출을 시도하지 않는다.
-  if (isAlt) return { start: '', end: '', region: '', alias: '', parsed: false, note: raw }
-
-  const body = stripTail(stripLead(raw))
-  const parts = body.split('~')
-
-  if (parts.length === 2) {
-    const start = stripLead(stripTail(parts[0]))
-    const end = stripLead(stripTail(parts[1]))
-    if (start && end) {
-      return { start, end, region: extractRegion(start), alias, parsed: true }
-    }
-  }
-
-  return { start: '', end: '', region: '', alias, parsed: false }
-}
-
 /** 접합부를 공유하는 필드 쌍. 앞 코스의 종점 값 = 다음 코스의 시점 값. */
 const DEFAULT_PAIRS = [
   ['start', 'end'],
@@ -106,11 +35,10 @@ const DEFAULT_PAIRS = [
  * 코스가 연속이라는 성질로 빈 지점명을 메운다.
  * 앞 코스의 종점 = 다음 코스의 시점.
  *
- * 접합부 89곳이 모두 500m 이내로 검증됐으므로(data/raw/validate.json) 이 전제는 안전하다.
+ * 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/raw/durunubi-gpx.json) 이 전제는 안전하다.
  * 연속된 공백 구간의 내부는 메울 수 없다 — 경계만 채워진다.
  *
- * @param {Array<{seq:number, isAlt:boolean, start:string, end:string, region:string}>} rows
- *        seq 오름차순, 본 코스만 (isAlt 제외)
+ * @param {Array<{seq:number, start:string, end:string, region:string}>} rows  seq 오름차순
  */
 export function chainFill(rows, pairs = DEFAULT_PAIRS) {
   const filled = { start: 0, end: 0, region: 0 }
@@ -157,7 +85,7 @@ export function chainFill(rows, pairs = DEFAULT_PAIRS) {
  *   `장승포시외버스정류장` vs `장승포 시외버스터미널`      (정류장/터미널)
  *   `부용교 동쪽사거리` vs `부굥교 동쪽사거리`            (원본 오타)
  *
- * 좌표상 접합부 89곳이 모두 500m 이내로 검증됐으므로(data/raw/validate.json)
+ * 좌표상 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/raw/durunubi-gpx.json)
  * 이들은 확실히 같은 지점이다. 더 상세한(긴) 쪽으로 양쪽을 맞춘다.
  *
  * @returns {Array<{seq:number, from:string, to:string}>} 변경 내역

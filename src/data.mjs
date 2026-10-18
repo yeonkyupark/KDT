@@ -25,7 +25,7 @@ async function getJson(path) {
 
 let indexPromise = null
 
-/** 92개 코스 메타 + 오버뷰 라인. 랜딩에서 받는 유일한 데이터. */
+/** 90개 코스 메타 + 오버뷰 라인. 랜딩에서 받는 유일한 데이터. */
 export function loadIndex() {
   indexPromise ??= getJson('courses.json')
   return indexPromise
