@@ -1,0 +1,70 @@
+name: Sync course data (Durunubi)
+
+# 매주 두루누비 코스 데이터를 점검한다. 바뀐 것이 있으면 데이터를 다시 만들어 커밋하고 배포한다.
+#   공공 API 인증키는 리포 Settings → Secrets and variables → Actions 의 DURUNUBI_SERVICE_KEY.
+#   점검이 실패하면(인증키 만료, API 형식 변경 등) GitHub 이 리포 관리자에게 메일로 알린다.
+
+on:
+  schedule:
+    # 매주 월요일 04:00 KST (일요일 19:00 UTC). 두루누비 데이터는 일 1회 갱신된다.
+    - cron: '0 19 * * 0'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'GPX 를 전부 다시 받아 SHA1 로 비교 (크기가 같은 변경까지 잡는다)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: durunubi-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check Durunubi for changes
+        id: sync
+        env:
+          DURUNUBI_SERVICE_KEY: ${{ secrets.DURUNUBI_SERVICE_KEY }}
+        run: node scripts/sync-durunubi.mjs ${{ inputs.full && '--full' || '' }}
+
+      # 고도는 원본 SHA1 이 바뀐 코스만 다시 조회한다 (opentopodata 일일 한도 1,000요청)
+      - name: Rebuild course data
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          npm run build:ele
+          npm run build:data
+
+      - name: Commit and push
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data public/data
+          git diff --cached --quiet && { echo '커밋할 변경 없음'; exit 0; }
+          git commit -F scratch/sync-message.txt
+          # 앱의 기록 동기화(notes.json)가 그 사이 커밋했을 수 있다
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml

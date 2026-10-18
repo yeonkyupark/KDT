@@ -5,17 +5,17 @@
 | 항목 | 내용 |
 |---|---|
 | 출처 | 두루누비 (한국관광공사) — https://www.durunubi.kr/namparang-course-list.do |
-| 코스별 원문 | `https://www.durunubi.kr/course-detail-view.do?crs_idx=<코스 ID>` (코스 ID 는 `data/raw/durunubi-gpx.json` 의 `courseIdx`) |
+| 코스별 원문 | `https://www.durunubi.kr/course-detail-view.do?crs_idx=<코스 ID>` (코스 ID 는 `data/durunubi/namparang.json` 의 `crsIdx`) |
 | 저작권 | 한국관광공사 및 각 코스 소관 지방자치단체 |
-| 이용 조건 | **공공누리 제4유형 — 출처표시 + 상업적 이용금지 + 변경금지** (https://www.kogl.or.kr/info/licenseType4.do) |
-| 받은 날 | 2026-10-18 (리포 관리자가 코스 상세 페이지에서 브라우저로 직접 받음) |
+| 이용 조건 | **공공누리 제4유형 — 출처표시 + 상업적 이용금지 + 변경금지** (https://www.kogl.or.kr/info/licenseType4.do) — 두루누비 표기. 공공데이터포털 API 표기는 "이용허락범위 제한 없음"이지만 더 엄격한 제4유형을 지킨다 |
+| 받는 방법 | 공공데이터포털 두루누비 API 가 안내하는 GPX 주소로 받는다. 매주 자동 점검해 바뀐 코스만 다시 받는다 (`npm run sync:durunubi`) |
 
 ## 이 리포가 지키는 것
 
 - **출처표시**: 이 문서, `data/SOURCE.md`, README, 앱 화면에 출처와 이용 조건을 적는다.
 - **상업적 이용금지**: 이 리포와 앱은 개인의 비상업적 트레킹 기록 용도다.
 - **변경금지**: 파일은 받은 그대로이며 한 바이트도 고치지 않았다. 파일명도 두루누비가 내려준
-  이름 그대로다. `data/raw/durunubi-gpx.json` 의 SHA1 로 확인할 수 있다.
+  이름 그대로다. `data/durunubi/namparang.json` 의 SHA1 로 확인할 수 있다.
   86코스 파일에는 같은 노선이 트랙 2개로 들어 있는데, 파일을 고치지 않고 처리 단계에서
   첫 트랙만 읽는다.
 

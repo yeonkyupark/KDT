@@ -55,23 +55,49 @@ npm run dev
 npm run build
 ```
 
-데이터 재생성 (GPX가 바뀌었을 때만):
+## 코스 데이터 갱신 — 자동 (매주)
+
+코스 데이터는 두루누비에서 **매주 자동으로 점검**한다(`.github/workflows/sync-durunubi.yml`, 월요일 04:00 KST).
+바뀐 것이 있으면 데이터를 다시 만들어 커밋하고 배포까지 한다. 바뀐 것이 없으면 아무것도 하지 않는다.
+
+```
+공공데이터포털 API (코스 정보 + GPX 주소)  ─┐
+두루누비 사이트 목록 (API 에 없는 코스 보충) ─┴─> sync:durunubi ─> 바뀐 GPX 만 받기 ─> build:ele ─> build:data ─> 커밋·배포
+                                                (data/durunubi/namparang.json 과 비교)
+```
+
+- **변경 감지**: 코스별 GPX 경로 · 공공 API 수정일 · 서버 파일 크기를 이전 기록과 비교한다.
+  Actions 화면에서 수동 실행할 때 `full` 을 켜면 GPX 를 전부 다시 받아 SHA1 로 비교한다.
+- **연결성 점검**: GPX 가 바뀌면 코스 접합부와 공식 시·종점 좌표까지의 거리를 다시 재고, 500m 를 넘으면 요약에 경고한다.
+- **사라진 코스**: 출처에서 코스가 빠져도 지우지 않고 경고만 남긴다(`missingSince`).
+- **실패 알림**: 인증키 만료나 API 형식 변경으로 점검이 실패하면 GitHub 이 메일로 알린다.
+
+**처음 한 번 설정** — 공공데이터포털 인증키를 리포 Secret 으로 넣는다:
+Settings → Secrets and variables → Actions → New repository secret → 이름 `DURUNUBI_SERVICE_KEY`.
+
+로컬에서 직접 돌릴 때는 `.env.example` 을 `.env` 로 복사해 키를 넣는다(커밋되지 않는다).
 
 ```bash
-npm run build:ele    # DEM 고도 조회 -> data/cache/ele/ (캐시가 있으면 건너뛴다)
-npm run build:data   # GPX -> public/data/
+npm run sync:durunubi              # 바뀐 것만 받는다 (--full: 전부 다시 비교, --dry-run: 보기만)
+npm run build:ele                  # 바뀐 GPX 의 DEM 고도만 다시 조회 -> data/cache/ele/
+npm run build:data                 # -> public/data/
 ```
+
+공식 자료에 오타가 있으면 `data/courses.meta.csv` 에 그 칸만 적어 덮어쓴다(근거는 파일 머리말).
 
 ## 데이터 출처
 
 노선과 코스 정보 모두 **[두루누비](https://www.durunubi.kr/namparang-course-list.do)
-(한국관광공사) 공식 자료**다. 이용 조건은 **공공누리 제4유형**(출처표시 + 상업적 이용금지 + 변경금지).
+(한국관광공사) 공식 자료**다. 이용 조건은 **공공누리 제4유형**(출처표시 + 상업적 이용금지 + 변경금지)을 지킨다.
+공공데이터포털 API 의 표기는 "이용허락범위 제한 없음"이지만, 두루누비 사이트가 같은 자료를 제4유형으로 표기하므로 더 엄격한 쪽을 따른다.
 
 | | 내용 | 위치 |
 |---|---|---|
 | **노선 좌표** | 코스별 공식 GPX 90개 (받은 그대로, 수정하지 않음) | [data/gpx_durunubi/](data/gpx_durunubi/) |
-| **코스 정보** | 지점명·주소·교통편·지역·난이도·소요시간 | `data/courses.meta.csv`, `data/reference/` |
+| **코스 정보** | 지점명·주소·교통편·지역·난이도·소요시간 | [data/durunubi/](data/durunubi/) (자동 갱신), 보정만 `data/courses.meta.csv` |
 
+두 출처를 쓴다. **공공데이터포털 [두루누비 정보 서비스](https://www.data.go.kr) API** 를 우선하고,
+API 에 빠진 코스(남파랑길 90개 중 46개)는 두루누비 사이트의 코스 목록으로 보충한다.
 출처·라이선스·수집 방법은 **[data/SOURCE.md](data/SOURCE.md)** 에 전부 기록했다.
 개인 비상업적 용도로만 사용하며, 권리자가 요청하면 즉시 삭제한다.
 
@@ -239,6 +265,7 @@ npx @modelcontextprotocol/inspector node server.mjs
 
 ## 라이선스
 
-앱 소스 코드는 MIT. **코스 데이터는 제외** — `data/gpx_durunubi/`, `data/reference/`, `data/courses.meta.csv`
+앱 소스 코드는 MIT. **코스 데이터는 제외** — `data/gpx_durunubi/`, `data/durunubi/`, `data/courses.meta.csv`
 와 이를 가공한 `public/data/` 의 코스 파일은 두루누비(한국관광공사) 자료로 **공공누리 제4유형**
-(출처표시 + 상업적 이용금지 + 변경금지)을 따른다. 자세한 조건은 [data/SOURCE.md](data/SOURCE.md).
+(출처표시 + 상업적 이용금지 + 변경금지)을 따른다. `data/reference/` 의 외부 참고자료도 제외다.
+자세한 조건은 [data/SOURCE.md](data/SOURCE.md).

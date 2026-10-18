@@ -2,7 +2,7 @@
 * text=auto eol=lf
 
 # 제3자 원본 자료 — 줄바꿈 변환 금지.
-# CRLF로 바뀌면 data/raw/durunubi-gpx.json 의 SHA1 이 깨지고
+# CRLF로 바뀌면 data/durunubi/*.json 에 기록한 SHA1 과 어긋나고
 # 공공누리 변경금지 조건("원본 그대로", data/SOURCE.md)을 지킬 수 없게 된다.
 *.gpx -text
 

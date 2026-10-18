@@ -35,7 +35,7 @@ const DEFAULT_PAIRS = [
  * 코스가 연속이라는 성질로 빈 지점명을 메운다.
  * 앞 코스의 종점 = 다음 코스의 시점.
  *
- * 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/raw/durunubi-gpx.json) 이 전제는 안전하다.
+ * 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/durunubi/namparang.json 의 checks — 동기화 때마다 다시 잰다) 이 전제는 안전하다.
  * 연속된 공백 구간의 내부는 메울 수 없다 — 경계만 채워진다.
  *
  * @param {Array<{seq:number, start:string, end:string, region:string}>} rows  seq 오름차순
@@ -85,7 +85,7 @@ export function chainFill(rows, pairs = DEFAULT_PAIRS) {
  *   `장승포시외버스정류장` vs `장승포 시외버스터미널`      (정류장/터미널)
  *   `부용교 동쪽사거리` vs `부굥교 동쪽사거리`            (원본 오타)
  *
- * 좌표상 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/raw/durunubi-gpx.json)
+ * 좌표상 접합부 89곳이 모두 131m 이내로 검증됐으므로(data/durunubi/namparang.json 의 checks — 동기화 때마다 다시 잰다)
  * 이들은 확실히 같은 지점이다. 더 상세한(긴) 쪽으로 양쪽을 맞춘다.
  *
  * @returns {Array<{seq:number, from:string, to:string}>} 변경 내역

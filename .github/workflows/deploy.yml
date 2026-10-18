@@ -8,6 +8,9 @@ on:
     paths-ignore:
       - 'public/data/notes.json'
   workflow_dispatch:
+  # 코스 데이터 동기화(sync-durunubi.yml)가 커밋한 뒤 호출한다.
+  # Actions 토큰으로 푸시한 커밋은 push 이벤트를 일으키지 않아서 직접 불러야 한다.
+  workflow_call:
 
 permissions:
   contents: read
@@ -24,6 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # workflow_call 이면 호출한 쪽의 커밋(동기화 커밋 이전)이 기본값이다. 항상 최신 main 을 배포한다.
+          ref: main
 
       - uses: actions/setup-node@v4
         with:

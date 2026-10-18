@@ -15,6 +15,8 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node
 import { join } from 'node:path'
 import { listCourses, parseGpx, sourceSha1 } from './lib/gpx.mjs'
 import { chainFill, normalizeJunctions, normalizeRegions } from './lib/names.mjs'
+import { parseTravelerInfo } from './lib/durunubi.mjs'
+import { trailById } from './lib/trails.mjs'
 import { pathLength, simplify, movingAverage, ascentDescent } from './lib/geo.mjs'
 import {
   ELE_SPACING,
@@ -28,7 +30,6 @@ import {
   DIFFICULTY_BREAKS,
 } from './lib/config.mjs'
 
-const OFFICIAL = 'data/reference/durunubi-courses.json'
 const ELE_CACHE = 'data/cache/ele'
 const META_CSV = 'data/courses.meta.csv'
 const OUT_DIR = 'public/data'
@@ -106,28 +107,45 @@ function loadOverrides() {
 }
 
 /**
- * 두루누비(한국관광공사) 공식 메타데이터를 코스 번호로 색인한다.
+ * 두루누비(한국관광공사) 공식 코스 기록을 코스 번호로 색인한다.
+ * `npm run sync:durunubi` 가 공공 API(+사이트 목록 보충)에서 받아 쓴 manifest 다.
  *
  * 난이도와 소요시간은 **공식값을 쓴다.** 운영기관이 매긴 등급이 내가 만든
  * 공식(거리 + 상승/100)보다 신뢰도가 높다 — 실제로 90개 중 41개만 일치했다.
  * 거리는 GPX 실측값을 쓴다: 지도에 그리는 선과 숫자가 어긋나면 안 된다.
  * 노선도 공식 GPX 라 90개 중 86개가 공식 표기 거리와 5% 안쪽이다 (가장 큰 차이 약 6%).
  */
-function loadOfficial() {
-  if (!existsSync(OFFICIAL)) return new Map()
-  const rows = JSON.parse(readFileSync(OFFICIAL, 'utf8'))
+function loadOfficial(trailId = 'namparang') {
+  const path = trailById(trailId).manifest
+  if (!existsSync(path)) throw new Error(`${path} 가 없다. 먼저 npm run sync:durunubi 를 실행하라.`)
   const map = new Map()
-  for (const r of rows) {
-    const m = /(\d+)\s*코스/.exec(r.crs_Kor_Nm ?? '')
-    if (!m) continue
-    map.set(String(Number(m[1])), {
-      km: Number(r.crs_Dstnc),
-      min: Number(r.crs_Totl_Rqrm_Hour),
-      level: Number(r.level), // 1 쉬움 / 2 보통 / 3 어려움
-      levelLabel: (r.lev ?? '').trim(),
+  for (const r of JSON.parse(readFileSync(path, 'utf8')).courses) {
+    if (r.sub) continue // 지선·우회 노선은 아직 다루지 않는다
+    map.set(String(r.seq), {
+      crsIdx: r.crsIdx,
+      km: r.km,
+      min: r.minutes,
+      level: r.level, // 1 쉬움 / 2 보통 / 3 어려움
+      levelLabel: r.levelLabel,
+      sigun: r.sigun,
+      ...parseTravelerInfo(r.travelerInfo),
     })
   }
   return map
+}
+
+/** 공식 기록의 시점·종점·지역을 코스 필드로 옮긴다. 값이 없으면 비워 두고 연쇄 보정·CSV 에 맡긴다. */
+function officialPlaces(off) {
+  if (!off) return {}
+  return {
+    region: off.sigun || '',
+    start: off.start?.name || '',
+    startAddr: off.start?.addr || '',
+    startAccess: off.start?.access || '',
+    end: off.end?.name || '',
+    endAddr: off.end?.addr || '',
+    endAccess: off.end?.access || '',
+  }
 }
 
 function difficultyOf(km, ascentM) {
@@ -196,8 +214,9 @@ function main() {
 
     built.push({
       ...c,
-      // 지점명·지역은 트랙 이름에서 뽑지 않는다 — 아래 CSV(공식 안내문)로 채운다
       trackName: name,
+      // 지점명·주소·교통편·지역은 공식 여행자정보에서. 틀린 곳만 아래 CSV 가 고친다.
+      ...officialPlaces(official.get(c.id)),
       lengthM,
       km: r1(lengthM / 1000),
       ascentM: Math.round(ascentM),

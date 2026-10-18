@@ -4,8 +4,9 @@
 > **서버 0개** — GitHub Pages(호스팅) + GitHub 리포(사진·메모 저장).
 
 **확정 사항**
-- GPX 출처: **두루누비(한국관광공사) 공식 GPX 90개** — 코스 상세 페이지에서 직접 받음 (0.1)
-- 코스 정보: 두루누비 공식 목록 데이터 — 지점명·주소·교통편·난이도·소요시간 (0.3)
+- GPX 출처: **두루누비(한국관광공사) 공식 GPX 90개** — 공공데이터포털 API 가 안내하는 주소로 받음 (0.1)
+- 코스 정보: **공공데이터포털 두루누비 API** + 빠진 코스는 두루누비 사이트 목록으로 보충 (0.3)
+- 갱신: **매주 자동 점검** — 바뀐 코스만 다시 받아 빌드·배포 (0.5)
 - 참고 자료: [gpsroute.site](https://gpsroute.site/courses/nampparang) — 코스별 누적상승 90개. **검증 결과 과대계상으로 확인돼 기준에서 배제**(3.1.1)
 - 사진/메모 저장: **GitHub Contents API** (Supabase 폐기)
 - 리포: Public + GitHub Pages
@@ -16,10 +17,10 @@
 
 ### 0.1 두루누비 공식 GPX — 노선 좌표 (2026-10-18)
 
-두루누비 `robots.txt` 는 모든 자동 수집기에 `/download` 를 막아 두었다. GPX 다운로드가 그 경로라
-스크립트로 받지 않고, 공식 목록 데이터로 90개 코스 상세 페이지 링크를 만들어 **리포 관리자가
-브라우저로 직접** 받았다. 파일은 받은 이름 그대로 `data/gpx_durunubi/` 에 있다.
-전수 검증 결과는 `data/raw/durunubi-gpx.json` (파일별 SHA1 포함).
+처음(2026-10-18 오전)에는 두루누비 `robots.txt` 가 `/download` 를 막아 두어 리포 관리자가 브라우저로 직접 받았다.
+같은 날 공공데이터포털 두루누비 API 가 코스마다 GPX 주소(`/editImgUp.do?filePath=…`, 차단되지 않은 경로)를
+준다는 것을 확인했고, 그 주소로 받은 90개가 직접 받은 파일과 SHA1 까지 같았다. 이후로는 자동으로 받는다(0.5).
+파일은 두루누비가 주는 이름 그대로 `data/gpx_durunubi/` 에 있고, 코스별 SHA1 은 `data/durunubi/namparang.json`.
 
 | 항목 | 결과 | 판단 |
 |---|---|---|
@@ -64,27 +65,57 @@
 
 ### 0.3 두루누비 — 코스 메타데이터
 
-`https://www.durunubi.kr/namparang-course-list.do` 의 목록 API(`/api/course/list`)에서
-90개 코스의 공식 메타데이터를 받았다. `robots.txt` 가 차단한 경로가 아니다. 요청 3회.
-원본 응답은 `data/reference/durunubi-courses.json` 에 그대로 보관했다.
+출처는 둘이다. 공공데이터포털 **한국관광공사 두루누비 정보 서비스**(`apis.data.go.kr/B551011/Durunubi`)를
+우선하고, 거기 없는 코스는 두루누비 사이트가 목록 화면에 쓰는 `/api/course/list` 로 보충한다.
 
-얻은 것: 시점·종점 지점명 / 주소 / **교통편** / 시군 / 공식 거리·소요시간·난이도 / 설명.
-`travelerInfo` 필드 파싱 **90/90 성공** → `data/courses.meta.csv`.
-안내문의 명백한 오타 3곳(87코스 '화홍'→'화흥' 등)은 구조화된 주소 필드로 확인해 고쳤고, CSV 머리말에 기록했다.
+| 길 | 공공 API | 사이트 목록 | 비고 |
+|---|---|---|---|
+| 남파랑길 | 44 | **90** | 공공 API 에만 있는 코스는 없다 |
+| 해파랑길 | 43 | **50** | |
+| 서해랑길 | 51 | **109** | 지선 포함 |
+| DMZ 평화의 길 | 34 | **48** | 우회로·지선 포함 |
+
+겹치는 172개는 GPX 경로·소요시간·난이도·여행자정보가 모두 같다. 거리는 공공 API 가 정수 반올림이라
+같은 값이면 사이트의 소수 값을 쓰고, 행정구역은 일부 다르다(남파랑길은 3코스만).
+지점명·주소·교통편은 `travelerInfo` 를 빌드 때 자동으로 파싱한다(90/90). 공식 안내문의 명백한 오타만
+`data/courses.meta.csv` 로 고친다(26·27·54·67·68·87·88코스, 근거는 CSV 머리말).
 
 | 항목 | 출처 | 근거 |
 |---|---|---|
 | 노선 좌표 | 두루누비 공식 GPX | 0.1 |
-| 시점·종점 지점명 · 주소 · 교통편 | 두루누비 안내문 | 90/90 확보 |
+| 시점·종점 지점명 · 주소 · 교통편 | 두루누비 여행자정보 (자동 파싱) | 90/90 |
 | 지역(시·군·구) | 두루누비 `sigun` | 20개 그룹 |
 | **난이도** | 두루누비 `lev` | 내 공식(거리 + 상승/100)과 41/90만 일치 — 운영기관 등급이 신뢰도 높음 |
 | **소요시간** | 두루누비 | 공식 권장 514시간 |
 | 거리 | **공식 GPX 실측** | 지도에 그리는 선과 숫자가 어긋나면 안 된다 |
 | 고도 | SRTM 30m DEM | 공식 GPX 의 `<ele>` 는 누락·0값이 있어 쓰지 않는다 |
-| 남해바래길 별칭(36~46코스) | 남해바래길 코스명 | CSV `alias` 칸 |
+| 남해바래길 별칭(36~46코스) | 남해바래길 코스명 | CSV `alias` 칸 (수동) |
 
 라이선스는 GPX 와 같은 공공누리 제4유형이다. 출처를 표기하고, 상업적으로 쓰지 않으며,
 한국관광공사가 요청하면 즉시 삭제한다.
+
+### 0.5 운영 — 자동 동기화 (2026-10-18~)
+
+**처음에 전체를 받고, 이후에는 바뀐 것만 점검한다.**
+
+| 단계 | 무엇을 | 어디서 |
+|---|---|---|
+| 점검 | 매주 월 04:00 KST, 공공 API + 사이트 목록을 받아 `data/durunubi/<길>.json` 과 비교 | `.github/workflows/sync-durunubi.yml` → `scripts/sync-durunubi.mjs` |
+| GPX | 경로 변경 · 공공 API 수정일 변경 · 서버 파일 크기(HEAD) 변경인 코스만 다시 받는다. 수동 실행의 `full` 은 전부 다시 받아 SHA1 비교 | 서버가 ETag·Last-Modified 를 주지 않아 크기로 가늠한다 |
+| 연결성 | GPX 가 바뀌면 접합부·공식 시종점 거리를 다시 재서 `checks` 에 기록, 500m 초과 시 경고 | |
+| 빌드 | 바뀐 GPX 의 DEM 고도만 재조회(원본 SHA1 캐시) → `build:data` | |
+| 반영 | 변경이 있으면 요약을 커밋 메시지로 커밋하고 배포 워크플로를 호출 | Actions 토큰 푸시는 push 이벤트를 안 일으켜 `workflow_call` 로 부른다 |
+| 안전장치 | 출처에서 사라진 코스는 지우지 않고 `missingSince` 로 표시 · API 오류면 실패(메일 알림) | |
+
+인증키는 리포에 넣지 않는다. 로컬 `.env`, CI 는 Secret `DURUNUBI_SERVICE_KEY`.
+
+**확장 계획 — 코리아둘레길 4개 길**
+
+1. ✅ **1단계**: 남파랑길 자동 동기화. 지금 데이터와 같게 나오는지 검증(GPX 90개 SHA1 일치, 앱 데이터 차이는 의도한 보정뿐)
+2. **2단계**: 해파랑길·서해랑길·DMZ 평화의 길 데이터. `scripts/lib/trails.mjs` 의 `enabled` 를 켠다.
+   남은 일 — 길별 GPX 폴더·파일명 규칙 일반화(`gpx.mjs`), 고도 최초 조회(약 200코스, opentopodata 일일 한도 때문에 이틀),
+   지선·우회 노선 모델(서해랑길 64-3~5 지선, DMZ 3-1 우회로 등 — 공식 노선이라 표시해야 한다), `public/data/<길>/` 구조
+3. **3단계**: 화면에 길 선택(`?trail=`), 사진 기록의 코스 ID 를 길 단위로(기존 기록은 남파랑길로 간주), MCP 서버 길 단위
 
 ### 0.4 검증이 바꾼 결정
 
@@ -135,13 +166,15 @@
 GPX는 **빌드 타임에 1회 전처리**해 JSON으로 굽는다. 브라우저는 GPX를 절대 파싱하지 않는다.
 
 ```
+npm run sync:durunubi   (매주 자동) 공공 API + 사이트 목록 → 바뀐 GPX 만 받기
+        |
 data/gpx_durunubi/남파랑길_1코스.gpx ... 남파랑길_90코스.gpx   [90개, 15.5MB, 공식 원본 그대로]
         |
         +-- npm run build:ele        DEM 고도 조회 -> data/cache/ele/nam-NN.json  [커밋]
         |                            (캐시에 원본 SHA1 기록 — GPX 가 바뀐 코스만 다시 조회)
         v  npm run build:data    (scripts/build-data.mjs, Node)
-        |   + data/courses.meta.csv              (지점명·주소·교통편·별칭 — 공식 안내문)
-        |   + data/reference/durunubi-courses.json (공식 거리·소요시간·난이도)
+        |   + data/durunubi/namparang.json       (공식 거리·소요시간·난이도·여행자정보 — sync:durunubi 가 갱신)
+        |   + data/courses.meta.csv              (공식 자료 오타 보정·별칭만)
         |
         +--> public/data/courses.json        # 90개 메타 + 저해상도 오버뷰 (160KB)
         +--> public/data/course/{id}.json    # 상세 좌표 + 고도 (코스당 약 8KB, lazy)
@@ -383,17 +416,18 @@ namparang/                          (Public, GitHub Pages)
 ├─ package.json / vite.config.js
 ├─ README.md                        # 스크린샷, 실행법, 데이터 출처·저작자 표기
 ├─ PLAN.md
-├─ .github/workflows/deploy.yml     # push -> build -> Pages
+├─ .github/workflows/deploy.yml     # push -> build -> Pages (sync 가 workflow_call 로도 부른다)
+├─ .github/workflows/sync-durunubi.yml # 매주 코스 데이터 점검 -> 변경 시 빌드·커밋·배포
 ├─ data/
 │  ├─ gpx_durunubi/남파랑길_N코스.gpx  # 두루누비 공식 GPX 90개 (원본 그대로) + README.md(출처·이용조건)
-│  ├─ raw/durunubi-gpx.json         # 파일별 SHA1 · 전수 검증 결과
-│  ├─ reference/durunubi-courses.json # 두루누비 공식 목록 데이터 원본
+│  ├─ durunubi/namparang.json       # 코스 기록 + GPX SHA1 + 연결성 점검 (sync:durunubi 가 갱신)
 │  ├─ reference/gpsroute-ascent.json# 외부 참고 누적상승 90개
-│  ├─ courses.meta.csv              # 지점명·주소·교통편·별칭 (공식 안내문)
+│  ├─ courses.meta.csv              # 공식 자료 오타 보정·별칭
 │  ├─ cache/ele/nam-NN.json         # DEM 고도 캐시
 │  ├─ notes/{noteId}.json           # 메모 (앱이 커밋)
 │  └─ SOURCE.md                     # 출처·수집일·이용조건·원저작자
 ├─ scripts/
+│  ├─ sync-durunubi.mjs             # 두루누비 동기화 (lib/durunubi.mjs, lib/trails.mjs)
 │  ├─ build-ele.mjs                 # DEM 조회 (원본 SHA1 로 캐시 무효화)
 │  ├─ build-data.mjs                # GPX -> JSON 전처리
 │  └─ build-notes.mjs               # data/notes/*.json -> public/data/notes.json

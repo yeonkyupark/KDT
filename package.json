@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "sync:durunubi": "node scripts/sync-durunubi.mjs",
     "build:ele": "node scripts/build-ele.mjs",
     "build:data": "node scripts/build-data.mjs",
     "mcp": "node mcp/server.mjs"
