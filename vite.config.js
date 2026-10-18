@@ -27,9 +27,25 @@ function dataVersion() {
 
 const BUILD_ID = dataVersion()
 
-export default defineConfig({
+// 배포마다 다른 값. 앱은 이 값과 배포된 version.json 을 비교해 옛 코드로 동기화하지 않는다(src/version.js).
+// 위 BUILD_ID 는 데이터가 바뀔 때만 바뀌므로 코드 배포를 구분하지 못한다. 그래서 따로 둔다.
+const APP_VERSION = process.env.GITHUB_SHA?.slice(0, 7) || Date.now().toString(36)
+
+export default defineConfig(({ command }) => ({
   base: './',
-  define: { __BUILD_ID__: JSON.stringify(BUILD_ID) },
+  define: {
+    __BUILD_ID__: JSON.stringify(BUILD_ID),
+    __APP_VERSION__: JSON.stringify(command === 'build' ? APP_VERSION : 'dev'),
+  },
+  plugins: [
+    {
+      name: 'version-json',
+      apply: 'build',
+      generateBundle() {
+        this.emitFile({ type: 'asset', fileName: 'version.json', source: JSON.stringify({ version: APP_VERSION }) })
+      },
+    },
+  ],
   build: {
     target: 'es2020',
     // 데이터 JSON은 public/ 에서 그대로 복사되므로 해시가 붙지 않는다.
@@ -39,4 +55,4 @@ export default defineConfig({
   server: {
     port: 5173,
   },
-})
+}))

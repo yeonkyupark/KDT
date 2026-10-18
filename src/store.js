@@ -9,11 +9,15 @@
  *
  * 스토어
  *   notes  { id, lat, lng, courseId, takenAt, createdAt, updatedAt,
- *            title, memo, rating, thumb: Blob, deleted, synced }
+ *            title, memo, rating, thumb: Blob, deleted, synced, pendingDeletes }
  *   photos { id, blob }   — id 는 note.id 와 같다 (노트 1개 = 사진 1장)
  *
  * 본문 이미지를 분리해 둔 이유: 목록·핀을 그릴 때 썸네일만 읽으면 되고
- * 원본(150KB)은 모달을 열 때만 읽는다.
+ * 본문 사진은 모달을 열 때만 읽는다.
+ *
+ * 사진 Blob(본문·썸네일)은 **업로드 대기열**이다. 사진 리포에 올라간 게 확인되면
+ * 동기화가 지운다(`sync.js` 의 `uploadPhotos`). 화면은 그때부터 원격 URL 로 보여 준다.
+ * `pendingDeletes` 는 로컬 전용 — 삭제한 노트의 사진 리포 경로로, 동기화가 지운다.
  */
 
 const DB_NAME = 'namparang'
@@ -72,7 +76,16 @@ export function newId() {
 /** 노트 + 사진을 한 번에 저장한다. */
 export async function saveNote(note, photoBlob) {
   const now = new Date().toISOString()
-  const rec = { ...note, updatedAt: now, createdAt: note.createdAt ?? now, deleted: false }
+  // 화면이 들고 있던 노트는 동기화가 사진 경로(photo)를 채우기 전 것일 수 있다.
+  // 업로드가 끝나면 로컬 사진은 지워지므로, 여기서 경로까지 잃으면 사진이 기록에서 사라진다.
+  const stored = note.photo ? null : await tx(NOTES, 'readonly', (s) => s.get(note.id))
+  const rec = {
+    ...note,
+    photo: note.photo ?? stored?.photo,
+    updatedAt: now,
+    createdAt: note.createdAt ?? now,
+    deleted: false,
+  }
   await tx(NOTES, 'readwrite', (s) => s.put(rec))
   if (photoBlob) await tx(PHOTOS, 'readwrite', (s) => s.put({ id: rec.id, blob: photoBlob }))
   return rec
@@ -93,15 +106,28 @@ export function getPhoto(id) {
 /**
  * 소프트 삭제. 실제로 지우지 않고 `deleted: true` 로 표시한다.
  * 단계 6b에서 기기 간 삭제를 전파하려면 "삭제됐다"는 사실 자체가 남아야 한다.
- * 사진 Blob 은 용량이 크므로 바로 지운다.
+ * 사진 Blob 은 용량이 크므로 바로 지운다. 사진 리포의 파일은 `pendingDeletes` 에
+ * 남겨 두고, 동기화가 notes.json 을 커밋한 뒤에 지운다.
  */
 export async function deleteNote(id) {
   const rec = await tx(NOTES, 'readonly', (s) => s.get(id))
   if (!rec) return
+  const remote = [rec.photo?.full, rec.photo?.thumb].filter(Boolean)
   await tx(NOTES, 'readwrite', (s) =>
-    s.put({ ...rec, deleted: true, thumb: null, updatedAt: new Date().toISOString() }),
+    s.put({
+      ...rec,
+      deleted: true,
+      thumb: null,
+      pendingDeletes: [...new Set([...(rec.pendingDeletes ?? []), ...remote])],
+      updatedAt: new Date().toISOString(),
+    }),
   )
   await tx(PHOTOS, 'readwrite', (s) => s.delete(id))
+}
+
+/** 사진 리포에 올라간 것이 확인된 사진의 로컬 Blob 을 지운다. */
+export function deletePhoto(id) {
+  return tx(PHOTOS, 'readwrite', (s) => s.delete(id))
 }
 
 /**

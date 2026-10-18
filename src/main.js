@@ -10,6 +10,7 @@ import { createNotes } from './notes.js'
 import { createSync, photoUrl } from './sync.js'
 import { loadSettings, saveSettings, openSettings, tokenExpiryNote } from './settings.js'
 import { createClient } from './github.js'
+import { ensureLatestVersion, cleanVersionParam } from './version.js'
 
 /**
  * 선택 구간이 이 개수 이하일 때만 상세 라인·고도를 받는다.
@@ -287,6 +288,7 @@ async function main() {
 
   const syncApi = {
     run: () => syncCore.run(),
+    ensureLatestVersion,
     pullPublic: () => syncCore.pullPublic(),
     onState: (fn) => syncCore.onState(fn),
     lastSyncedAt: () => syncCore.lastSyncedAt(),
@@ -407,6 +409,10 @@ async function main() {
   }
 
   // ── 초기 상태 반영 ───────────────────────────────────
+  // 캐시된 옛 HTML 로 열렸으면 새 버전으로 다시 연다. 오프라인이어도 화면은 그대로 뜬다.
+  cleanVersionParam()
+  ensureLatestVersion()
+
   syncSide()
   syncProf()
   view.setTile(layer)

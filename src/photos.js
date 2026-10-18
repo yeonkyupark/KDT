@@ -13,9 +13,12 @@
  * 지연 로딩되는 청크라 11KB 차이는 감수할 만하다.
  */
 
-/** 목록·지도 핀에 쓰는 썸네일. 약 20KB. */
-const THUMB_EDGE = 256
-const THUMB_QUALITY = 0.7
+/** 목록·지도 핀에 쓰는 썸네일. WebP 로 4~8KB. */
+const THUMB_EDGE = 280
+/** 저장·업로드용 사진. WebP 로 평균 약 56KB. */
+const FULL_EDGE = 1024
+const WEBP_QUALITY = 0.8
+const JPEG_QUALITY = 0.85
 
 /** 주소가 담길 수 있는 표준 필드들. 앞쪽이 더 구체적인 순서다. */
 const ADDRESS_KEYS = [
@@ -103,6 +106,32 @@ function extractLatLng(parsed) {
 }
 
 /**
+ * WebP(RIFF) 의 `EXIF` 청크를 꺼낸다. exifr 7 은 WebP 를 모르므로("Unknown file format")
+ * 청크 안의 TIFF 데이터를 직접 넘겨야 한다. WebP 가 아니거나 청크가 없으면 null.
+ * @param {Blob} file
+ * @returns {Promise<Uint8Array|null>}
+ */
+async function webpExifChunk(file) {
+  const head = new Uint8Array(await file.slice(0, 12).arrayBuffer())
+  const tag = (b, i) => String.fromCharCode(b[i], b[i + 1], b[i + 2], b[i + 3])
+  if (head.length < 12 || tag(head, 0) !== 'RIFF' || tag(head, 8) !== 'WEBP') return null
+
+  const buf = new Uint8Array(await file.arrayBuffer())
+  const view = new DataView(buf.buffer)
+  for (let i = 12; i + 8 <= buf.length; ) {
+    const size = view.getUint32(i + 4, true)
+    if (tag(buf, i) === 'EXIF') {
+      let chunk = buf.subarray(i + 8, i + 8 + size)
+      // 일부 인코더는 JPEG APP1 처럼 "Exif\0\0" 접두어를 붙인다.
+      if (tag(chunk, 0) === 'Exif' && chunk[4] === 0 && chunk[5] === 0) chunk = chunk.subarray(6)
+      return chunk
+    }
+    i += 8 + size + (size & 1) // 청크는 짝수 바이트로 패딩된다
+  }
+  return null
+}
+
+/**
  * 사진에서 위치 정보를 읽는다.
  *
  * **좌표가 없는 사진이 예외가 아니라 기본이다.** 메신저·SNS를 거치면 EXIF가
@@ -116,12 +145,13 @@ export async function readExif(file) {
 
   try {
     const exifr = await import('exifr/dist/full.esm.mjs')
+    const source = (await webpExifChunk(file).catch(() => null)) ?? file
 
     // 태그를 골라 읽는 pick 옵션은 작은 빌드에서 예외를 던진다
     // ("undefined is not iterable" — 태그 이름 사전이 잘려 있다).
     // 블록을 켜서 통째로 읽는 편이 안전하고, 파일 1장이라 비용도 무의미하다.
     const parsed = await exifr
-      .parse(file, {
+      .parse(source, {
         tiff: true,
         exif: true,
         gps: true,
@@ -137,7 +167,7 @@ export async function readExif(file) {
 
     let latlng = extractLatLng(parsed)
     if (!latlng) {
-      const gps = await exifr.gps(file).catch(() => null)
+      const gps = await exifr.gps(source).catch(() => null)
       if (Number.isFinite(gps?.latitude) && Number.isFinite(gps?.longitude)) {
         latlng = [gps.latitude, gps.longitude]
       }
@@ -201,42 +231,46 @@ async function loadBitmap(file) {
   }
 }
 
-function scaleTo(src, maxEdge, quality) {
-  const w = src.width
-  const h = src.height
-  const ratio = Math.min(1, maxEdge / Math.max(w, h))
-  const cw = Math.max(1, Math.round(w * ratio))
-  const ch = Math.max(1, Math.round(h * ratio))
-
+function drawScaled(src, maxEdge) {
+  const ratio = Math.min(1, maxEdge / Math.max(src.width, src.height))
   const canvas = document.createElement('canvas')
-  canvas.width = cw
-  canvas.height = ch
+  canvas.width = Math.max(1, Math.round(src.width * ratio))
+  canvas.height = Math.max(1, Math.round(src.height * ratio))
   const ctx = canvas.getContext('2d')
   ctx.imageSmoothingQuality = 'high'
-  ctx.drawImage(src, 0, 0, cw, ch)
+  ctx.drawImage(src, 0, 0, canvas.width, canvas.height)
+  return canvas
+}
 
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(
-      (b) => (b ? resolve({ blob: b, width: cw, height: ch }) : reject(new Error('인코딩 실패'))),
-      'image/jpeg',
-      quality,
-    )
-  })
+const toBlob = (canvas, type, quality) =>
+  new Promise((resolve, reject) =>
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('인코딩 실패'))), type, quality),
+  )
+
+/**
+ * WebP 로 인코딩하고, 브라우저가 WebP 인코딩을 못 하면 JPEG 로 대신한다.
+ * Safari 는 canvas WebP 인코딩을 지원하지 않아 조용히 PNG 를 돌려주므로 type 으로 확인한다.
+ * 같은 1024px 에서 WebP 80% 는 JPEG 85% 의 절반 남짓이다(실측 평균 56KB vs 105KB).
+ */
+async function encodeCompact(canvas) {
+  const webp = await toBlob(canvas, 'image/webp', WEBP_QUALITY)
+  if (webp.type === 'image/webp') return webp
+  return toBlob(canvas, 'image/jpeg', JPEG_QUALITY)
 }
 
 /**
- * 원본은 그대로 두고, 목록·지도 핀에 쓸 작은 썸네일만 만든다.
+ * 저장·업로드용 사진과 썸네일 생성.
  *
- * 원래는 저장용 사본도 1280px로 줄여 다시 인코딩했다. 그런데 사용자가
- * 등록 전에 이미 사진을 정리·리사이즈해 두므로, 앱이 한 번 더 압축하면
- * 화질만 떨어뜨릴 뿐이다. 출력은 원본 크기 그대로여야 한다는 요구사항이라
- * `full`은 원본 File을 그대로 돌려준다 — 재인코딩도, 용량 절감도 없다.
+ * 원본(장당 3MB 안팎)은 보관하지 않는다. 긴 변 1024px 로 줄여 다시 인코딩하면
+ * 50~100KB 가 되고, 이 과정에서 EXIF(GPS 포함)가 빠져 공개 리포에 위치가 새지 않는다.
+ * 위치·일시는 그 전에 `readExif(원본)` 으로 읽어 둔다.
  */
 export async function processImage(file) {
   const src = await loadBitmap(file)
   try {
-    const thumb = await scaleTo(src, THUMB_EDGE, THUMB_QUALITY)
-    return { full: file, thumb: thumb.blob, width: src.width, height: src.height }
+    const full = await encodeCompact(drawScaled(src, FULL_EDGE))
+    const thumb = await encodeCompact(drawScaled(src, THUMB_EDGE))
+    return { full, thumb, width: src.width, height: src.height }
   } finally {
     src.close?.()
   }

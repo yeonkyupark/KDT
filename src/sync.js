@@ -23,10 +23,11 @@
  */
 
 import { createClient } from './github.js'
-import { allNotesRaw, putNoteRaw, getPhoto, setSyncedAt, getSyncedAt } from './store.js'
+import { allNotesRaw, putNoteRaw, getPhoto, deletePhoto, setSyncedAt, getSyncedAt } from './store.js'
 
 const NOTES_PATH = 'public/data/notes.json'
-const MAX_PUT_RETRY = 3
+const MAX_PUT_RETRY = 4
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 /** 원격 notes.json 에 담는 필드만 골라낸다. Blob 은 올리지 않는다. */
 function toRemote(note) {
@@ -79,7 +80,7 @@ export function createSync(getSettings) {
   const listeners = new Set()
   const emit = (state) => listeners.forEach((fn) => fn(state))
 
-  let running = false
+  let running = null // 진행 중인 동기화 Promise — 겹쳐 들어온 호출은 이것을 함께 기다린다
 
   function clients() {
     const s = getSettings()
@@ -92,7 +93,27 @@ export function createSync(getSettings) {
     return { main, photos, settings: s }
   }
 
-  /** 아직 원격에 올라가지 않은 사진을 올리고 경로를 note.photo 에 기록한다. */
+  /** 원격에 있는 것이 확인된 사진의 로컬 사본(본문 Blob·썸네일)을 지운다. */
+  async function dropLocalCopy(n) {
+    await deletePhoto(n.id)
+    if (n.thumb) {
+      n.thumb = null
+      await putNoteRaw(n)
+    }
+  }
+
+  /**
+   * 아직 원격에 올라가지 않은 사진을 올리고 경로를 note.photo 에 기록한다.
+   *
+   * 내용은 대개 WebP 지만 확장자는 `.jpg` 로 둔다. raw.githubusercontent 는 확장자로
+   * Content-Type 을 정하는데 `.webp` 는 `application/octet-stream` + nosniff 로 나가
+   * Safari 가 이미지로 표시하지 않는다. `.jpg`(image/jpeg) 로 주면 모든 브라우저가
+   * 내용을 보고 WebP 로 디코딩한다.
+   *
+   * 원격에 있는 것이 확인된 사진은 로컬 사본을 지운다. 로컬은 업로드 대기열일 뿐이라
+   * 기록이 늘어도 브라우저 저장소가 커지지 않는다. 화면은 원격 URL 로 보여 준다.
+   * 그래서 원격에서 사라진 사진은 업로드 직후가 아니면 되살릴 수 없다(orphaned 로 알린다).
+   */
   async function uploadPhotos(photosClient, notes, prefix) {
     if (!photosClient) return { uploaded: 0, skipped: 0, missing: notes.filter((n) => !n.photo).length }
 
@@ -122,7 +143,10 @@ export function createSync(getSettings) {
         // 목록을 못 얻었거나 파일이 멀쩡하면 건드리지 않는다.
         if (!present) continue
         const gone = [n.photo.full, n.photo.thumb].filter((x) => x && !present.has(x))
-        if (!gone.length) continue
+        if (!gone.length) {
+          await dropLocalCopy(n) // 이전 버전이 남겨 둔 로컬 사본
+          continue
+        }
 
         // 원격에서 사라졌다. 로컬 원본이 남아 있으면 다시 올린다.
         if (!(await getPhoto(n.id)) || !n.thumb) {
@@ -151,8 +175,39 @@ export function createSync(getSettings) {
         thumbUrl: photosClient.rawUrl(paths.thumb),
       }
       await putNoteRaw(n)
+      // putBlobIfAbsent 가 던지지 않았으면 올렸거나 이미 있던 것이다.
+      await dropLocalCopy(n)
     }
     return { uploaded, skipped, restored, orphaned, missing: 0 }
+  }
+
+  /** 삭제한 노트의 사진 파일을 사진 리포에서 지운다. 성공한 경로만 대기 목록에서 뺀다. */
+  async function removeDeletedPhotos(photosClient) {
+    if (!photosClient) return 0
+    const all = await allNotesRaw()
+    // 다른 노트가 아직 그 사진을 쓰고 있으면 지우지 않는다.
+    const inUse = new Set(
+      all
+        .filter((n) => !n.deleted)
+        .flatMap((n) => [n.photo?.full, n.photo?.thumb])
+        .filter(Boolean),
+    )
+    let removed = 0
+    for (const n of all) {
+      const pending = n.pendingDeletes ?? []
+      if (!pending.length) continue
+      const left = []
+      for (const path of pending) {
+        if (inUse.has(path)) continue
+        try {
+          if (await photosClient.deleteFile(path, `사진 삭제 ${path}`)) removed++
+        } catch {
+          left.push(path) // 다음 동기화 때 다시 시도
+        }
+      }
+      await putNoteRaw({ ...n, pendingDeletes: left })
+    }
+    return removed
   }
 
   /**
@@ -189,11 +244,21 @@ export function createSync(getSettings) {
 
   /**
    * 로컬 → 원격 → 로컬 한 바퀴.
+   *
+   * 이미 진행 중이면 새로 시작하지 않고 그 결과를 돌려준다. 동기화가 도는 사이에
+   * 다시 호출해도 같은 결과(또는 같은 오류)를 받는다.
    * @returns {Promise<{pushed:number, pulled:number, photos:object}>}
    */
-  async function run() {
-    if (running) return null
-    running = true
+  function run() {
+    if (!running) {
+      running = doRun().finally(() => {
+        running = null
+      })
+    }
+    return running
+  }
+
+  async function doRun() {
     emit({ phase: 'start' })
 
     try {
@@ -244,9 +309,11 @@ export function createSync(getSettings) {
           })
           break
         } catch (e) {
-          // 409/422 = 그 사이 원격이 바뀌었다. 다시 읽어 병합한다.
-          const retryable = e.status === 409 || e.status === 422
-          if (!retryable || attempt === MAX_PUT_RETRY - 1) throw e
+          // 409(sha 불일치)·422(sha 누락)는 읽은 sha 가 낡았다는 뜻 — 잠시 뒤 다시 읽어 병합한다.
+          // 그 외 오류(권한 등)는 재시도해도 같으므로 바로 던진다.
+          const conflict = e.status === 409 || (e.status === 422 && /sha/i.test(e.message))
+          if (!conflict || attempt === MAX_PUT_RETRY - 1) throw e
+          await sleep(1000 * 2 ** attempt)
         }
       }
 
@@ -263,6 +330,10 @@ export function createSync(getSettings) {
         pulled++
       }
 
+      // 4) 새 notes.json 이 더는 가리키지 않게 된 뒤에 사진 파일을 지운다.
+      //    먼저 지우면 커밋이 실패했을 때 공개 페이지에 깨진 사진이 남는다.
+      photoStat.removed = await removeDeletedPhotos(photos)
+
       const at = new Date().toISOString()
       await setSyncedAt(at)
       emit({ phase: 'done', at, pushed, pulled, photos: photoStat })
@@ -270,8 +341,6 @@ export function createSync(getSettings) {
     } catch (e) {
       emit({ phase: 'error', message: e.message, status: e.status })
       throw e
-    } finally {
-      running = false
     }
   }
 
@@ -284,7 +353,7 @@ export function createSync(getSettings) {
     },
     lastSyncedAt: getSyncedAt,
     get busy() {
-      return running
+      return running !== null
     },
   }
 }
