@@ -2,6 +2,9 @@
 
 이 폴더의 `남파랑길_1코스.gpx` ~ `남파랑길_90코스.gpx` 는 이 리포의 저작물이 아니다.
 
+이 폴더는 코리아둘레길 4개 길 중 **남파랑길** 원본만 담는다. 다른 길의 원본은
+`data/durunubi/gpx/<길>/` 에 같은 조건으로 둔다(`data/SOURCE.md` 0번).
+
 | 항목 | 내용 |
 |---|---|
 | 출처 | 두루누비 (한국관광공사) — https://www.durunubi.kr/namparang-course-list.do |

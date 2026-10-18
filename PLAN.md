@@ -1,13 +1,19 @@
-# 남파랑길 가이드 웹 서비스 — 구축 계획
+# KDT — 코리아둘레길 가이드 웹 서비스 — 구축 계획
 
-> 부산 오륙도 ~ 해남 땅끝탑, 90개 코스의 GPX 기반 개인용 가이드 웹앱.
+> 코리아둘레길 4개 길(남파랑길 · 해파랑길 · 서해랑길 · DMZ 평화의 길)의 GPX 기반 개인용 가이드 웹앱.
 > **서버 0개** — GitHub Pages(호스팅) + GitHub 리포(사진·메모 저장).
 
+**범위와 순서.** 첫 길로 **남파랑길**(부산 오륙도 ~ 해남 땅끝탑, 90개 코스)을 끝까지 만들어
+수집·빌드·화면·기록 구조를 검증했다. 이 문서의 0~9절은 그 과정의 기록이라 수치와 예시가 남파랑길 기준이다.
+나머지 3개 길은 같은 구조에 하나씩 붙인다 — 해파랑길 → 서해랑길 → DMZ 평화의 길.
+다중 길 구조·길별 작업·진행 현황은 **[TRAILS.md](TRAILS.md)** 가 기준 문서다.
+
 **확정 사항**
-- GPX 출처: **두루누비(한국관광공사) 공식 GPX 90개** — 공공데이터포털 API 가 안내하는 주소로 받음 (0.1)
+- 대상: **코리아둘레길 4개 길.** 한 지도에 다 그리지 않고 길을 골라 그 길만 자세히 보여 준다 (TRAILS.md)
+- GPX 출처: **두루누비(한국관광공사) 공식 GPX** — 공공데이터포털 API 가 안내하는 주소로 받음. 남파랑길 90개 완료 (0.1)
 - 코스 정보: **공공데이터포털 두루누비 API** + 빠진 코스는 두루누비 사이트 목록으로 보충 (0.3)
 - 갱신: **매주 자동 점검** — 바뀐 코스만 다시 받아 빌드·배포 (0.5)
-- 참고 자료: [gpsroute.site](https://gpsroute.site/courses/nampparang) — 코스별 누적상승 90개. **검증 결과 과대계상으로 확인돼 기준에서 배제**(3.1.1)
+- 참고 자료: [gpsroute.site](https://gpsroute.site/courses/nampparang) — 남파랑길 코스별 누적상승 90개. **검증 결과 과대계상으로 확인돼 기준에서 배제**(3.1.1)
 - 사진/메모 저장: **GitHub Contents API** (Supabase 폐기)
 - 리포: Public + GitHub Pages
 
@@ -15,7 +21,7 @@
 
 ## 0. 데이터 조사 결과
 
-### 0.1 두루누비 공식 GPX — 노선 좌표 (2026-10-18)
+### 0.1 두루누비 공식 GPX — 남파랑길 노선 좌표 (2026-10-18)
 
 처음(2026-10-18 오전)에는 두루누비 `robots.txt` 가 `/download` 를 막아 두어 리포 관리자가 브라우저로 직접 받았다.
 같은 날 공공데이터포털 두루누비 API 가 코스마다 GPX 주소(`/editImgUp.do?filePath=…`, 차단되지 않은 경로)를
@@ -35,7 +41,8 @@
 | **고도 `<ele>`** | 있으나 37개 코스에 누락점, 49코스는 대부분 0, 5·51코스는 -7m 까지 | ⚠️ **쓰지 않는다. DEM 조회** |
 | `<trk><name>` | 61개가 `GPX`, 7개가 `Path`, 나머지는 형식 제각각 | ⚠️ 지점명은 공식 안내문(0.3)에서 |
 
-공식 자료에는 임시·우회 노선이 없다. 이 앱은 **본 코스 90개만** 다룬다.
+남파랑길 공식 자료에는 임시·우회 노선이 없어 **본 코스 90개만** 다룬다.
+서해랑길(지선 6개)과 DMZ 평화의 길(우회로 13개, 지선 1개)은 지선·우회로 모델을 따로 만든다(TRAILS.md 4.2·4.3).
 
 **라이선스**: 공공누리 제4유형(출처표시 + 상업적이용금지 + **변경금지**). 원본 파일은 한 바이트도
 고치지 않고, 출처는 `data/gpx_durunubi/README.md`·`data/SOURCE.md`·README·지도 하단에 표기한다.
@@ -162,6 +169,7 @@
 ## 3. 데이터 파이프라인
 
 GPX는 **빌드 타임에 1회 전처리**해 JSON으로 굽는다. 브라우저는 GPX를 절대 파싱하지 않는다.
+아래 경로는 지금(남파랑길 하나) 기준이다. 길이 늘면 출력이 `public/data/<길>/` 로 나뉜다(TRAILS.md 3.3).
 
 ```
 npm run sync:durunubi   (매주 자동) 공공 API + 사이트 목록 → 바뀐 GPX 만 받기
@@ -262,6 +270,9 @@ id,name,region,start,end,startAddr,startAccess,endAddr,endAccess,difficulty,alia
 ---
 
 ## 4. 화면 구성
+
+남파랑길 하나일 때의 화면이다. 다중 길 구조에서는 헤더의 길 이름이 길 선택 메뉴가 되고,
+선택한 길의 코스·고도·기록만 그린다(TRAILS.md 3.4·3.5).
 
 ```
 +------------------------------------------------------+
@@ -409,19 +420,21 @@ Public 리포의 클라이언트 사이드 앱에는 **비밀을 숨길 수 없�
 ## 6. 리포지토리 구조
 
 ```
-namparang/                          (Public, GitHub Pages)
+KDT/                                (Public, GitHub Pages)
 ├─ index.html                       # CSP 메타 태그 포함
 ├─ package.json / vite.config.js
 ├─ README.md                        # 스크린샷, 실행법, 데이터 출처·저작자 표기
 ├─ PLAN.md
+├─ TRAILS.md                        # 코리아둘레길 4개 길 확장 계획·진행 현황
 ├─ .github/workflows/deploy.yml     # push -> build -> Pages (sync 가 workflow_call 로도 부른다)
 ├─ .github/workflows/sync-durunubi.yml # 매주 코스 데이터 점검 -> 변경 시 빌드·커밋·배포
 ├─ data/
-│  ├─ gpx_durunubi/남파랑길_N코스.gpx  # 두루누비 공식 GPX 90개 (원본 그대로) + README.md(출처·이용조건)
-│  ├─ durunubi/namparang.json       # 코스 기록 + GPX SHA1 + 연결성 점검 (sync:durunubi 가 갱신)
-│  ├─ reference/gpsroute-ascent.json# 외부 참고 누적상승 90개
-│  ├─ courses.meta.csv              # 공식 자료 오타 보정·별칭
-│  ├─ cache/ele/nam-NN.json         # DEM 고도 캐시
+│  ├─ gpx_durunubi/남파랑길_N코스.gpx  # 남파랑길 공식 GPX 90개 (원본 그대로) + README.md(출처·이용조건)
+│  ├─ durunubi/<길>.json            # 길별 코스 기록 + GPX SHA1 + 연결성 점검 (sync:durunubi 가 갱신)
+│  ├─ durunubi/gpx/<길>/            # 남파랑길 외 길의 공식 GPX (예정)
+│  ├─ reference/gpsroute-ascent.json# 외부 참고 누적상승 (남파랑길 90개)
+│  ├─ courses.meta.csv              # 공식 자료 오타 보정·별칭 (길별 파일로 나눌 예정)
+│  ├─ cache/ele/nam-NN.json         # DEM 고도 캐시 (길별 접두어: nam · hae · seo · dmz)
 │  ├─ notes/{noteId}.json           # 메모 (앱이 커밋)
 │  └─ SOURCE.md                     # 출처·수집일·이용조건·원저작자
 ├─ scripts/
@@ -439,9 +452,12 @@ namparang/                          (Public, GitHub Pages)
    ├─ backup.js                     # ZIP export/import
    └─ style.css
 
-namparang-photos/                   (Public 또는 Private, 사진 전용)
-└─ {yyyy}/{noteId}.jpg, {noteId}_t.jpg
+trail-photos/                       (Public, 사진 전용 — 4개 길 공용)
+└─ {폴더}/{yyyy}/{noteId}.jpg, {noteId}_t.jpg
 ```
+
+> 위 트리의 `namparang`·`namparang-photos` 는 처음 계획의 이름이었다. 리포는 2026-10-18 `KDT` 로,
+> 사진 리포 기본값은 2026-08-27 `trail-photos` 로 바뀌었다. 공개 사진 리포여야 하는 이유는 9절 참조.
 
 ---
 
@@ -489,12 +505,12 @@ namparang-photos/                   (Public 또는 Private, 사진 전용)
 **리포**: https://github.com/yeonkyupark/KDT (2026-10-18 `KDT-Namparang` 에서 이름 변경)
 **배포**: https://yeonkyupark.github.io/KDT/ (push → Actions → Pages 자동)
 
-단계 0 완료. 다음은:
+**남파랑길 1차 구축**: 전체 단계 완료 (0, 2a, 2b, 3, 4, 5, 6a, 6b, 7) + 자동 동기화(0.5).
 
-전체 단계 완료 (0, 2a, 2b, 3, 4, 5, 6a, 6b, 7).
+**다음 — 코리아둘레길 확장.** 해파랑길과 함께 다중 길 구조를 만든다. 순서·체크리스트는 [TRAILS.md](TRAILS.md).
 
-**남은 것 하나** — GitHub 동기화의 **인증 경로 실측**. 사진 리포
-(`KDT-Namparang-photos`)와 fine-grained PAT 가 있어야 실제 push/pull 을 확인할 수 있다.
+**남파랑길에서 남은 것 하나** — GitHub 동기화의 **인증 경로 실측**. 사진 리포
+(기본값 `trail-photos`)와 fine-grained PAT 가 있어야 실제 push/pull 을 확인할 수 있다.
 인증이 필요 없는 경로는 전부 검증했다(6b 메모 참조).
 
 **의도적으로 넣지 않은 것**

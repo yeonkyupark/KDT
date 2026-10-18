@@ -1,11 +1,26 @@
 # 데이터 출처 및 이용 조건
 
-이 프로젝트는 **개인의 비상업적 트레킹 기록 용도**로 만들어졌다.
+이 프로젝트는 **코리아둘레길 개인 트레킹 기록 용도**(비상업)로 만들어졌다.
 아래 자료는 모두 제3자가 만든 것이며, 이 리포의 저작물이 아니다.
+
+## 0. 길별 범위
+
+코리아둘레길 4개 길은 모두 같은 출처(두루누비, 한국관광공사)에서 같은 방법으로 받고,
+같은 이용 조건(공공누리 제4유형)을 지킨다. 길마다 다른 것은 출처 페이지와 저장 위치뿐이다.
+
+| 길 | 두루누비 코스 목록 | GPX 원본 | 코스 기록 | 상태 |
+|---|---|---|---|---|
+| 남파랑길 | https://www.durunubi.kr/namparang-course-list.do | `data/gpx_durunubi/` | `data/durunubi/namparang.json` | 수집 중 (90개) |
+| 해파랑길 | https://www.durunubi.kr/haeparang-course-list.do | `data/durunubi/gpx/haeparang/` | `data/durunubi/haeparang.json` | 예정 (50개) |
+| 서해랑길 | https://www.durunubi.kr/seohaerang-course-list.do | `data/durunubi/gpx/seohaerang/` | `data/durunubi/seohaerang.json` | 예정 (109개) |
+| DMZ 평화의 길 | https://www.durunubi.kr/dmz-course-list.do | `data/durunubi/gpx/dmz/` | `data/durunubi/dmz.json` | 예정 (48개) |
+
+길 정의(공공 API `routeIdx`, 사이트 `serviceFlag`)는 `scripts/lib/trails.mjs`. 아래 1·3번의 검증 수치와
+예시는 지금 수집 중인 남파랑길 기준이다. 다른 길을 붙이면 그 길의 검증 결과를 같은 형식으로 더한다.
 
 ---
 
-## 1. 남파랑길 GPX 노선 (`data/gpx_durunubi/`)
+## 1. GPX 노선 — 남파랑길 (`data/gpx_durunubi/`)
 
 | 항목 | 내용 |
 |---|---|
@@ -73,7 +88,7 @@ git 이력에는 남아 있다.
 
 ---
 
-## 2. 코스별 누적상승 참고자료 (`data/reference/gpsroute-ascent.json`)
+## 2. 코스별 누적상승 참고자료 — 남파랑길만 (`data/reference/gpsroute-ascent.json`)
 
 | 항목 | 내용 |
 |---|---|
@@ -93,12 +108,12 @@ git 이력에는 남아 있다.
 
 ---
 
-## 3. 코스 메타데이터 (`data/durunubi/namparang.json`, 보정 `data/courses.meta.csv`)
+## 3. 코스 메타데이터 (`data/durunubi/<길>.json`, 보정 `data/courses.meta.csv`)
 
 | 항목 | 내용 |
 |---|---|
 | **출처 ①** | 공공데이터포털 **한국관광공사 두루누비 정보 서비스** — `https://apis.data.go.kr/B551011/Durunubi` (`routeList`, `courseList`) |
-| **출처 ②** | 두루누비 사이트 코스 목록 `/api/course/list?type=DNWW&serviceFlag=NA` — ①에 없는 코스 보충 |
+| **출처 ②** | 두루누비 사이트 코스 목록 `/api/course/list?type=DNWW&serviceFlag=<길>` (남파랑 `NA` · 해파랑 `HE` · 서해랑 `SEO` · DMZ `DMZ`) — ①에 없는 코스 보충 |
 | **우선순위** | ①에 있는 코스는 ① 값을 쓴다. 거리만 ①이 정수 반올림이라 같은 값이면 ②의 소수 값을 쓴다 |
 | **갱신** | 매주 자동 (①의 데이터 갱신 주기는 일 1회) |
 | **내용** | 코스명 · 거리 · 소요시간 · 난이도 · 행정구역 · 여행자정보(시점·종점·교통편) · 설명 · GPX 경로 |
@@ -106,7 +121,7 @@ git 이력에는 남아 있다.
 | **이용 조건** | ① 공공데이터포털 표기: **이용허락범위 제한 없음** (2026-10-18 확인) · ② 두루누비 코스 페이지 표기: **공공누리 제4유형** |
 
 **이 리포는 더 엄격한 공공누리 제4유형(출처표시 + 상업적이용금지 + 변경금지)을 기준으로 지킨다.**
-같은 자료(같은 코스 ID·GPX 경로·안내문)를 두루누비 사이트는 제4유형으로 표기하고, ②로 보충한 코스(남파랑길 46개)는
+같은 자료(같은 코스 ID·GPX 경로·안내문)를 두루누비 사이트는 제4유형으로 표기하고, ②로 보충한 코스(남파랑길 46개 등)는
 ①을 거치지 않는다. 제4유형을 지키면 "제한 없음" 조건도 함께 충족되므로, 출처별로 다르게 다루지 않는다.
 
 **① 공공 API 에는 코스가 절반가량만 있다** (2026-10-18: 남파랑길 44/90, 해파랑길 43/50, 서해랑길 51/109,
@@ -121,7 +136,7 @@ DMZ 평화의 길 34/48). 빠진 코스에 규칙이 없어 ②로 보충한다.
 > 필드로 재구성하고 `public/data/courses.json` 에 담아 공개 리포에 올린다.
 > 이것이 "변경"에 해당하는지는 해석의 문제이고, 나는 법률 판단을 할 위치가 아니다.
 > 사실만 적어둔다: **출처는 표기했고, 상업적 이용은 하지 않으며, 받은 값을
-> `data/durunubi/namparang.json` 에 보관한다.** 한국관광공사가 요청하면 즉시 삭제한다.
+> 길별로 `data/durunubi/<길>.json` 에 보관한다.** 한국관광공사가 요청하면 즉시 삭제한다.
 
 ### robots.txt 준수
 
@@ -130,7 +145,7 @@ DMZ 평화의 길 34/48). 빠진 코스에 규칙이 없어 ②로 보충한다.
   `travelRoad.do`, `travelRoadV2.do`, `saveBeforeLogin.do` 다.
   **우리가 쓰는 `/api/course/list`·`/api/course/count`, 목록 페이지, GPX 경로 `/editImgUp.do` 는 차단 대상이 아니다.**
 - **`/download` 는 쓰지 않는다.** GPX 는 공공 API 가 안내하는 `/editImgUp.do` 경로로 받는다.
-- 주간 점검 요청량: 공공 API 1~2회, 사이트 목록 2회, GPX 크기 확인(HEAD) 코스당 1회, 바뀐 GPX 다운로드.
+- 주간 점검 요청량(켜진 길마다): 공공 API 1~2회, 사이트 목록 2회, GPX 크기 확인(HEAD) 코스당 1회, 바뀐 GPX 다운로드.
   요청 사이에 간격을 둔다.
 
 ### 이용 방침
@@ -160,7 +175,8 @@ DMZ 평화의 길 34/48). 빠진 코스에 규칙이 없어 ②로 보충한다.
 | **정확도** | 수직 오차 **±16m 수준** |
 | **표기** | 앱 화면에 "고도는 DEM 추정값" 각주를 표시한다 |
 
-**모든 고도 지표는 DEM 으로 산출한 추정값**이다. 공식 GPX 의 `<ele>` 는 코스마다 누락·0값이
+**모든 길의 고도 지표는 DEM 으로 산출한 추정값**이다. opentopodata 공개 API 는 하루 1,000회까지라
+길을 처음 붙일 때 조회량을 미리 계산한다(TRAILS.md 2절). 공식 GPX 의 `<ele>` 는 코스마다 누락·0값이
 있어 쓰지 않는다(1번 검증 결과). 캐시 파일마다 원본 GPX 의 SHA1(`sourceSha1`)을 남겨,
 노선이 바뀌면 해당 코스만 다시 조회한다.
 
