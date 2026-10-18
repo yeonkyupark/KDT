@@ -170,7 +170,11 @@ export function createSidebar(
     const num = el('span', 'ci-num', c.kind && c.kind !== 'main' ? c.id : String(c.seq))
 
     const mid = el('span', 'ci-mid')
-    mid.append(el('span', 'ci-name', c.name))
+    const name = el('span', 'ci-name', c.name)
+    // 예약노선(DMZ 평화의 길 8·16·26·30코스)과 두루누비 공지가 있는 코스는 목록에서도 보이게 한다
+    if (/예약/.test(c.label ?? '')) name.append(el('span', 'ci-tag', '예약'))
+    if (c.warning) name.append(el('span', 'ci-tag is-warn', '공지'))
+    mid.append(name)
     mid.append(
       el('span', 'ci-route', c.start && c.end ? `${c.start} → ${c.end}` : '지점명 정보 없음'),
     )

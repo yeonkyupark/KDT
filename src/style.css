@@ -8,6 +8,8 @@
   --hover: #f2f5f7;
   --accent: #0d6b5f;
   --accent-soft: #e6f2f0;
+  --warn: #b4530a;
+  --warn-soft: #fdf1e4;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   --radius: 10px;
   --panel-w: 19rem;
@@ -24,6 +26,8 @@
     --hover: #232a30;
     --accent: #4dd0b8;
     --accent-soft: #16302c;
+    --warn: #f0a35e;
+    --warn-soft: #3a2a1a;
     --shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   }
 }
@@ -371,6 +375,9 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: .7rem .8rem .6rem;
+  /* 공지·출입 안내를 펼치면 길어진다. 지도 영역을 넘으면 코스 이름이 위로 잘리므로 카드 안에서 스크롤한다 */
+  max-height: calc(100% - 7rem); /* 위쪽은 확대·축소 버튼(약 5rem) 아래에서 멈춘다 */
+  overflow-y: auto;
 }
 
 .ic-head { display: flex; align-items: center; gap: .45rem; }
@@ -407,6 +414,31 @@ body {
 .ic-stamp { margin-top: .5rem; color: var(--fg-dim); font-size: .76rem; }
 .ic-link { margin-top: .5rem; font-size: .8rem; }
 .ic-sub { margin-top: .3rem; color: var(--fg-dim); font-size: .78rem; }
+.ic-caution {
+  margin-top: .5rem;
+  padding: .45rem .6rem;
+  border-radius: 8px;
+  background: var(--warn-soft);
+  color: var(--fg);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+.ic-caution b { color: var(--warn); font-size: .8rem; }
+.ic-caution ul { margin: .25rem 0 0; padding-left: 1.1rem; }
+.ic-warning { margin-top: .5rem; font-size: .78rem; }
+.ic-warning summary { cursor: pointer; color: var(--warn); font-weight: 600; }
+.ic-warning-body { margin-top: .3rem; white-space: pre-line; color: var(--fg-dim); max-height: 12rem; overflow: auto; }
+.ci-tag {
+  margin-left: .3rem;
+  padding: 0 .3rem;
+  border-radius: 4px;
+  font-size: .66rem;
+  font-weight: 600;
+  vertical-align: 1px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.ci-tag.is-warn { background: var(--warn-soft); color: var(--warn); }
 .sub-head { margin-top: .6rem; text-transform: none; }
 .course-item.is-sub .ci-num { font-size: .72rem; }
 .ic-link a { color: var(--accent); font-weight: 600; }

@@ -8,6 +8,8 @@
  *   gpxDir      공식 GPX 원본을 받은 그대로 두는 폴더
  *   manifest    코스 기록 + GPX 지문(SHA1) — 동기화가 갱신하고 빌드가 읽는다
  *   metaCsv     공식 자료의 오타·빈칸만 고치는 보정 CSV (없어도 된다)
+ *   cautions    여행자정보에서 출입 통제·신분증·예약 안내 줄을 뽑아 코스 카드 위에 보인다 (DMZ 평화의 길만.
+ *               다른 길은 같은 낱말이 정류장 이름·체험 예약에 쓰여 엉뚱한 줄이 잡힌다)
  *   keyPrefix   고도 캐시 등 파생 파일 이름의 접두어 (nam-07, hae-07 …). 남파랑길 값은 바꾸지 않는다
  *
  * `enabled` 가 false 인 길은 동기화·빌드·화면에서 빠진다.
@@ -63,6 +65,7 @@ export const TRAILS = [
     manifest: 'data/durunubi/dmz.json',
     metaCsv: 'data/courses.meta.dmz.csv',
     keyPrefix: 'dmz',
+    cautions: true,
     enabled: false,
   },
 ]

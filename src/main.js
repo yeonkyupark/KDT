@@ -146,6 +146,29 @@ function renderInfoCard(host, course) {
     ),
   )
 
+  // 출입 통제·신분증·예약 안내 (DMZ 평화의 길 여행자정보). 걷기 전에 꼭 알아야 하므로 위에 둔다
+  if (course.cautions?.length) {
+    const box = el('div', 'ic-caution')
+    box.append(el('b', null, '⚠ 출입 안내'))
+    const ul = el('ul')
+    for (const line of course.cautions) ul.append(el('li', null, line))
+    box.append(ul)
+    card.append(box)
+  }
+
+  // 두루누비 코스 공지(통행 제한·우회 안내). 길 수 있어 첫 줄만 보이고 펼쳐 읽는다.
+  // 공지는 매주 동기화로 바뀐다 — 공식 문구를 그대로 옮긴다(textContent)
+  if (course.warning) {
+    const det = document.createElement('details')
+    det.className = 'ic-warning'
+    const first = course.warning.split('\n').find((l) => l.trim()) ?? '공지'
+    // 공지 제목은 '1. <죽도공원 … 안내>' 처럼 번호·괄호가 붙어 온다. 요약 줄에서만 뗀다(본문은 그대로)
+    const title = first.replace(/^[\s\d.]+/, '').replace(/[<>[\]]/g, '').trim()
+    det.append(el('summary', null, `두루누비 공지 · ${title.slice(0, 60)}`))
+    det.append(el('div', 'ic-warning-body', course.warning))
+    card.append(det)
+  }
+
   const stats = el('div', 'ic-stats')
   for (const [k, v] of [
     ['거리', `${course.distanceKm} km`],

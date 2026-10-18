@@ -1,0 +1,3508 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creator="GPS Visualizer https://www.gpsvisualizer.com/" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+    <wpt lat="38.277808" lon="128.13057">
+        <ele>434.0</ele>
+        <name>GPX-160</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130570 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.277808 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1423.968 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 42.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.276384" lon="128.131502">
+        <ele>429.6</ele>
+        <name>GPX-154</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131502 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.276384 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1409.505 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 326.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.258741" lon="128.123065">
+        <ele>494.0</ele>
+        <name>GPX-81</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.123065 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.258741 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1624.132 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 54.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289064" lon="128.140129">
+        <ele>425.6</ele>
+        <name>GPX-212</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140129 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289064 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1396.427 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 11.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253005" lon="128.117131">
+        <ele>559.3</ele>
+        <name>GPX-24</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.117131 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253005 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1835.023 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 155.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251853" lon="128.119379">
+        <ele>563.9</ele>
+        <name>GPX-37</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119379 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251853 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1850.036 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 122.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.259981" lon="128.125349">
+        <ele>477.1</ele>
+        <name>GPX-87</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.125349 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.259981 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1565.289 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 57.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.267273" lon="128.130453">
+        <ele>443.2</ele>
+        <name>GPX-117</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130453 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.267273 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1454.029 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25249" lon="128.120647">
+        <ele>570.5</ele>
+        <name>GPX-44</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120647 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252490 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1871.624 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.283148" lon="128.136833">
+        <ele>435.9</ele>
+        <name>GPX-184</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.136833 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.283148 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1430.003 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 41.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288674" lon="128.139963">
+        <ele>425.0</ele>
+        <name>GPX-209</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139963 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288674 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1394.357 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 29.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.264546" lon="128.129558">
+        <ele>456.4</ele>
+        <name>GPX-108</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129558 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.264546 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1497.438 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27975" lon="128.132476">
+        <ele>433.2</ele>
+        <name>GPX-170</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132476 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279750 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.283 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.283447" lon="128.137002">
+        <ele>440.0</ele>
+        <name>GPX-185</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137002 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.283447 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1443.438 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 23.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289644" lon="128.140048">
+        <ele>426.3</ele>
+        <name>GPX-216</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140048 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289644 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1398.560 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 357.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253864" lon="128.116577">
+        <ele>562.4</ele>
+        <name>GPX-21</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116577 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253864 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1844.993 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 140.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27311" lon="128.13047">
+        <ele>435.3</ele>
+        <name>GPX-139</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130470 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.273110 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1428.018 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 23.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.272463" lon="128.129948">
+        <ele>439.8</ele>
+        <name>GPX-136</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129948 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.272463 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1442.867 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 25.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.261023" lon="128.126541">
+        <ele>469.2</ele>
+        <name>GPX-92</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.126541 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.261023 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1539.314 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 44.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.282748" lon="128.136338">
+        <ele>432.3</ele>
+        <name>GPX-182</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.136338 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.282748 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1420.622 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 47.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.287527" lon="128.139047">
+        <ele>425.4</ele>
+        <name>GPX-201</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139047 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287527 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1395.630 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 20.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290017" lon="128.144975">
+        <ele>426.9</ele>
+        <name>GPX-244</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.144975 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290017 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1400.459 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 129.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255922" lon="128.122265">
+        <ele>528.2</ele>
+        <name>GPX-62</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122265 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255922 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1733.002 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 270.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.265048" lon="128.129735">
+        <ele>455.0</ele>
+        <name>GPX-110</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129735 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.265048 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1492.782 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.271002" lon="128.130639">
+        <ele>435.5</ele>
+        <name>GPX-129</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130639 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.271002 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1429.308 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 279.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253999" lon="128.116435">
+        <ele>562.7</ele>
+        <name>GPX-20</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116435 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253999 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1846.132 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 137.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256804" lon="128.113633">
+        <ele>578.2</ele>
+        <name>GPX-1</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113633 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256804 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1896.988 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 232.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.267636" lon="128.13058">
+        <ele>441.9</ele>
+        <name>GPX-118</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130580 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.267636 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1451.178 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.266113" lon="128.130085">
+        <ele>448.3</ele>
+        <name>GPX-113</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130085 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.266113 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1472.482 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.258497" lon="128.122624">
+        <ele>498.1</ele>
+        <name>GPX-80</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122624 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.258497 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1624.132 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 54.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256553" lon="128.120237">
+        <ele>514.4</ele>
+        <name>GPX-71</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120237 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256553 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1687.520 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 340.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.261635" lon="128.127138">
+        <ele>466.5</ele>
+        <name>GPX-95</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127138 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.261635 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1530.397 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262555" lon="128.127745">
+        <ele>461.5</ele>
+        <name>GPX-100</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127745 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262555 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1514.072 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 21.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291235478" lon="128.142354497">
+        <ele>424.7</ele>
+        <name>GPX-235</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290967 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.098 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 99.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251904" lon="128.119276">
+        <ele>562.8</ele>
+        <name>GPX-36</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119276 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251904 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1846.417 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 129.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.257066" lon="128.120469">
+        <ele>511.5</ele>
+        <name>GPX-74</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120469 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.257066 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1678.104 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 55.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256064" lon="128.120653">
+        <ele>516.1</ele>
+        <name>GPX-67</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120653 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256064 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1693.422 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 294.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25948" lon="128.124393">
+        <ele>484.2</ele>
+        <name>GPX-84</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.124393 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.259480 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1586.435 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 55.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290755" lon="128.143111">
+        <ele>423.0</ele>
+        <name>GPX-239</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.143111 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290755 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1387.904 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 111.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.287242" lon="128.138853">
+        <ele>426.0</ele>
+        <name>GPX-198</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138853 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287242 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1397.608 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 20.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.270865" lon="128.131669">
+        <ele>434.9</ele>
+        <name>GPX-127</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131669 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.270865 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1426.772 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252774" lon="128.117376">
+        <ele>559.9</ele>
+        <name>GPX-26</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.117376 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252774 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1837.070 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 130.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27517" lon="128.13155">
+        <ele>433.2</ele>
+        <name>GPX-149</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131550 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.275170 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.234 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 9.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.274079" lon="128.130975">
+        <ele>434.8</ele>
+        <name>GPX-144</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130975 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.274079 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1426.601 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 48.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.269105" lon="128.131078">
+        <ele>440.5</ele>
+        <name>GPX-122</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131078 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.269105 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1445.089 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290846" lon="128.142821">
+        <ele>422.2</ele>
+        <name>GPX-238</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142821 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290846 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.305 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 114.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.270147" lon="128.131415">
+        <ele>436.0</ele>
+        <name>GPX-125</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131415 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.270147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1431.831 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291101663" lon="128.141442173">
+        <ele>422.9</ele>
+        <name>GPX-230</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141408 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290979 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1384.665 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 67.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288249" lon="128.13962">
+        <ele>424.7</ele>
+        <name>GPX-206</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139620 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288249 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1393.366 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 39.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.267003" lon="128.130371">
+        <ele>445.2</ele>
+        <name>GPX-116</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130371 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.267003 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1459.875 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.274513" lon="128.131373">
+        <ele>432.1</ele>
+        <name>GPX-146</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131373 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.274513 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1417.707 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 26.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253744" lon="128.121113">
+        <ele>559.1</ele>
+        <name>GPX-50</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121113 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253744 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1834.160 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 19.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252191" lon="128.118831">
+        <ele>559.0</ele>
+        <name>GPX-34</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118831 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252191 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1834.121 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 127.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.268368" lon="128.130831">
+        <ele>441.1</ele>
+        <name>GPX-120</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130831 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.268368 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1446.708 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.287976" lon="128.139369">
+        <ele>424.3</ele>
+        <name>GPX-204</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139369 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287976 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1391.965 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 34.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.280568" lon="128.133676">
+        <ele>435.5</ele>
+        <name>GPX-174</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.133676 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.280568 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1426.470 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 39.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.280866" lon="128.133993">
+        <ele>432.7</ele>
+        <name>GPX-175</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.133993 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.280866 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1419.623 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 39.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.286052" lon="128.138243">
+        <ele>437.2</ele>
+        <name>GPX-194</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138243 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.286052 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1433.260 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 22.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.265445" lon="128.129864">
+        <ele>453.5</ele>
+        <name>GPX-111</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129864 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.265445 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1484.518 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.266384" lon="128.130179">
+        <ele>447.7</ele>
+        <name>GPX-114</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130179 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.266384 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1468.711 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254426" lon="128.115711">
+        <ele>568.1</ele>
+        <name>GPX-17</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115711 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254426 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1863.778 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 117.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.276659" lon="128.131233">
+        <ele>429.6</ele>
+        <name>GPX-155</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131233 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.276659 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1409.308 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 322.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255844" lon="128.12203">
+        <ele>527.7</ele>
+        <name>GPX-63</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122030 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255844 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1731.332 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 247.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255607" lon="128.122743">
+        <ele>535.7</ele>
+        <name>GPX-58</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122743 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255607 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1757.582 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 28.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.28785" lon="128.139259">
+        <ele>424.7</ele>
+        <name>GPX-203</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139259 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287850 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1393.268 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 30.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291326078" lon="128.141788176">
+        <ele>423.8</ele>
+        <name>GPX-234</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141986 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290990 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1383.983 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 96.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.279459" lon="128.132186">
+        <ele>431.0</ele>
+        <name>GPX-168</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132186 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279459 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1414.190 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 19.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27114" lon="128.129609">
+        <ele>436.4</ele>
+        <name>GPX-131</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129609 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.271140 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1431.844 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 279.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.263145" lon="128.128549">
+        <ele>463.1</ele>
+        <name>GPX-103</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.128549 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.263145 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1515.451 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 47.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255783" lon="128.121404">
+        <ele>526.0</ele>
+        <name>GPX-65</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121404 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255783 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1725.568 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 276.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25276" lon="128.117533">
+        <ele>559.0</ele>
+        <name>GPX-27</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.117533 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252760 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1833.848 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 96.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25283" lon="128.118162">
+        <ele>555.4</ele>
+        <name>GPX-30</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118162 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252830 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1822.051 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 114.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.278155" lon="128.130985">
+        <ele>433.5</ele>
+        <name>GPX-162</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130985 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.278155 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1422.590 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 44.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.263703" lon="128.129278">
+        <ele>460.0</ele>
+        <name>GPX-105</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129278 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.263703 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1509.186 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252755" lon="128.120936">
+        <ele>568.6</ele>
+        <name>GPX-45</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120936 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252755 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1865.515 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 40.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255424" lon="128.114853">
+        <ele>565.5</ele>
+        <name>GPX-10</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.114853 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255424 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.243 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 131.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.266733" lon="128.130289">
+        <ele>446.8</ele>
+        <name>GPX-115</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130289 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.266733 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1465.722 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289352" lon="128.140101">
+        <ele>426.7</ele>
+        <name>GPX-214</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140101 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289352 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1399.826 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 351.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.277979" lon="128.130767">
+        <ele>434.2</ele>
+        <name>GPX-161</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130767 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.277979 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1424.577 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 42.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.258144" lon="128.121887">
+        <ele>503.0</ele>
+        <name>GPX-78</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121887 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.258144 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1650.249 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.282272" lon="128.135698">
+        <ele>434.0</ele>
+        <name>GPX-180</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.135698 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.282272 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1422.963 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25585" lon="128.122631">
+        <ele>533.1</ele>
+        <name>GPX-60</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122631 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255850 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1749.012 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 329.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.275416" lon="128.131584">
+        <ele>433.4</ele>
+        <name>GPX-150</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131584 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.275416 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1420.292 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 6.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256064" lon="128.114172">
+        <ele>568.1</ele>
+        <name>GPX-6</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.114172 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256064 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1863.881 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 129.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.260315" lon="128.125942">
+        <ele>474.6</ele>
+        <name>GPX-89</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.125942 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.260315 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1556.942 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 57.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.275662" lon="128.131618">
+        <ele>432.6</ele>
+        <name>GPX-151</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131618 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.275662 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1419.350 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 6.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29053506" lon="128.14039889">
+        <ele>422.6</ele>
+        <name>GPX-224</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140473 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290511 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1386.010 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 45.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262245" lon="128.127618">
+        <ele>464.0</ele>
+        <name>GPX-97</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127618 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262245 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1522.431 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29123114" lon="128.141743908">
+        <ele>423.4</ele>
+        <name>GPX-233</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141865 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.291001 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1384.255 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 99.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253661" lon="128.116736">
+        <ele>561.5</ele>
+        <name>GPX-22</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116736 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253661 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1842.336 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 148.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.259225" lon="128.123927">
+        <ele>486.7</ele>
+        <name>GPX-83</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.123927 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.259225 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1596.624 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 54.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.270933" lon="128.131154">
+        <ele>434.3</ele>
+        <name>GPX-128</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131154 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.270933 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1429.308 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 279.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.272341" lon="128.129874">
+        <ele>438.7</ele>
+        <name>GPX-135</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129874 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.272341 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1439.409 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 10.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.268737" lon="128.130955">
+        <ele>441.8</ele>
+        <name>GPX-121</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130955 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.268737 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1446.708 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252421" lon="128.118448">
+        <ele>557.6</ele>
+        <name>GPX-33</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118448 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252421 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1829.334 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 139.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251804" lon="128.1195">
+        <ele>565.1</ele>
+        <name>GPX-38</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119500 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251804 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1854.131 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 117.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255771" lon="128.114441">
+        <ele>565.5</ele>
+        <name>GPX-8</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.114441 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255771 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.312 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 146.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254548" lon="128.115412">
+        <ele>569.2</ele>
+        <name>GPX-16</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115412 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254548 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1867.595 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 156.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256311" lon="128.120348">
+        <ele>514.3</ele>
+        <name>GPX-70</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120348 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256311 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1687.359 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 322.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25437" lon="128.12182">
+        <ele>553.6</ele>
+        <name>GPX-54</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121820 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254370 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1816.138 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262671" lon="128.127887">
+        <ele>461.9</ele>
+        <name>GPX-101</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127887 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262671 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1515.568 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254054" lon="128.121516">
+        <ele>557.8</ele>
+        <name>GPX-52</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121516 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254054 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1829.895 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 49.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289518" lon="128.140056">
+        <ele>426.7</ele>
+        <name>GPX-215</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140056 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289518 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1400.049 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 347.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.261497" lon="128.126971">
+        <ele>466.7</ele>
+        <name>GPX-94</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.126971 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.261497 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1531.066 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 41.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27394" lon="128.130777">
+        <ele>435.6</ele>
+        <name>GPX-143</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130777 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.273940 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1429.111 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 36.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.285125" lon="128.137588">
+        <ele>438.7</ele>
+        <name>GPX-191</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137588 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.285125 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1439.344 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 26.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256874" lon="128.113747">
+        <ele>577.6</ele>
+        <name>GPX-0</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113747 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256874 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1895.157 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 44.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288916" lon="128.14009">
+        <ele>425.1</ele>
+        <name>GPX-211</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140090 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288916 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1394.675 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253352" lon="128.121014">
+        <ele>562.1</ele>
+        <name>GPX-48</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121014 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253352 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1844.081 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 355.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.259735" lon="128.124859">
+        <ele>480.4</ele>
+        <name>GPX-85</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.124859 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.259735 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1576.247 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 55.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.280269" lon="128.133359">
+        <ele>436.9</ele>
+        <name>GPX-173</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.133359 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.280269 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1433.317 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 53.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.271071" lon="128.130124">
+        <ele>437.0</ele>
+        <name>GPX-130</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130124 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.271071 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1429.308 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 279.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288404" lon="128.139751">
+        <ele>424.9</ele>
+        <name>GPX-207</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139751 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288404 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1394.101 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 33.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.259858" lon="128.125104">
+        <ele>478.6</ele>
+        <name>GPX-86</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.125104 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.259858 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1570.768 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 57.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.284902" lon="128.137444">
+        <ele>439.8</ele>
+        <name>GPX-190</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137444 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.284902 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1443.041 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252605" lon="128.118246">
+        <ele>557.0</ele>
+        <name>GPX-32</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118246 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252605 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1827.470 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 172.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.260578" lon="128.126128">
+        <ele>472.8</ele>
+        <name>GPX-90</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.126128 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.260578 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1549.813 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 29.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.257901" lon="128.121561">
+        <ele>507.4</ele>
+        <name>GPX-77</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121561 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.257901 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1662.129 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.28769" lon="128.139141">
+        <ele>425.0</ele>
+        <name>GPX-202</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139141 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287690 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1394.455 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 24.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256269" lon="128.113856">
+        <ele>572.5</ele>
+        <name>GPX-5</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113856 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256269 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1878.110 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 133.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288801" lon="128.14005">
+        <ele>425.0</ele>
+        <name>GPX-210</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140050 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288801 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1394.357 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 28.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251759" lon="128.119711">
+        <ele>566.3</ele>
+        <name>GPX-40</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119711 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251759 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1858.035 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 103.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.257362" lon="128.120852">
+        <ele>510.5</ele>
+        <name>GPX-75</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120852 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.257362 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1676.056 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 45.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.276249" lon="128.131614">
+        <ele>430.1</ele>
+        <name>GPX-153</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131614 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.276249 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1411.089 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 345.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.281697" lon="128.134936">
+        <ele>433.8</ele>
+        <name>GPX-178</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.134936 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.281697 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1423.020 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.284621" lon="128.137359">
+        <ele>441.0</ele>
+        <name>GPX-189</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137359 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.284621 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1443.594 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.279859" lon="128.132601">
+        <ele>435.0</ele>
+        <name>GPX-171</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132601 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279859 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1427.247 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 42.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289212" lon="128.140126">
+        <ele>426.2</ele>
+        <name>GPX-213</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140126 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289212 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1398.179 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 359.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.268" lon="128.130708">
+        <ele>441.5</ele>
+        <name>GPX-119</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130708 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.268000 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1448.327 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290498" lon="128.144042">
+        <ele>427.2</ele>
+        <name>GPX-241</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.144042 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290498 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1401.677 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 112.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289609" lon="128.145542">
+        <ele>425.6</ele>
+        <name>GPX-246</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.145542 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289609 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1396.394 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 129.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255739" lon="128.122714">
+        <ele>534.6</ele>
+        <name>GPX-59</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122714 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255739 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1753.967 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 350.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.286946" lon="128.13871">
+        <ele>428.0</ele>
+        <name>GPX-197</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138710 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.286946 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1404.487 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 20.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289739" lon="128.140059">
+        <ele>426.0</ele>
+        <name>GPX-217</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140059 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289739 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1397.595 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 5.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.257659" lon="128.121235">
+        <ele>510.2</ele>
+        <name>GPX-76</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121235 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.257659 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1674.009 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 45.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290266963" lon="128.140179683">
+        <ele>424.1</ele>
+        <name>GPX-222</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140304 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290347 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1389.944 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 19.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252846" lon="128.117269">
+        <ele>559.9</ele>
+        <name>GPX-25</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.117269 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252846 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1837.044 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 145.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.285841" lon="128.138133">
+        <ele>438.9</ele>
+        <name>GPX-193</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138133 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.285841 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1440.049 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 29.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254621" lon="128.115371">
+        <ele>568.7</ele>
+        <name>GPX-15</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115371 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254621 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1865.702 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 172.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.277637" lon="128.130373">
+        <ele>433.8</ele>
+        <name>GPX-159</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130373 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.277637 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1423.360 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 1.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27205" lon="128.129807">
+        <ele>435.4</ele>
+        <name>GPX-134</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129807 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.272050 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1430.554 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 10.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.265843" lon="128.129992">
+        <ele>450.0</ele>
+        <name>GPX-112</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129992 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.265843 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1476.253 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25327" lon="128.116979">
+        <ele>558.9</ele>
+        <name>GPX-23</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116979 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253270 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1833.589 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 153.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.281966" lon="128.135292">
+        <ele>434.1</ele>
+        <name>GPX-179</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.135292 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.281966 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1424.219 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.287333" lon="128.13893">
+        <ele>425.9</ele>
+        <name>GPX-199</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138930 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287333 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1397.441 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 33.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290375506" lon="128.140248447">
+        <ele>423.7</ele>
+        <name>GPX-223</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140375 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290433 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1388.091 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 32.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253079" lon="128.121039">
+        <ele>564.5</ele>
+        <name>GPX-47</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121039 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253079 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1852.208 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 355.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262327" lon="128.127667">
+        <ele>463.6</ele>
+        <name>GPX-98</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127667 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262327 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1520.961 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 25.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290746155" lon="128.140769026">
+        <ele>421.1</ele>
+        <name>GPX-226</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140792 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290693 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1381.480 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 50.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253555" lon="128.121028">
+        <ele>559.8</ele>
+        <name>GPX-49</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121028 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253555 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1836.522 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 3.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27293" lon="128.130371">
+        <ele>436.3</ele>
+        <name>GPX-138</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130371 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.272930 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1431.401 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 36.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.28434" lon="128.137273">
+        <ele>440.2</ele>
+        <name>GPX-188</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137273 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.284340 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1444.147 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29011" lon="128.140189">
+        <ele>424.8</ele>
+        <name>GPX-220</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140189 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290110 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1393.691 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 19.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29134856" lon="128.142266206">
+        <ele>425.0</ele>
+        <name>GPX-235</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290967 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.098 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 99.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251837" lon="128.119897">
+        <ele>566.2</ele>
+        <name>GPX-41</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119897 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251837 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1857.575 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 61.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.280022" lon="128.13294">
+        <ele>437.1</ele>
+        <name>GPX-172</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132940 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.280022 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1434.101 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 58.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255919" lon="128.122491">
+        <ele>530.7</ele>
+        <name>GPX-61</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122491 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255919 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1741.260 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 302.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.278818" lon="128.131739">
+        <ele>434.1</ele>
+        <name>GPX-165</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131739 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.278818 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1422.057 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 38.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288555" lon="128.139875">
+        <ele>424.9</ele>
+        <name>GPX-208</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139875 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288555 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1393.990 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 32.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255932" lon="128.121015">
+        <ele>520.8</ele>
+        <name>GPX-66</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121015 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255932 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1708.484 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 296.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254971" lon="128.122279">
+        <ele>547.5</ele>
+        <name>GPX-56</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122279 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254971 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1797.283 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.263437" lon="128.128958">
+        <ele>460.8</ele>
+        <name>GPX-104</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.128958 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.263437 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1511.650 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 47.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.274716" lon="128.131451">
+        <ele>432.0</ele>
+        <name>GPX-147</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131451 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.274716 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1417.306 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 17.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.277465" lon="128.130368">
+        <ele>433.5</ele>
+        <name>GPX-158</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130368 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.277465 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1422.188 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 319.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289881" lon="128.140098">
+        <ele>425.8</ele>
+        <name>GPX-218</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140098 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289881 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1396.975 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 12.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.277128" lon="128.130737">
+        <ele>433.7</ele>
+        <name>GPX-157</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130737 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.277128 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1423.048 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 320.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252179" lon="128.120277">
+        <ele>567.5</ele>
+        <name>GPX-43</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120277 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252179 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1861.732 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 41.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252047" lon="128.119053">
+        <ele>560.4</ele>
+        <name>GPX-35</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119053 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252047 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1840.269 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 129.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291082" lon="128.142282">
+        <ele>423.7</ele>
+        <name>GPX-236</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142282 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.291082 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1390.033 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 42.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254305" lon="128.11601">
+        <ele>566.9</ele>
+        <name>GPX-18</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116010 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254305 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1859.961 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 117.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.2568" lon="128.120164">
+        <ele>514.5</ele>
+        <name>GPX-72</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120164 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256800 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1688.127 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 346.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.258253" lon="128.122184">
+        <ele>500.7</ele>
+        <name>GPX-79</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122184 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.258253 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1642.579 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 64.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.264016" lon="128.129395">
+        <ele>459.5</ele>
+        <name>GPX-106</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129395 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.264016 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1507.684 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 16.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.281429" lon="128.134581">
+        <ele>433.4</ele>
+        <name>GPX-177</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.134581 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.281429 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.821 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 39.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291129494" lon="128.142270626">
+        <ele>424.1</ele>
+        <name>GPX-231</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141549 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.291014 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.502 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 72.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.28985" lon="128.145165">
+        <ele>426.7</ele>
+        <name>GPX-245</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.145165 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289850 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1400.020 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 138.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.273782" lon="128.130628">
+        <ele>436.2</ele>
+        <name>GPX-142</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130628 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.273782 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1431.079 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.283745" lon="128.137092">
+        <ele>440.5</ele>
+        <name>GPX-186</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137092 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.283745 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1443.793 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256238" lon="128.120421">
+        <ele>514.6</ele>
+        <name>GPX-69</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120421 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256238 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1688.232 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 316.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256154" lon="128.120521">
+        <ele>514.8</ele>
+        <name>GPX-68</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120521 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256154 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1689.026 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 311.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290405" lon="128.144321">
+        <ele>428.0</ele>
+        <name>GPX-242</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.144321 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290405 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1404.127 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 113.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290638687" lon="128.140595354">
+        <ele>421.6</ele>
+        <name>GPX-225</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140612 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290577 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1383.645 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 58.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29096" lon="128.142496">
+        <ele>422.4</ele>
+        <name>GPX-237</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142496 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290960 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.725 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 125.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256634" lon="128.113589">
+        <ele>577.3</ele>
+        <name>GPX-3</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113589 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256634 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1894.016 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 188.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27145" lon="128.129674">
+        <ele>434.6</ele>
+        <name>GPX-132</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129674 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.271450 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1426.772 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 9.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254973" lon="128.11527">
+        <ele>566.3</ele>
+        <name>GPX-13</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115270 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254973 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1857.867 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 146.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.273566" lon="128.130554">
+        <ele>436.0</ele>
+        <name>GPX-141</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130554 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.273566 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1430.495 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 8.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.286263" lon="128.138353">
+        <ele>434.8</ele>
+        <name>GPX-195</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138353 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.286263 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1426.470 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 22.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.287418" lon="128.138997">
+        <ele>425.7</ele>
+        <name>GPX-200</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138997 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.287418 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1396.739 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27904" lon="128.131965">
+        <ele>432.9</ele>
+        <name>GPX-166</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131965 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279040 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1420.328 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 38.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27271" lon="128.130161">
+        <ele>438.8</ele>
+        <name>GPX-137</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130161 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.272710 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1439.764 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 34.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.28665" lon="128.138566">
+        <ele>430.2</ele>
+        <name>GPX-196</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.138566 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.286650 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1411.365 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 23.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.276894" lon="128.130985">
+        <ele>431.6</ele>
+        <name>GPX-156</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130985 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.276894 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1416.178 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 320.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291379222" lon="128.141902768">
+        <ele>424.0</ele>
+        <name>GPX-235</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290967 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.098 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 99.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255272" lon="128.122509">
+        <ele>542.1</ele>
+        <name>GPX-57</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122509 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255272 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1778.428 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254184" lon="128.121675">
+        <ele>556.7</ele>
+        <name>GPX-53</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121675 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254184 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1826.286 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290933806" lon="128.141106212">
+        <ele>422.3</ele>
+        <name>GPX-228</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141072 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290857 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1384.334 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 55.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256427" lon="128.113642">
+        <ele>575.6</ele>
+        <name>GPX-4</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113642 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256427 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1888.432 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 168.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252872" lon="128.118044">
+        <ele>555.0</ele>
+        <name>GPX-29</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118044 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252872 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1820.942 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 90.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.273338" lon="128.130512">
+        <ele>436.3</ele>
+        <name>GPX-140</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.130512 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.273338 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1429.257 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 8.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.274296" lon="128.131232">
+        <ele>433.1</ele>
+        <name>GPX-145</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131232 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.274296 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.030 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 43.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.258985" lon="128.123505">
+        <ele>489.4</ele>
+        <name>GPX-82</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.123505 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.258985 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1605.686 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 54.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255919" lon="128.114316">
+        <ele>566.7</ele>
+        <name>GPX-7</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.114316 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255919 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1859.295 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 142.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255285" lon="128.115035">
+        <ele>565.5</ele>
+        <name>GPX-11</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115035 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255285 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.367 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 134.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252874" lon="128.117905">
+        <ele>555.5</ele>
+        <name>GPX-28</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.117905 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252874 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1822.536 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 68.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255116" lon="128.115148">
+        <ele>566.1</ele>
+        <name>GPX-12</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115148 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255116 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1857.454 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 152.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.274943" lon="128.131501">
+        <ele>432.3</ele>
+        <name>GPX-148</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131501 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.274943 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1419.270 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 9.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262854" lon="128.128141">
+        <ele>463.1</ele>
+        <name>GPX-102</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.128141 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262854 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1519.252 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 47.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291169877" lon="128.141625994">
+        <ele>423.2</ele>
+        <name>GPX-232</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141704 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.291021 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.512 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 86.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.26084" lon="128.126314">
+        <ele>470.2</ele>
+        <name>GPX-91</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.126314 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.260840 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1542.684 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 29.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.276058" lon="128.131679">
+        <ele>431.2</ele>
+        <name>GPX-152</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131679 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.276058 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1414.669 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 6.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.288125" lon="128.13949">
+        <ele>424.2</ele>
+        <name>GPX-205</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.139490 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.288125 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1391.900 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 32.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.27054" lon="128.131551">
+        <ele>436.0</ele>
+        <name>GPX-126</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131551 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.270540 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1430.446 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.282917" lon="128.136571">
+        <ele>432.7</ele>
+        <name>GPX-183</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.136571 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.282917 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1419.537 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 47.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.262436" lon="128.127687">
+        <ele>462.4</ele>
+        <name>GPX-99</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127687 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.262436 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1517.221 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 8.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.271759" lon="128.12974">
+        <ele>433.3</ele>
+        <name>GPX-133</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129740 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.271759 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.699 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 9.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.264797" lon="128.129647">
+        <ele>455.5</ele>
+        <name>GPX-109</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129647 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.264797 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1495.110 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 15.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.279599" lon="128.132276">
+        <ele>431.8</ele>
+        <name>GPX-169</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132276 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279599 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1416.506 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 26.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.284042" lon="128.137183">
+        <ele>439.7</ele>
+        <name>GPX-187</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137183 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.284042 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1443.793 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.253863" lon="128.121228">
+        <ele>559.0</ele>
+        <name>GPX-51</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121228 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.253863 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1834.075 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 37.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252008" lon="128.120087">
+        <ele>565.7</ele>
+        <name>GPX-42</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120087 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252008 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1859.654 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 41.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.269429" lon="128.131179">
+        <ele>438.8</ele>
+        <name>GPX-123</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131179 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.269429 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1439.152 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290843228" lon="128.140939545">
+        <ele>421.4</ele>
+        <name>GPX-227</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140930 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290779 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1382.159 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 51.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.278596" lon="128.131513">
+        <ele>434.0</ele>
+        <name>GPX-164</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131513 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.278596 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1423.786 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 42.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254774" lon="128.115344">
+        <ele>567.1</ele>
+        <name>GPX-14</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.115344 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254774 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1860.574 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 163.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256933" lon="128.120227">
+        <ele>513.6</ele>
+        <name>GPX-73</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.120227 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256933 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1684.974 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 20.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291296833" lon="128.142038667">
+        <ele>424.0</ele>
+        <name>GPX-235</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.142147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290967 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1385.098 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 99.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.251784" lon="128.119574">
+        <ele>565.7</ele>
+        <name>GPX-39</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.119574 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.251784 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.873 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 109.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.281147" lon="128.134287">
+        <ele>431.9</ele>
+        <name>GPX-176</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.134287 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.281147 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1420.722 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 39.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.289986" lon="128.140132">
+        <ele>425.5</ele>
+        <name>GPX-219</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140132 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.289986 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1396.155 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 14.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.278331" lon="128.131204">
+        <ele>433.0</ele>
+        <name>GPX-163</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131204 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.278331 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1420.604 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 44.3 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.279281" lon="128.132105">
+        <ele>431.6</ele>
+        <name>GPX-167</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.132105 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.279281 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1415.968 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 24.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.282578" lon="128.136105">
+        <ele>433.3</ele>
+        <name>GPX-181</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.136105 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.282578 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1421.706 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 46.2 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.291017408" lon="128.141277418">
+        <ele>422.5</ele>
+        <name>GPX-229</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.141259 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290930 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1384.518 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 63.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255755" lon="128.121728">
+        <ele>527.7</ele>
+        <name>GPX-64</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121728 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255755 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1731.253 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 249.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.26194" lon="128.127378">
+        <ele>465.7</ele>
+        <name>GPX-96</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.127378 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.261940 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1526.414 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.261346" lon="128.126802">
+        <ele>467.4</ele>
+        <name>GPX-93</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.126802 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.261346 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1533.599 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 32.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.29026" lon="128.144601">
+        <ele>426.9</ele>
+        <name>GPX-243</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.144601 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290260 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1400.702 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 123.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.256715" lon="128.113604">
+        <ele>577.6</ele>
+        <name>GPX-2</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.113604 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.256715 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1895.180 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 194.7 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290646" lon="128.143585">
+        <ele>425.9</ele>
+        <name>GPX-240</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.143585 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290646 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1397.228 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 106.4 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.252718" lon="128.118228">
+        <ele>556.4</ele>
+        <name>GPX-31</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.118228 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252718 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1825.397 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 155.5 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.25288" lon="128.121061">
+        <ele>567.8</ele>
+        <name>GPX-46</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.121061 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.252880 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1862.674 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 37.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.264281" lon="128.129477">
+        <ele>458.2</ele>
+        <name>GPX-107</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.129477 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.264281 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1502.561 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.290241" lon="128.140256">
+        <ele>424.1</ele>
+        <name>GPX-221</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.140256 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.290241 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1391.545 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 22.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.285491" lon="128.137879">
+        <ele>437.8</ele>
+        <name>GPX-192</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.137879 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.285491 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1436.247 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.9 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254671" lon="128.122049">
+        <ele>549.6</ele>
+        <name>GPX-55</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.122049 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254671 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1797.283 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 31.0 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.254199" lon="128.116204">
+        <ele>565.4</ele>
+        <name>GPX-19</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.116204 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.254199 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.085 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 124.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.260221" lon="128.125754">
+        <ele>475.3</ele>
+        <name>GPX-88</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.125754 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.260221 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1559.524 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 53.1 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.269753" lon="128.13128">
+        <ele>436.8</ele>
+        <name>GPX-124</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.131280 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.269753 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1433.215 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 13.8 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <wpt lat="38.255623" lon="128.11457">
+        <ele>565.6</ele>
+        <name>GPX-9</name>
+        <desc>&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Longitude: 128.114570 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Latitude: 38.255623 &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Altitude: 1855.689 ft &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Heading: 145.6 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</desc>
+        <sym>https://earth.google.com/images/kml-icons/track-directional/track-none.png</sym>
+    </wpt>
+    <trk>
+        <name>Path</name>
+        <trkseg>
+            <trkpt lat="38.256874" lon="128.113747">
+                <ele>577.648</ele>
+            </trkpt>
+            <trkpt lat="38.256804" lon="128.113633">
+                <ele>578.207</ele>
+            </trkpt>
+            <trkpt lat="38.256715" lon="128.113604">
+                <ele>577.646</ele>
+            </trkpt>
+            <trkpt lat="38.256634" lon="128.113589">
+                <ele>577.29</ele>
+            </trkpt>
+            <trkpt lat="38.256427" lon="128.113642">
+                <ele>575.596</ele>
+            </trkpt>
+            <trkpt lat="38.256269" lon="128.113856">
+                <ele>572.455</ele>
+            </trkpt>
+            <trkpt lat="38.256064" lon="128.114172">
+                <ele>568.109</ele>
+            </trkpt>
+            <trkpt lat="38.255919" lon="128.114316">
+                <ele>566.707</ele>
+            </trkpt>
+            <trkpt lat="38.255771" lon="128.114441">
+                <ele>565.493</ele>
+            </trkpt>
+            <trkpt lat="38.255623" lon="128.11457">
+                <ele>565.61</ele>
+            </trkpt>
+            <trkpt lat="38.255424" lon="128.114853">
+                <ele>565.482</ele>
+            </trkpt>
+            <trkpt lat="38.255285" lon="128.115035">
+                <ele>565.518</ele>
+            </trkpt>
+            <trkpt lat="38.255116" lon="128.115148">
+                <ele>566.149</ele>
+            </trkpt>
+            <trkpt lat="38.254973" lon="128.11527">
+                <ele>566.278</ele>
+            </trkpt>
+            <trkpt lat="38.254774" lon="128.115344">
+                <ele>567.106</ele>
+            </trkpt>
+            <trkpt lat="38.254621" lon="128.115371">
+                <ele>568.664</ele>
+            </trkpt>
+            <trkpt lat="38.254548" lon="128.115412">
+                <ele>569.239</ele>
+            </trkpt>
+            <trkpt lat="38.254426" lon="128.115711">
+                <ele>568.109</ele>
+            </trkpt>
+            <trkpt lat="38.254305" lon="128.11601">
+                <ele>566.915</ele>
+            </trkpt>
+            <trkpt lat="38.254199" lon="128.116204">
+                <ele>565.43</ele>
+            </trkpt>
+            <trkpt lat="38.253999" lon="128.116435">
+                <ele>562.702</ele>
+            </trkpt>
+            <trkpt lat="38.253864" lon="128.116577">
+                <ele>562.352</ele>
+            </trkpt>
+            <trkpt lat="38.253661" lon="128.116736">
+                <ele>561.546</ele>
+            </trkpt>
+            <trkpt lat="38.25327" lon="128.116979">
+                <ele>558.883</ele>
+            </trkpt>
+            <trkpt lat="38.253005" lon="128.117131">
+                <ele>559.322</ele>
+            </trkpt>
+            <trkpt lat="38.252846" lon="128.117269">
+                <ele>559.926</ele>
+            </trkpt>
+            <trkpt lat="38.252774" lon="128.117376">
+                <ele>559.94</ele>
+            </trkpt>
+            <trkpt lat="38.25276" lon="128.117533">
+                <ele>558.954</ele>
+            </trkpt>
+            <trkpt lat="38.252874" lon="128.117905">
+                <ele>555.503</ele>
+            </trkpt>
+            <trkpt lat="38.252872" lon="128.118044">
+                <ele>555.024</ele>
+            </trkpt>
+            <trkpt lat="38.25283" lon="128.118162">
+                <ele>555.364</ele>
+            </trkpt>
+            <trkpt lat="38.252718" lon="128.118228">
+                <ele>556.378</ele>
+            </trkpt>
+            <trkpt lat="38.252605" lon="128.118246">
+                <ele>557.013</ele>
+            </trkpt>
+            <trkpt lat="38.252421" lon="128.118448">
+                <ele>557.58</ele>
+            </trkpt>
+            <trkpt lat="38.252191" lon="128.118831">
+                <ele>559.04</ele>
+            </trkpt>
+            <trkpt lat="38.252047" lon="128.119053">
+                <ele>560.416</ele>
+            </trkpt>
+            <trkpt lat="38.251904" lon="128.119276">
+                <ele>562.785</ele>
+            </trkpt>
+            <trkpt lat="38.251853" lon="128.119379">
+                <ele>563.898</ele>
+            </trkpt>
+            <trkpt lat="38.251804" lon="128.1195">
+                <ele>565.132</ele>
+            </trkpt>
+            <trkpt lat="38.251784" lon="128.119574">
+                <ele>565.663</ele>
+            </trkpt>
+            <trkpt lat="38.251759" lon="128.119711">
+                <ele>566.325</ele>
+            </trkpt>
+            <trkpt lat="38.251837" lon="128.119897">
+                <ele>566.192</ele>
+            </trkpt>
+            <trkpt lat="38.252008" lon="128.120087">
+                <ele>565.722</ele>
+            </trkpt>
+            <trkpt lat="38.252179" lon="128.120277">
+                <ele>567.45</ele>
+            </trkpt>
+            <trkpt lat="38.25249" lon="128.120647">
+                <ele>570.473</ele>
+            </trkpt>
+            <trkpt lat="38.252755" lon="128.120936">
+                <ele>568.601</ele>
+            </trkpt>
+            <trkpt lat="38.25288" lon="128.121061">
+                <ele>567.752</ele>
+            </trkpt>
+            <trkpt lat="38.253079" lon="128.121039">
+                <ele>564.55</ele>
+            </trkpt>
+            <trkpt lat="38.253352" lon="128.121014">
+                <ele>562.076</ele>
+            </trkpt>
+            <trkpt lat="38.253555" lon="128.121028">
+                <ele>559.769</ele>
+            </trkpt>
+            <trkpt lat="38.253744" lon="128.121113">
+                <ele>559.057</ele>
+            </trkpt>
+            <trkpt lat="38.253863" lon="128.121228">
+                <ele>559.028</ele>
+            </trkpt>
+            <trkpt lat="38.254054" lon="128.121516">
+                <ele>557.758</ele>
+            </trkpt>
+            <trkpt lat="38.254184" lon="128.121675">
+                <ele>556.657</ele>
+            </trkpt>
+            <trkpt lat="38.25437" lon="128.12182">
+                <ele>553.564</ele>
+            </trkpt>
+            <trkpt lat="38.254671" lon="128.122049">
+                <ele>549.605</ele>
+            </trkpt>
+            <trkpt lat="38.254971" lon="128.122279">
+                <ele>547.539</ele>
+            </trkpt>
+            <trkpt lat="38.255272" lon="128.122509">
+                <ele>542.061</ele>
+            </trkpt>
+            <trkpt lat="38.255607" lon="128.122743">
+                <ele>535.708</ele>
+            </trkpt>
+            <trkpt lat="38.255739" lon="128.122714">
+                <ele>534.606</ele>
+            </trkpt>
+            <trkpt lat="38.25585" lon="128.122631">
+                <ele>533.108</ele>
+            </trkpt>
+            <trkpt lat="38.255919" lon="128.122491">
+                <ele>530.744</ele>
+            </trkpt>
+            <trkpt lat="38.255922" lon="128.122265">
+                <ele>528.228</ele>
+            </trkpt>
+            <trkpt lat="38.255844" lon="128.12203">
+                <ele>527.708</ele>
+            </trkpt>
+            <trkpt lat="38.255755" lon="128.121728">
+                <ele>527.693</ele>
+            </trkpt>
+            <trkpt lat="38.255783" lon="128.121404">
+                <ele>525.96</ele>
+            </trkpt>
+            <trkpt lat="38.255932" lon="128.121015">
+                <ele>520.755</ele>
+            </trkpt>
+            <trkpt lat="38.256064" lon="128.120653">
+                <ele>516.148</ele>
+            </trkpt>
+            <trkpt lat="38.256154" lon="128.120521">
+                <ele>514.816</ele>
+            </trkpt>
+            <trkpt lat="38.256238" lon="128.120421">
+                <ele>514.571</ele>
+            </trkpt>
+            <trkpt lat="38.256311" lon="128.120348">
+                <ele>514.308</ele>
+            </trkpt>
+            <trkpt lat="38.256553" lon="128.120237">
+                <ele>514.354</ele>
+            </trkpt>
+            <trkpt lat="38.2568" lon="128.120164">
+                <ele>514.536</ele>
+            </trkpt>
+            <trkpt lat="38.256933" lon="128.120227">
+                <ele>513.582</ele>
+            </trkpt>
+            <trkpt lat="38.257066" lon="128.120469">
+                <ele>511.487</ele>
+            </trkpt>
+            <trkpt lat="38.257362" lon="128.120852">
+                <ele>510.503</ele>
+            </trkpt>
+            <trkpt lat="38.257659" lon="128.121235">
+                <ele>510.237</ele>
+            </trkpt>
+            <trkpt lat="38.257901" lon="128.121561">
+                <ele>507.43</ele>
+            </trkpt>
+            <trkpt lat="38.258144" lon="128.121887">
+                <ele>502.999</ele>
+            </trkpt>
+            <trkpt lat="38.258253" lon="128.122184">
+                <ele>500.658</ele>
+            </trkpt>
+            <trkpt lat="38.258497" lon="128.122624">
+                <ele>498.112</ele>
+            </trkpt>
+            <trkpt lat="38.258741" lon="128.123065">
+                <ele>493.979</ele>
+            </trkpt>
+            <trkpt lat="38.258985" lon="128.123505">
+                <ele>489.418</ele>
+            </trkpt>
+            <trkpt lat="38.259225" lon="128.123927">
+                <ele>486.653</ele>
+            </trkpt>
+            <trkpt lat="38.25948" lon="128.124393">
+                <ele>484.185</ele>
+            </trkpt>
+            <trkpt lat="38.259735" lon="128.124859">
+                <ele>480.439</ele>
+            </trkpt>
+            <trkpt lat="38.259858" lon="128.125104">
+                <ele>478.648</ele>
+            </trkpt>
+            <trkpt lat="38.259981" lon="128.125349">
+                <ele>477.102</ele>
+            </trkpt>
+            <trkpt lat="38.260221" lon="128.125754">
+                <ele>475.344</ele>
+            </trkpt>
+            <trkpt lat="38.260315" lon="128.125942">
+                <ele>474.556</ele>
+            </trkpt>
+            <trkpt lat="38.260578" lon="128.126128">
+                <ele>472.778</ele>
+            </trkpt>
+            <trkpt lat="38.26084" lon="128.126314">
+                <ele>470.215</ele>
+            </trkpt>
+            <trkpt lat="38.261023" lon="128.126541">
+                <ele>469.182</ele>
+            </trkpt>
+            <trkpt lat="38.261346" lon="128.126802">
+                <ele>467.438</ele>
+            </trkpt>
+            <trkpt lat="38.261497" lon="128.126971">
+                <ele>466.672</ele>
+            </trkpt>
+            <trkpt lat="38.261635" lon="128.127138">
+                <ele>466.467</ele>
+            </trkpt>
+            <trkpt lat="38.26194" lon="128.127378">
+                <ele>465.73</ele>
+            </trkpt>
+            <trkpt lat="38.262245" lon="128.127618">
+                <ele>464.041</ele>
+            </trkpt>
+            <trkpt lat="38.262327" lon="128.127667">
+                <ele>463.596</ele>
+            </trkpt>
+            <trkpt lat="38.262436" lon="128.127687">
+                <ele>462.444</ele>
+            </trkpt>
+            <trkpt lat="38.262555" lon="128.127745">
+                <ele>461.486</ele>
+            </trkpt>
+            <trkpt lat="38.262671" lon="128.127887">
+                <ele>461.948</ele>
+            </trkpt>
+            <trkpt lat="38.262854" lon="128.128141">
+                <ele>463.066</ele>
+            </trkpt>
+            <trkpt lat="38.263145" lon="128.128549">
+                <ele>463.132</ele>
+            </trkpt>
+            <trkpt lat="38.263437" lon="128.128958">
+                <ele>460.751</ele>
+            </trkpt>
+            <trkpt lat="38.263703" lon="128.129278">
+                <ele>460.0</ele>
+            </trkpt>
+            <trkpt lat="38.264016" lon="128.129395">
+                <ele>459.542</ele>
+            </trkpt>
+            <trkpt lat="38.264281" lon="128.129477">
+                <ele>458.177</ele>
+            </trkpt>
+            <trkpt lat="38.264546" lon="128.129558">
+                <ele>456.418</ele>
+            </trkpt>
+            <trkpt lat="38.264797" lon="128.129647">
+                <ele>455.533</ele>
+            </trkpt>
+            <trkpt lat="38.265048" lon="128.129735">
+                <ele>455.0</ele>
+            </trkpt>
+            <trkpt lat="38.265445" lon="128.129864">
+                <ele>453.489</ele>
+            </trkpt>
+            <trkpt lat="38.265843" lon="128.129992">
+                <ele>449.959</ele>
+            </trkpt>
+            <trkpt lat="38.266113" lon="128.130085">
+                <ele>448.299</ele>
+            </trkpt>
+            <trkpt lat="38.266384" lon="128.130179">
+                <ele>447.662</ele>
+            </trkpt>
+            <trkpt lat="38.266733" lon="128.130289">
+                <ele>446.752</ele>
+            </trkpt>
+            <trkpt lat="38.267003" lon="128.130371">
+                <ele>445.243</ele>
+            </trkpt>
+            <trkpt lat="38.267273" lon="128.130453">
+                <ele>443.186</ele>
+            </trkpt>
+            <trkpt lat="38.267636" lon="128.13058">
+                <ele>441.912</ele>
+            </trkpt>
+            <trkpt lat="38.268" lon="128.130708">
+                <ele>441.451</ele>
+            </trkpt>
+            <trkpt lat="38.268368" lon="128.130831">
+                <ele>441.125</ele>
+            </trkpt>
+            <trkpt lat="38.268737" lon="128.130955">
+                <ele>441.817</ele>
+            </trkpt>
+            <trkpt lat="38.269105" lon="128.131078">
+                <ele>440.46</ele>
+            </trkpt>
+            <trkpt lat="38.269429" lon="128.131179">
+                <ele>438.811</ele>
+            </trkpt>
+            <trkpt lat="38.269753" lon="128.13128">
+                <ele>436.846</ele>
+            </trkpt>
+            <trkpt lat="38.270147" lon="128.131415">
+                <ele>436.044</ele>
+            </trkpt>
+            <trkpt lat="38.27054" lon="128.131551">
+                <ele>436.0</ele>
+            </trkpt>
+            <trkpt lat="38.270865" lon="128.131669">
+                <ele>434.878</ele>
+            </trkpt>
+            <trkpt lat="38.270933" lon="128.131154">
+                <ele>434.338</ele>
+            </trkpt>
+            <trkpt lat="38.271002" lon="128.130639">
+                <ele>435.517</ele>
+            </trkpt>
+            <trkpt lat="38.271071" lon="128.130124">
+                <ele>437.0</ele>
+            </trkpt>
+            <trkpt lat="38.27114" lon="128.129609">
+                <ele>436.427</ele>
+            </trkpt>
+            <trkpt lat="38.27145" lon="128.129674">
+                <ele>434.598</ele>
+            </trkpt>
+            <trkpt lat="38.271759" lon="128.12974">
+                <ele>433.332</ele>
+            </trkpt>
+            <trkpt lat="38.27205" lon="128.129807">
+                <ele>435.404</ele>
+            </trkpt>
+            <trkpt lat="38.272341" lon="128.129874">
+                <ele>438.736</ele>
+            </trkpt>
+            <trkpt lat="38.272463" lon="128.129948">
+                <ele>439.788</ele>
+            </trkpt>
+            <trkpt lat="38.27271" lon="128.130161">
+                <ele>438.841</ele>
+            </trkpt>
+            <trkpt lat="38.27293" lon="128.130371">
+                <ele>436.294</ele>
+            </trkpt>
+            <trkpt lat="38.27311" lon="128.13047">
+                <ele>435.256</ele>
+            </trkpt>
+            <trkpt lat="38.273338" lon="128.130512">
+                <ele>436.316</ele>
+            </trkpt>
+            <trkpt lat="38.273566" lon="128.130554">
+                <ele>436.016</ele>
+            </trkpt>
+            <trkpt lat="38.273782" lon="128.130628">
+                <ele>436.194</ele>
+            </trkpt>
+            <trkpt lat="38.27394" lon="128.130777">
+                <ele>435.59</ele>
+            </trkpt>
+            <trkpt lat="38.274079" lon="128.130975">
+                <ele>434.825</ele>
+            </trkpt>
+            <trkpt lat="38.274296" lon="128.131232">
+                <ele>433.13</ele>
+            </trkpt>
+            <trkpt lat="38.274513" lon="128.131373">
+                <ele>432.114</ele>
+            </trkpt>
+            <trkpt lat="38.274716" lon="128.131451">
+                <ele>431.995</ele>
+            </trkpt>
+            <trkpt lat="38.274943" lon="128.131501">
+                <ele>432.321</ele>
+            </trkpt>
+            <trkpt lat="38.27517" lon="128.13155">
+                <ele>433.192</ele>
+            </trkpt>
+            <trkpt lat="38.275416" lon="128.131584">
+                <ele>433.353</ele>
+            </trkpt>
+            <trkpt lat="38.275662" lon="128.131618">
+                <ele>432.617</ele>
+            </trkpt>
+            <trkpt lat="38.276058" lon="128.131679">
+                <ele>431.191</ele>
+            </trkpt>
+            <trkpt lat="38.276249" lon="128.131614">
+                <ele>430.101</ele>
+            </trkpt>
+            <trkpt lat="38.276384" lon="128.131502">
+                <ele>429.618</ele>
+            </trkpt>
+            <trkpt lat="38.276659" lon="128.131233">
+                <ele>429.558</ele>
+            </trkpt>
+            <trkpt lat="38.276894" lon="128.130985">
+                <ele>431.644</ele>
+            </trkpt>
+            <trkpt lat="38.277128" lon="128.130737">
+                <ele>433.746</ele>
+            </trkpt>
+            <trkpt lat="38.277465" lon="128.130368">
+                <ele>433.483</ele>
+            </trkpt>
+            <trkpt lat="38.277637" lon="128.130373">
+                <ele>433.841</ele>
+            </trkpt>
+            <trkpt lat="38.277808" lon="128.13057">
+                <ele>434.046</ele>
+            </trkpt>
+            <trkpt lat="38.277979" lon="128.130767">
+                <ele>434.21</ele>
+            </trkpt>
+            <trkpt lat="38.278155" lon="128.130985">
+                <ele>433.454</ele>
+            </trkpt>
+            <trkpt lat="38.278331" lon="128.131204">
+                <ele>433.0</ele>
+            </trkpt>
+            <trkpt lat="38.278596" lon="128.131513">
+                <ele>433.97</ele>
+            </trkpt>
+            <trkpt lat="38.278818" lon="128.131739">
+                <ele>434.066</ele>
+            </trkpt>
+            <trkpt lat="38.27904" lon="128.131965">
+                <ele>432.912</ele>
+            </trkpt>
+            <trkpt lat="38.279281" lon="128.132105">
+                <ele>431.588</ele>
+            </trkpt>
+            <trkpt lat="38.279459" lon="128.132186">
+                <ele>431.046</ele>
+            </trkpt>
+            <trkpt lat="38.279599" lon="128.132276">
+                <ele>431.75</ele>
+            </trkpt>
+            <trkpt lat="38.27975" lon="128.132476">
+                <ele>433.205</ele>
+            </trkpt>
+            <trkpt lat="38.279859" lon="128.132601">
+                <ele>435.025</ele>
+            </trkpt>
+            <trkpt lat="38.280022" lon="128.13294">
+                <ele>437.112</ele>
+            </trkpt>
+            <trkpt lat="38.280269" lon="128.133359">
+                <ele>436.876</ele>
+            </trkpt>
+            <trkpt lat="38.280568" lon="128.133676">
+                <ele>435.522</ele>
+            </trkpt>
+            <trkpt lat="38.280866" lon="128.133993">
+                <ele>432.699</ele>
+            </trkpt>
+            <trkpt lat="38.281147" lon="128.134287">
+                <ele>431.881</ele>
+            </trkpt>
+            <trkpt lat="38.281429" lon="128.134581">
+                <ele>433.377</ele>
+            </trkpt>
+            <trkpt lat="38.281697" lon="128.134936">
+                <ele>433.788</ele>
+            </trkpt>
+            <trkpt lat="38.281966" lon="128.135292">
+                <ele>434.104</ele>
+            </trkpt>
+            <trkpt lat="38.282272" lon="128.135698">
+                <ele>433.999</ele>
+            </trkpt>
+            <trkpt lat="38.282578" lon="128.136105">
+                <ele>433.331</ele>
+            </trkpt>
+            <trkpt lat="38.282748" lon="128.136338">
+                <ele>432.259</ele>
+            </trkpt>
+            <trkpt lat="38.282917" lon="128.136571">
+                <ele>432.675</ele>
+            </trkpt>
+            <trkpt lat="38.283148" lon="128.136833">
+                <ele>435.863</ele>
+            </trkpt>
+            <trkpt lat="38.283447" lon="128.137002">
+                <ele>439.957</ele>
+            </trkpt>
+            <trkpt lat="38.283745" lon="128.137092">
+                <ele>440.469</ele>
+            </trkpt>
+            <trkpt lat="38.284042" lon="128.137183">
+                <ele>439.668</ele>
+            </trkpt>
+            <trkpt lat="38.28434" lon="128.137273">
+                <ele>440.179</ele>
+            </trkpt>
+            <trkpt lat="38.284621" lon="128.137359">
+                <ele>441.0</ele>
+            </trkpt>
+            <trkpt lat="38.284902" lon="128.137444">
+                <ele>439.836</ele>
+            </trkpt>
+            <trkpt lat="38.285125" lon="128.137588">
+                <ele>438.715</ele>
+            </trkpt>
+            <trkpt lat="38.285491" lon="128.137879">
+                <ele>437.768</ele>
+            </trkpt>
+            <trkpt lat="38.285841" lon="128.138133">
+                <ele>438.925</ele>
+            </trkpt>
+            <trkpt lat="38.286052" lon="128.138243">
+                <ele>437.17</ele>
+            </trkpt>
+            <trkpt lat="38.286263" lon="128.138353">
+                <ele>434.781</ele>
+            </trkpt>
+            <trkpt lat="38.28665" lon="128.138566">
+                <ele>430.18</ele>
+            </trkpt>
+            <trkpt lat="38.286946" lon="128.13871">
+                <ele>427.989</ele>
+            </trkpt>
+            <trkpt lat="38.287242" lon="128.138853">
+                <ele>425.991</ele>
+            </trkpt>
+            <trkpt lat="38.287333" lon="128.13893">
+                <ele>425.941</ele>
+            </trkpt>
+            <trkpt lat="38.287418" lon="128.138997">
+                <ele>425.726</ele>
+            </trkpt>
+            <trkpt lat="38.287527" lon="128.139047">
+                <ele>425.389</ele>
+            </trkpt>
+            <trkpt lat="38.28769" lon="128.139141">
+                <ele>425.029</ele>
+            </trkpt>
+            <trkpt lat="38.28785" lon="128.139259">
+                <ele>424.668</ele>
+            </trkpt>
+            <trkpt lat="38.287976" lon="128.139369">
+                <ele>424.272</ele>
+            </trkpt>
+            <trkpt lat="38.288125" lon="128.13949">
+                <ele>424.25</ele>
+            </trkpt>
+            <trkpt lat="38.288249" lon="128.13962">
+                <ele>424.696</ele>
+            </trkpt>
+            <trkpt lat="38.288404" lon="128.139751">
+                <ele>424.923</ele>
+            </trkpt>
+            <trkpt lat="38.288555" lon="128.139875">
+                <ele>424.889</ele>
+            </trkpt>
+            <trkpt lat="38.288674" lon="128.139963">
+                <ele>425.0</ele>
+            </trkpt>
+            <trkpt lat="38.288801" lon="128.14005">
+                <ele>425.0</ele>
+            </trkpt>
+            <trkpt lat="38.288916" lon="128.14009">
+                <ele>425.098</ele>
+            </trkpt>
+            <trkpt lat="38.289064" lon="128.140129">
+                <ele>425.63</ele>
+            </trkpt>
+            <trkpt lat="38.289212" lon="128.140126">
+                <ele>426.163</ele>
+            </trkpt>
+            <trkpt lat="38.289352" lon="128.140101">
+                <ele>426.667</ele>
+            </trkpt>
+            <trkpt lat="38.289518" lon="128.140056">
+                <ele>426.735</ele>
+            </trkpt>
+            <trkpt lat="38.289644" lon="128.140048">
+                <ele>426.282</ele>
+            </trkpt>
+            <trkpt lat="38.289739" lon="128.140059">
+                <ele>425.987</ele>
+            </trkpt>
+            <trkpt lat="38.289881" lon="128.140098">
+                <ele>425.798</ele>
+            </trkpt>
+            <trkpt lat="38.289986" lon="128.140132">
+                <ele>425.549</ele>
+            </trkpt>
+            <trkpt lat="38.29011" lon="128.140189">
+                <ele>424.797</ele>
+            </trkpt>
+            <trkpt lat="38.290241" lon="128.140256">
+                <ele>424.143</ele>
+            </trkpt>
+            <trkpt lat="38.290271798" lon="128.140179869">
+                <ele>424.029</ele>
+            </trkpt>
+            <trkpt lat="38.29037862" lon="128.140246632">
+                <ele>423.678</ele>
+            </trkpt>
+            <trkpt lat="38.290539522" lon="128.140399789">
+                <ele>422.618</ele>
+            </trkpt>
+            <trkpt lat="38.290643084" lon="128.140595161">
+                <ele>421.587</ele>
+            </trkpt>
+            <trkpt lat="38.290751822" lon="128.140768974">
+                <ele>421.068</ele>
+            </trkpt>
+            <trkpt lat="38.290849898" lon="128.140942571">
+                <ele>421.453</ele>
+            </trkpt>
+            <trkpt lat="38.290935285" lon="128.141104972">
+                <ele>422.345</ele>
+            </trkpt>
+            <trkpt lat="38.291019849" lon="128.141278832">
+                <ele>422.473</ele>
+            </trkpt>
+            <trkpt lat="38.291105836" lon="128.141443904">
+                <ele>422.962</ele>
+            </trkpt>
+            <trkpt lat="38.291175221" lon="128.141626623">
+                <ele>423.231</ele>
+            </trkpt>
+            <trkpt lat="38.291237061" lon="128.141746983">
+                <ele>423.453</ele>
+            </trkpt>
+            <trkpt lat="38.291331575" lon="128.141790659">
+                <ele>423.794</ele>
+            </trkpt>
+            <trkpt lat="38.291381466" lon="128.141901633">
+                <ele>423.973</ele>
+            </trkpt>
+            <trkpt lat="38.29130164" lon="128.142037215">
+                <ele>424.02</ele>
+            </trkpt>
+            <trkpt lat="38.291353196" lon="128.142266674">
+                <ele>425.011</ele>
+            </trkpt>
+            <trkpt lat="38.2912412" lon="128.142355554">
+                <ele>424.693</ele>
+            </trkpt>
+            <trkpt lat="38.291136317" lon="128.142268564">
+                <ele>424.106</ele>
+            </trkpt>
+            <trkpt lat="38.29108483" lon="128.142282395">
+                <ele>423.716</ele>
+            </trkpt>
+            <trkpt lat="38.29096" lon="128.142496">
+                <ele>422.368</ele>
+            </trkpt>
+            <trkpt lat="38.290846" lon="128.142821">
+                <ele>422.24</ele>
+            </trkpt>
+            <trkpt lat="38.290755" lon="128.143111">
+                <ele>423.03</ele>
+            </trkpt>
+            <trkpt lat="38.290646" lon="128.143585">
+                <ele>425.875</ele>
+            </trkpt>
+            <trkpt lat="38.290498" lon="128.144042">
+                <ele>427.23</ele>
+            </trkpt>
+            <trkpt lat="38.290405" lon="128.144321">
+                <ele>427.981</ele>
+            </trkpt>
+            <trkpt lat="38.29026" lon="128.144601">
+                <ele>426.936</ele>
+            </trkpt>
+            <trkpt lat="38.290017" lon="128.144975">
+                <ele>426.86</ele>
+            </trkpt>
+            <trkpt lat="38.28985" lon="128.145165">
+                <ele>426.727</ele>
+            </trkpt>
+            <trkpt lat="38.289609" lon="128.145542">
+                <ele>425.621</ele>
+            </trkpt>
+        </trkseg>
+    </trk>
+</gpx>

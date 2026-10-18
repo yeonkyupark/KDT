@@ -19,7 +19,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, cpSync } fr
 import { join } from 'node:path'
 import { listCourses, parseGpx, sourceSha1 } from './lib/gpx.mjs'
 import { chainFill, normalizeJunctions, normalizeRegions } from './lib/names.mjs'
-import { parseTravelerInfo, parseStampAndAccess } from './lib/durunubi.mjs'
+import { parseTravelerInfo, parseStampAndAccess, cleanText } from './lib/durunubi.mjs'
 import { TRAILS, listUrl } from './lib/trails.mjs'
 import { pathLength, simplify, movingAverage, ascentDescent, haversine } from './lib/geo.mjs'
 import {
@@ -62,26 +62,43 @@ function nearestMain(mains, p) {
   return best
 }
 
+/** 앞 하위 코스 종점과 다음 하위 코스 시점이 이 거리 안이면 한 묶음(이어진 길)이다. */
+const RUN_M = 50
+
 /**
- * 하위 번호 코스를 같은 본선 번호끼리 묶는다(서해랑길 64-1~64-6 은 하나로 이어진 지선이다).
- * 묶음의 시점·종점이 본선 어느 코스에 닿는지 좌표로 잰다. 닿지 않으면(BRANCH_M 초과) null.
+ * 하위 번호 코스를 **실제로 이어진 것끼리** 묶는다. 번호가 같아야 묶이는 게 아니다.
+ *   서해랑길 64-1~64-6               (같은 번호, 접합부 0~2m)
+ *   DMZ 평화의 길 30-1·30-2·31-1·32-1·33-1  (번호를 넘나들며 이어진 우회로, 접합부 0~5m)
+ * 번호 순으로 늘어놓고 앞 코스 종점 ↔ 다음 코스 시점이 RUN_M 안이면 이어 붙인다.
  */
-function groupSubs(built) {
-  const mains = built.filter((c) => !c.sub)
-  const bySeq = new Map()
-  for (const c of built.filter((c) => c.sub)) {
-    if (!bySeq.has(c.seq)) bySeq.set(c.seq, [])
-    bySeq.get(c.seq).push(c)
+function subRunsOf(built) {
+  const subs = built.filter((c) => c.sub).sort((a, b) => a.seq - b.seq || a.sub - b.sub)
+  const runs = []
+  for (const c of subs) {
+    const run = runs.at(-1)
+    const prev = run?.at(-1)
+    if (prev && haversine(prev.detail.at(-1), c.detail[0]) <= RUN_M) run.push(c)
+    else runs.push([c])
   }
+  return runs
+}
+
+/**
+ * 묶음의 시점·종점이 본선 어느 코스에 닿는지 좌표로 잰다. 닿지 않으면(BRANCH_M 초과) null.
+ * 한쪽만 닿는 묶음도 있다(DMZ 평화의 길 4-1 지선은 종점만 4코스에 닿는다).
+ */
+function groupSubs(built, runs) {
+  const mains = built.filter((c) => !c.sub)
   const groups = []
-  for (const [seq, list] of bySeq) {
-    list.sort((a, b) => a.sub - b.sub)
+  for (const list of runs) {
+    const seq = list[0].seq
     const a = nearestMain(mains, list[0].detail[0])
     const b = nearestMain(mains, list.at(-1).detail.at(-1))
     const at = (n) => (n && n.distM <= BRANCH_M ? { courseId: n.course.id, seq: n.course.seq, distM: Math.round(n.distM) } : null)
     groups.push({
       seq,
-      kind: kindOf(list[0]),
+      // 묶음 안에 우회로가 하나라도 있으면 우회로 묶음이다
+      kind: list.some((c) => c.kind === 'detour') ? 'detour' : 'spur',
       ids: list.map((c) => c.id),
       from: at(a),
       to: at(b),
@@ -191,11 +208,26 @@ function loadOfficial(trail) {
       label: r.label ?? '',
       siteStartAddr: r.startAddress ?? '',
       siteEndAddr: r.endAddress ?? '',
+      // 두루누비 코스 공지(통행 제한·우회 안내). 매주 동기화로 바뀐다
+      warning: r.warning ?? '',
+      cautions: trail.cautions ? cautionLines(r.travelerInfo) : [],
       ...parseTravelerInfo(r.travelerInfo),
       ...parseStampAndAccess(r.travelerInfo),
     })
   }
   return map
+}
+
+/**
+ * 여행자정보에서 출입 통제·신분증·예약 같은 안내 줄만 뽑는다. DMZ 평화의 길은 민간인 통제구역이 많다.
+ *   '- 강화 평화전망대에서 6.25 참전용사기념공원까지는 민간인 통제구역이므로 신분증을 지참해야 한다'
+ */
+const CAUTION_RE = /(민간인\s*통제|민통선|통제구역|신분증|출입\s*(신고|통제|금지|허가|불가)|예약|군사|검문소|통행\s*(금지|제한|불가))/
+function cautionLines(text) {
+  return cleanText(text)
+    .split('\n')
+    .map((l) => l.replace(/^[-*·.\s]+/, '').trim()) // '.- 예약이 …' 처럼 앞에 점이 붙은 줄도 있다
+    .filter((l) => l && CAUTION_RE.test(l))
 }
 
 /**
@@ -317,6 +349,8 @@ function buildTrail(trail) {
       ...officialPlaces(off),
       label: off?.label ?? '',
       kind: kindOf({ sub: c.sub, label: off?.label }),
+      warning: off?.warning ?? '',
+      cautions: off?.cautions ?? [],
       stamp: off?.stamp ?? null,
       lengthM,
       km: r1(lengthM / 1000),
@@ -343,10 +377,8 @@ function buildTrail(trail) {
   // ── 2. 지점명 보정 ───────────────────────────────────────
   // "앞 코스 종점 = 다음 코스 시점" 은 본선에만 성립한다. 지선·우회로는 자기 시종점을 그대로 쓴다.
   const mains = built.filter((c) => !c.sub)
-  // 같은 번호의 지선끼리는 이어져 있다(서해랑길 64-1~64-6, 접합부 0~2m). 그 안에서만 연쇄로 채운다
-  const subRuns = [...new Set(built.filter((c) => c.sub).map((c) => c.seq))].map((seq) =>
-    built.filter((c) => c.sub && c.seq === seq).sort((a, b) => a.sub - b.sub),
-  )
+  // 이어진 하위 코스 묶음(서해랑길 64-1~64-6 등) 안에서만 연쇄로 채운다
+  const subRuns = subRunsOf(built)
   for (const run of subRuns) chainFill(run)
   const chained = chainFill(mains)
   const junctions = normalizeJunctions(mains)
@@ -395,9 +427,10 @@ function buildTrail(trail) {
   }
 
   // 지선·우회로 묶음: 어느 본선 코스에서 갈라져 어디로 합류하는가
-  const groups = groupSubs(built)
+  const groups = groupSubs(built, subRuns)
   for (const g of groups) {
-    if (!g.from || !g.to) {
+    // 한쪽만 닿는 묶음은 있을 수 있다(막다른 지선). 양쪽 다 못 찾으면 좌표가 잘못된 것이다
+    if (!g.from && !g.to) {
       warnings.push(`${g.ids.join('·')}: 본선과 닿는 곳을 못 찾았다 (시점 ${g.fromDistM}m · 종점 ${g.toDistM}m, 기준 ${BRANCH_M}m)`)
     }
     for (const id of g.ids) {
@@ -434,6 +467,10 @@ function buildTrail(trail) {
     endAccess: c.endAccess || '',
     // 코리아둘레길 스탬프함 위치 (해파랑길 여행자정보). 없으면 null
     stamp: c.stamp || null,
+    // 두루누비 코스 공지(통행 제한·우회 안내 등). 없으면 빈 문자열
+    warning: c.warning || '',
+    // 여행자정보 중 출입 통제·신분증·예약 안내 줄 (DMZ 평화의 길)
+    cautions: c.cautions?.length ? c.cautions : undefined,
     alias: c.alias || '',
     note: c.note || '',
     distanceKm: c.km,
