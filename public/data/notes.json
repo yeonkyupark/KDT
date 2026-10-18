@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-18T05:57:08.852Z",
+ "updatedAt": "2026-10-18T05:59:58.415Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -144,6 +144,28 @@
     "thumb": "namparang/2026/4d5debd9-13ab-4216-8f10-f1f3040af4db_t.jpg",
     "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/4d5debd9-13ab-4216-8f10-f1f3040af4db.jpg",
     "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/4d5debd9-13ab-4216-8f10-f1f3040af4db_t.jpg"
+   }
+  },
+  {
+   "id": "f10de5a8-e81f-4059-9694-2c77ebaf3104",
+   "trail": "namparang",
+   "lat": 34.989281499722225,
+   "lng": 128.23646259999998,
+   "courseId": "32",
+   "takenAt": "2026-10-03T09:27:01.000Z",
+   "createdAt": "2026-10-18T05:58:20.523Z",
+   "updatedAt": "2026-10-18T05:58:20.523Z",
+   "title": "남파랑길 32코스 시점(부포 사거리)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104.jpg",
+    "thumb": "namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104_t.jpg"
    }
   }
  ]
