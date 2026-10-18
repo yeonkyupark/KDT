@@ -182,7 +182,8 @@ function durationMin(km, ascentM) {
 }
 
 function main() {
-  const courses = listCourses()
+  // 앱은 아직 남파랑길만 그린다. 길별 출력은 다중 길 구조(TRAILS.md 3.3)에서 나눈다
+  const courses = listCourses(trailById('namparang'))
   const overrides = loadOverrides()
   const official = loadOfficial()
 

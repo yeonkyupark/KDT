@@ -1,11 +1,8 @@
-import { readFileSync, readdirSync } from 'node:fs'
-import { join, basename } from 'node:path'
+import { readFileSync, existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { createHash } from 'node:crypto'
 import { XMLParser } from 'fast-xml-parser'
 import { haversine } from './geo.mjs'
-
-/** 두루누비(한국관광공사) 공식 GPX. 사용자가 사이트에서 직접 내려받은 원본 그대로다. */
-export const GPX_DIR = 'data/gpx_durunubi'
 
 /** 뒤쪽 트랙이 첫 트랙 시점에서 이 거리 안에서 시작하면 같은 노선의 다른 판본으로 본다. */
 const DUPLICATE_TRACK_M = 500
@@ -89,15 +86,15 @@ export function parseGpx(path) {
 }
 
 /**
- * 남파랑길_7코스.gpx -> {id:'7', seq:7, key:'nam-07'}
+ * 코스 번호 -> 길 안의 id 와 파생 파일 키.
+ *   남파랑길 7코스     -> {id:'7',    key:'nam-07'}
+ *   서해랑길 64-1코스  -> {id:'64-1', key:'seo-64-1'}
  *
- * 파일명은 두루누비가 내려준 이름 그대로다. 고도 캐시 등 파생 파일은 `key` 로 이름 짓는다.
+ * 남파랑길 키는 예전 파일명 규칙에서 나온 것과 같다. 고도 캐시(data/cache/ele/<key>.json)를 그대로 쓴다.
  */
-export function parseCourseId(file) {
-  const m = /^남파랑길_(\d+)코스\.gpx$/.exec(basename(file))
-  if (!m) throw new Error(`${file}: 파일명 규칙(남파랑길_N코스.gpx)에 맞지 않는다`)
-  const seq = Number(m[1])
-  return { id: String(seq), seq, key: `nam-${String(seq).padStart(2, '0')}` }
+export function courseKey(trail, seq, sub = 0) {
+  const id = sub ? `${seq}-${sub}` : String(seq)
+  return { id, key: `${trail.keyPrefix}-${String(seq).padStart(2, '0')}${sub ? `-${sub}` : ''}` }
 }
 
 /** 파생 파일(고도 캐시)이 어느 원본 GPX 에서 나왔는지 확인하는 지문. */
@@ -105,10 +102,22 @@ export function sourceSha1(path) {
   return createHash('sha1').update(readFileSync(path)).digest('hex')
 }
 
-/** GPX_DIR 의 모든 GPX를 코스 순서대로 나열한다. */
-export function listCourses(dir = GPX_DIR) {
-  return readdirSync(dir)
-    .filter((f) => f.endsWith('.gpx'))
-    .map((f) => ({ file: f, path: join(dir, f), ...parseCourseId(f) }))
-    .sort((a, b) => a.seq - b.seq)
+/**
+ * 길 하나의 GPX 를 코스 순서대로 나열한다.
+ * 파일명이 아니라 대조표(trail.manifest)의 seq·sub 로 코스를 식별한다. 파일명은 두루누비가 주는 대로라
+ * 길마다 규칙이 다를 수 있다. 출처에서 사라진 코스(missingSince)도 파일이 남아 있으면 포함한다.
+ */
+export function listCourses(trail) {
+  if (!existsSync(trail.manifest)) throw new Error(`${trail.manifest} 가 없다. 먼저 npm run sync:durunubi -- --trail=${trail.id}`)
+  const { courses } = JSON.parse(readFileSync(trail.manifest, 'utf8'))
+  const out = courses.map((c) => ({
+    file: c.file,
+    path: join(trail.gpxDir, c.file),
+    seq: c.seq,
+    sub: c.sub,
+    ...courseKey(trail, c.seq, c.sub),
+  }))
+  const lost = out.filter((c) => !existsSync(c.path))
+  if (lost.length) throw new Error(`대조표에 있는데 GPX 가 없다: ${lost.map((c) => c.path).join(', ')}`)
+  return out.sort((a, b) => a.seq - b.seq || a.sub - b.sub)
 }

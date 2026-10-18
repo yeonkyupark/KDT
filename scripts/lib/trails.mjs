@@ -5,6 +5,7 @@
  *   serviceFlag 두루누비 사이트 목록 화면(`{slug}-course-list.do`)이 쓰는 길 구분값
  *   gpxDir      공식 GPX 원본을 받은 그대로 두는 폴더
  *   manifest    코스 기록 + GPX 지문(SHA1) — 동기화가 갱신하고 빌드가 읽는다
+ *   keyPrefix   고도 캐시 등 파생 파일 이름의 접두어 (nam-07, hae-07 …). 남파랑길 값은 바꾸지 않는다
  *
  * `enabled` 가 false 인 길은 동기화·빌드에서 건너뛴다. 지금 앱은 남파랑길만 그린다.
  */
@@ -16,6 +17,7 @@ export const TRAILS = [
     serviceFlag: 'NA',
     gpxDir: 'data/gpx_durunubi',
     manifest: 'data/durunubi/namparang.json',
+    keyPrefix: 'nam',
     enabled: true,
   },
   {
@@ -25,6 +27,7 @@ export const TRAILS = [
     serviceFlag: 'HE',
     gpxDir: 'data/durunubi/gpx/haeparang',
     manifest: 'data/durunubi/haeparang.json',
+    keyPrefix: 'hae',
     enabled: false,
   },
   {
@@ -34,6 +37,7 @@ export const TRAILS = [
     serviceFlag: 'SEO',
     gpxDir: 'data/durunubi/gpx/seohaerang',
     manifest: 'data/durunubi/seohaerang.json',
+    keyPrefix: 'seo',
     enabled: false,
   },
   {
@@ -43,6 +47,7 @@ export const TRAILS = [
     serviceFlag: 'DMZ',
     gpxDir: 'data/durunubi/gpx/dmz',
     manifest: 'data/durunubi/dmz.json',
+    keyPrefix: 'dmz',
     enabled: false,
   },
 ]

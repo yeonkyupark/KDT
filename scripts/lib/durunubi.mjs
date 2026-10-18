@@ -141,14 +141,21 @@ export function parseTravelerInfo(text) {
 }
 
 /**
- * 코스 이름에서 번호를 뽑는다.
+ * 코스 이름에서 번호를 뽑는다. 길 이름 다음의 첫 번호가 코스 번호다.
  *   '남파랑길 31코스' → {seq:31, sub:0, label:''}
  *   'DMZ 평화의 길 3-1코스(우회로)' → {seq:3, sub:1, label:'우회로'}
+ *   'DMZ 평화의 길 8코스 (예약노선)' → {seq:8, sub:0, label:'예약노선'}
+ *   '해파랑길 35코스 바우길 09구간' → {seq:35, sub:0, label:'바우길 09구간'}  (괄호 없는 부제)
+ *   '서해랑길 64-3(지선3코스)' → {seq:64, sub:3, label:'지선3코스'}  ("코스" 가 빠졌다)
+ * "코스" 도 하위 번호도 괄호 부제도 없으면 코스 이름으로 보지 않는다(null).
  */
 export function parseCourseName(name) {
-  const m = /(\d+)(?:-(\d+))?\s*코스\s*(?:\((.*)\))?\s*$/.exec(name ?? '')
+  const m = /^\D*?(\d+)(?:-(\d+))?\s*(코스)?\s*(.*?)\s*$/.exec(name ?? '')
   if (!m) return null
-  return { seq: Number(m[1]), sub: m[2] ? Number(m[2]) : 0, label: (m[3] ?? '').trim() }
+  const [, seq, sub, word, rest] = m
+  const paren = /^\((.*)\)$/.exec(rest)
+  if (!word && !sub && !paren) return null
+  return { seq: Number(seq), sub: sub ? Number(sub) : 0, label: (paren ? paren[1] : rest).trim() }
 }
 
 const LEVEL_LABEL = { 1: '쉬움', 2: '보통', 3: '어려움' }
@@ -160,12 +167,17 @@ const LEVEL_LABEL = { 1: '쉬움', 2: '보통', 3: '어려움' }
 export function mergeCourses(trail, publicItems, siteItems) {
   const pub = new Map(publicItems.map((c) => [c.crsIdx, c]))
   const records = []
+  const unparsed = []
 
   for (const s of siteItems) {
     const p = pub.get(s.crs_idx)
     const name = (p?.crsKorNm ?? s.crs_Kor_Nm ?? '').trim()
     const num = parseCourseName(name)
-    if (!num) continue
+    // 해석하지 못한 이름을 버리면 코스가 조용히 사라진다. 모아서 실패시킨다.
+    if (!num) {
+      unparsed.push(name || `(이름 없음 ${s.crs_idx})`)
+      continue
+    }
 
     const siteKm = Number(s.crs_Dstnc)
     const pubKm = p ? Number(p.crsDstnc) : NaN
@@ -208,6 +220,9 @@ export function mergeCourses(trail, publicItems, siteItems) {
       gpxFilePath,
       file,
     })
+  }
+  if (unparsed.length) {
+    throw new Error(`${trail.name}: 코스 이름 ${unparsed.length}개를 해석하지 못했다 — ${unparsed.join(', ')}`)
   }
   return records.sort((a, b) => a.seq - b.seq || a.sub - b.sub)
 }
