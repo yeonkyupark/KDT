@@ -1,9 +1,10 @@
 {
  "version": 1,
- "updatedAt": "2026-10-03T00:54:41.147Z",
+ "updatedAt": "2026-10-18T05:55:06.732Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
+   "trail": "namparang",
    "lat": 34.874037299722225,
    "lng": 128.42071429972222,
    "courseId": "14",
@@ -20,6 +21,7 @@
   },
   {
    "id": "6a4992cb-e0d8-4389-9156-622951444d1c",
+   "trail": "namparang",
    "lat": 34.874037299722225,
    "lng": 128.42071429972222,
    "courseId": "14",
@@ -41,6 +43,7 @@
   },
   {
    "id": "eab01ba4-a871-43ee-a1bc-ab9c401bcb79",
+   "trail": "namparang",
    "lat": 35.09971099972223,
    "lng": 129.1236541,
    "courseId": "1",
@@ -62,6 +65,7 @@
   },
   {
    "id": "b045cba3-30ae-47b7-9c21-f5660f55e9e1",
+   "trail": "namparang",
    "lat": 35.09971099972223,
    "lng": 129.1236541,
    "courseId": "1",
@@ -83,6 +87,7 @@
   },
   {
    "id": "c0e84a55-6bfd-4e12-b5dc-c5def628c9e8",
+   "trail": "namparang",
    "lat": 36.1319582,
    "lng": 128.388185,
    "courseId": "",
@@ -99,6 +104,7 @@
   },
   {
    "id": "be82fab3-27e2-4dc8-bcbd-6f0db9699245",
+   "trail": "namparang",
    "lat": 34.8625303,
    "lng": 128.4214042,
    "courseId": "30",
