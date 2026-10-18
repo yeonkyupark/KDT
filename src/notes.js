@@ -557,7 +557,8 @@ export function createNotes({ host, view, courses, sync, trail = DEFAULT_TRAIL, 
       for (const c of list) {
         const o = document.createElement('option')
         o.value = c.id
-        o.textContent = `${c.seq}코스 · ${c.region || '—'}`
+        // 지선·우회로는 '64-1코스' 처럼 하위 번호까지 보여 준다
+        o.textContent = `${c.kind && c.kind !== 'main' ? c.name : `${c.seq}코스`} · ${c.region || '—'}`
         courseSel.append(o)
       }
       courseSel.value = list.some((c) => c.id === selected) ? selected : ''

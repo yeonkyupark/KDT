@@ -1,0 +1,77 @@
+{
+ "generatedAt": "2026-10-18T06:29:28.253Z",
+ "trail": "seohaerang",
+ "trailName": "서해랑길",
+ "courseCount": 109,
+ "mainCourseCount": 103,
+ "groups": [
+  {
+   "seq": 64,
+   "kind": "spur",
+   "ids": [
+    "64-1",
+    "64-2",
+    "64-3",
+    "64-4",
+    "64-5",
+    "64-6"
+   ],
+   "from": {
+    "courseId": "64",
+    "seq": 64,
+    "distM": 20
+   },
+   "to": {
+    "courseId": "83",
+    "seq": 83,
+    "distM": 4
+   },
+   "ascentM": 1777,
+   "durationMin": 2160,
+   "km": 108.5
+  }
+ ],
+ "totalKm": 1630.3,
+ "totalAscentM": 20214,
+ "elevation": {
+  "source": "srtm30m (opentopodata)",
+  "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",
+  "spacing": 50,
+  "smoothWindow": 3,
+  "thresholdM": 3
+ },
+ "duration": {
+  "note": "두루누비(한국관광공사) 공식 권장 소요시간.",
+  "naismithNote": "참고용 계산값은 naismithMin 에 함께 담았다.",
+  "walkSpeedKmh": 4,
+  "ascentSpeedMh": 600
+ },
+ "difficulty": {
+  "source": "두루누비(한국관광공사) 공식 등급",
+  "formula": "참고용 계산값(difficultyScore): 거리km + 상승m/100",
+  "breaks": [
+   {
+    "max": 16,
+    "label": "쉬움"
+   },
+   {
+    "max": 22,
+    "label": "보통"
+   },
+   {
+    "max": null,
+    "label": "어려움"
+   }
+  ]
+ },
+ "official": {
+  "source": "두루누비 — https://www.durunubi.kr/seohaerang-course-list.do",
+  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)",
+  "note": "난이도·소요시간은 공식값. 거리는 지도 선과 맞추기 위해 GPX 실측값을 쓴다."
+ },
+ "source": {
+  "gpx": "두루누비(한국관광공사) 코스별 공식 GPX — https://www.durunubi.kr/seohaerang-course-list.do",
+  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지)",
+  "detail": "data/SOURCE.md"
+ }
+}

@@ -29,7 +29,20 @@ const el = (tag, cls, text) => {
 }
 
 /** 정보 카드가 쓰는 길 정보. main() 이 길을 정한 뒤 채운다. */
-const cardCtx = { trail: null }
+const cardCtx = { trail: null, groups: [] }
+
+/** 본선인가. kind 가 없는 옛 데이터는 모두 본선이다. */
+export const isMain = (c) => (c.kind ?? 'main') === 'main'
+
+/**
+ * 지선·우회로가 구간과 겹치는가. 묶음이 갈라지는 본선 코스 ~ 합류하는 본선 코스 사이를 본다.
+ * 서해랑길 지선(64-1~64-6)은 64코스에서 갈라져 83코스에서 합류하므로, 64~83 과 겹치는 구간에서 강조된다.
+ */
+export function subInRange(c, { from, to }) {
+  const lo = c.group?.from?.seq ?? c.seq
+  const hi = c.group?.to?.seq ?? c.seq
+  return Math.max(lo, hi) >= from && Math.min(lo, hi) <= to
+}
 
 const SIDE = { start: '시점', end: '종점' }
 
@@ -114,6 +127,16 @@ function renderInfoCard(host, course) {
   card.append(head)
 
   if (course.label) card.append(el('div', 'ic-alias', course.label))
+  // 지선·우회로: 어디서 갈라져 어디로 합류하는지, 묶음 전체 길이
+  if (!isMain(course)) {
+    const g = cardCtx.groups.find((x) => x.ids.includes(course.id))
+    const kind = course.kind === 'detour' ? '우회로' : '지선'
+    const bits = [kind]
+    if (course.group?.from) bits.push(`${course.group.from.seq}코스에서 갈라짐`)
+    if (course.group?.to) bits.push(`${course.group.to.seq}코스로 합류`)
+    if (g && g.ids.length > 1) bits.push(`${kind} ${g.ids.length}개 ${g.km} km (${g.ids[0]}~${g.ids.at(-1)})`)
+    card.append(el('div', 'ic-sub', bits.join(' · ')))
+  }
   if (course.alias) card.append(el('div', 'ic-alias', course.alias))
   card.append(
     el(
@@ -234,10 +257,14 @@ async function main() {
   }
 
   cardCtx.trail = trail
+  cardCtx.groups = meta.groups ?? []
   document.title = `${trail.name} — 코리아둘레길 가이드`
   configureDifficulty(meta.difficulty?.breaks)
 
   const byId = new Map(courses.map((c) => [c.id, c]))
+  // 구간 선택·합계·고도 프로필은 본선만 쓴다. 지선·우회로는 지도와 사이드바에 따로 보인다
+  const mains = courses.filter(isMain)
+  const subs = courses.filter((c) => !isMain(c))
   const { tileGroup, tools, stage, mapwrap, mapEl, mapOverlay, sideBtn } = renderShell(trails.trails, trail)
 
   /**
@@ -276,14 +303,14 @@ async function main() {
   })
 
   // ── 구간 적용 ────────────────────────────────────────
-  const maxSeq = Math.max(...courses.map((c) => c.seq))
+  const maxSeq = Math.max(...mains.map((c) => c.seq))
   const opts = { maxSeq, tiles: TILE_NAMES, defaultTrail: trails.defaultTrail }
   const initial = readState(opts)
   let layer = initial.layer
 
   /** 구간의 코스를 순서대로 이어 붙인 고도 프로필. */
   function profileSegments(from, to) {
-    return courses
+    return mains
       .filter((c) => c.seq >= from && c.seq <= to)
       .sort((a, b) => a.seq - b.seq)
       .map((c) => {
@@ -295,7 +322,8 @@ async function main() {
   let applyToken = 0
 
   async function applyRange({ from, to }, { fit = true } = {}) {
-    const ids = new Set(courses.filter((c) => c.seq >= from && c.seq <= to).map((c) => c.id))
+    const ids = new Set(mains.filter((c) => c.seq >= from && c.seq <= to).map((c) => c.id))
+    for (const c of subs) if (subInRange(c, { from, to })) ids.add(c.id)
     view.setSelection(ids.size === courses.length ? null : ids)
     if (fit) view.fitIds(ids)
 
@@ -305,7 +333,7 @@ async function main() {
     // 구간이 바뀌면 열려 있던 정보 카드가 옛 코스를 그대로 들고 있게 된다.
     // 새 구간의 시작 코스로 갱신한다. (카드가 닫혀 있으면 굳이 열지 않는다)
     if (document.querySelector('.infocard')) {
-      const head = courses.find((c) => c.seq === from)
+      const head = mains.find((c) => c.seq === from)
       if (head) renderInfoCard(mapOverlay, head)
     }
 
@@ -327,7 +355,10 @@ async function main() {
     }
   }
 
-  const sidebar = createSidebar(stage, courses, {
+  const sidebar = createSidebar(stage, mains, {
+    subs,
+    subInRange,
+    groups: meta.groups ?? [],
     onRangeChange: (r) => applyRange(r),
     onPick: (c) => {
       view.togglePin(c.id)

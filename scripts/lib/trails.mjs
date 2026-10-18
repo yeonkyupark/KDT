@@ -50,7 +50,7 @@ export const TRAILS = [
     manifest: 'data/durunubi/seohaerang.json',
     metaCsv: 'data/courses.meta.seohaerang.csv',
     keyPrefix: 'seo',
-    enabled: false,
+    enabled: true,
   },
   {
     id: 'dmz',

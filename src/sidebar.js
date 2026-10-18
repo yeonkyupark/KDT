@@ -17,7 +17,15 @@ const el = (tag, cls, text) => {
  * 모바일에서는 하단 시트가 된다. 손잡이를 눌러 3단(요약만 / 선택까지 / 목록까지)으로 접힌다.
  * 드래그 제스처는 넣지 않았다 — 탭만으로 세 상태를 다 갈 수 있고 코드가 훨씬 적다.
  */
-export function createSidebar(root, courses, { onRangeChange, onPick, onHover } = {}) {
+/**
+ * @param {Array} courses  본선 코스 — 시작/종료 선택, 요약, 목록
+ * @param {Array} opts.subs  지선·우회로 — 구간과 겹치면 목록 아래 따로 보여 준다(합계에 넣지 않는다)
+ */
+export function createSidebar(
+  root,
+  courses,
+  { onRangeChange, onPick, onHover, subs = [], subInRange = () => false, groups = [] } = {},
+) {
   const maxSeq = Math.max(...courses.map((c) => c.seq))
 
   const panel = el('aside', 'panel')
@@ -69,6 +77,10 @@ export function createSidebar(root, courses, { onRangeChange, onPick, onHover } 
   listWrap.append(listHead)
   const list = el('ul', 'course-list')
   listWrap.append(list)
+  // 지선·우회로 (있는 길만)
+  const subHead = el('div', 'list-head sub-head')
+  const subList = el('ul', 'course-list sub-list')
+  listWrap.append(subHead, subList)
   body.append(listWrap)
 
   // 사진·메모 섹션은 notes.js 가 채운다 (자리만 만들어 둔다)
@@ -136,31 +148,42 @@ export function createSidebar(root, courses, { onRangeChange, onPick, onHover } 
     list.textContent = ''
     const sel = courses.filter(inRange).sort((a, b) => a.seq - b.seq)
     listHead.textContent = `구간 코스 ${sel.length}개`
+    for (const c of sel) list.append(courseItem(c))
 
-    for (const c of sel) {
-      const li = el('li', 'course-item')
-
-      const dot = el('i', 'dot')
-      dot.style.background = DIFFICULTY_COLOR[c.difficulty] ?? '#8b8f98'
-
-      const num = el('span', 'ci-num', String(c.seq))
-
-      const mid = el('span', 'ci-mid')
-      mid.append(el('span', 'ci-name', c.name))
-      mid.append(
-        el('span', 'ci-route', c.start && c.end ? `${c.start} → ${c.end}` : '지점명 정보 없음'),
-      )
-
-      const right = el('span', 'ci-right')
-      right.append(el('span', 'ci-km', `${c.distanceKm} km`))
-      right.append(el('span', 'ci-up', `↑${c.ascentM.toLocaleString()}`))
-
-      li.append(dot, num, mid, right)
-      li.onclick = () => onPick?.(c)
-      li.onmouseenter = () => onHover?.(c.id, true)
-      li.onmouseleave = () => onHover?.(c.id, false)
-      list.append(li)
+    subList.textContent = ''
+    const near = subs.filter((c) => subInRange(c, range)).sort((a, b) => a.seq - b.seq || a.id.localeCompare(b.id))
+    subHead.hidden = subList.hidden = near.length === 0
+    if (near.length) {
+      const km = near.reduce((s, c) => s + (c.distanceM ?? c.distanceKm * 1000), 0) / 1000
+      const kinds = new Set(near.map((c) => (c.kind === 'detour' ? '우회로' : '지선')))
+      subHead.textContent = `${[...kinds].join('·')} ${near.length}개 · ${km.toFixed(1)} km (구간 합계에 넣지 않음)`
+      for (const c of near) subList.append(courseItem(c))
     }
+  }
+
+  function courseItem(c) {
+    const li = el('li', 'course-item' + (c.kind && c.kind !== 'main' ? ' is-sub' : ''))
+
+    const dot = el('i', 'dot')
+    dot.style.background = DIFFICULTY_COLOR[c.difficulty] ?? '#8b8f98'
+
+    const num = el('span', 'ci-num', c.kind && c.kind !== 'main' ? c.id : String(c.seq))
+
+    const mid = el('span', 'ci-mid')
+    mid.append(el('span', 'ci-name', c.name))
+    mid.append(
+      el('span', 'ci-route', c.start && c.end ? `${c.start} → ${c.end}` : '지점명 정보 없음'),
+    )
+
+    const right = el('span', 'ci-right')
+    right.append(el('span', 'ci-km', `${c.distanceKm} km`))
+    right.append(el('span', 'ci-up', `↑${c.ascentM.toLocaleString()}`))
+
+    li.append(dot, num, mid, right)
+    li.onclick = () => onPick?.(c)
+    li.onmouseenter = () => onHover?.(c.id, true)
+    li.onmouseleave = () => onHover?.(c.id, false)
+    return li
   }
 
   function syncSelects() {

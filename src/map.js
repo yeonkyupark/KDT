@@ -149,6 +149,8 @@ export function createMap(el, courses, { onSelect, getInsets, sourceUrl } = {}) 
       opacity: ON.opacity,
       lineJoin: 'round',
       lineCap: 'round',
+      // 지선·우회로는 점선 — 본선과 한눈에 구분된다
+      dashArray: c.kind && c.kind !== 'main' ? '7 7' : null,
     }).addTo(lineGroup)
 
     const marker = L.circleMarker(c.startLatLng, {

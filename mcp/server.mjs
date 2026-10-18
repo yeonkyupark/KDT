@@ -63,7 +63,7 @@ const loadMeta = async (id) => cachedFetch(`data/${(await trailInfo(id)).id}/met
 const TrailArg = z
   .string()
   .optional()
-  .describe('길 id. namparang(남파랑길, 기본) · haeparang(해파랑길). 전체 목록은 list_trails')
+  .describe('길 id. namparang(남파랑길, 기본) · haeparang(해파랑길) · seohaerang(서해랑길). 전체 목록은 list_trails')
 
 /** 도구 실행 중 오류(모르는 길 등)를 MCP 오류 응답으로 바꾼다. */
 const guarded = (fn) => async (args) => {
@@ -81,6 +81,8 @@ function brief(c) {
     seq: c.seq,
     name: c.name,
     label: c.label ?? '',
+    // main 본선 · spur 지선 · detour 우회로 (옛 데이터는 kind 가 없고 모두 본선)
+    kind: c.kind ?? 'main',
     region: c.region,
     start: c.start,
     end: c.end,
@@ -129,6 +131,7 @@ const BriefSchema = z.object({
   seq: z.number(),
   name: z.string(),
   label: z.string(),
+  kind: z.string(),
   region: z.string(),
   start: z.string(),
   end: z.string(),
@@ -244,7 +247,8 @@ function buildServer() {
       description:
         '길 하나에서 코스 번호 범위(from~to)의 상세 정보와 구간 합계(총 거리·소요시간·상승/하강)를 반환한다. ' +
         '단일 코스만 보려면 to 를 생략하거나 from 과 같게 준다. ' +
-        '남파랑길 1~90코스는 부산 오륙도에서 해남 땅끝탑 방향, 해파랑길 1~50코스는 부산 오륙도에서 고성 통일전망대 방향이다.',
+        '남파랑길 1~90코스는 부산 오륙도에서 해남 땅끝탑 방향, 해파랑길 1~50코스는 부산 오륙도에서 고성 통일전망대 방향이다. ' +
+        '번호 범위는 본선만 고른다. 지선·우회로(예: 서해랑길 64-1)는 list_courses 의 kind 로 확인하고 search_courses 로 찾는다.',
       inputSchema: z.object({
         trail: TrailArg,
         from: z.number().int().min(1).describe('시작 코스 번호'),
@@ -269,7 +273,8 @@ function buildServer() {
       const lo = Math.min(from, to ?? from)
       const hi = Math.max(from, to ?? from)
 
-      const sel = courses.filter((c) => c.seq >= lo && c.seq <= hi)
+      // 본선만. 지선 64-1 도 seq 는 64 라서 거르지 않으면 범위 합계에 섞인다
+      const sel = courses.filter((c) => !c.isAlt && c.seq >= lo && c.seq <= hi)
       if (!sel.length) {
         return {
           content: [

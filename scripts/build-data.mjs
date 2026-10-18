@@ -40,6 +40,62 @@ const OUT_ROOT = 'public/data'
 /** 이 거리 안에서 두 길의 끝점이 만나면 "이어지는 길"로 안내한다. */
 const LINK_M = 1000
 
+/** 지선 묶음의 시점·종점이 본선 선에서 이 거리 안이면 그 코스에서 갈라지고(합류하고) 있다고 본다. */
+const BRANCH_M = 1000
+
+/**
+ * 하위 번호 코스의 종류. 공식 이름의 부제로 가른다.
+ *   '64-1코스(지선1코스)', '4-1코스(지선코스)' → spur (지선: 본선 밖으로 따로 나가는 길)
+ *   '2-1코스(우회로)'                           → detour (우회로: 본선 일부를 대신 걷는 길)
+ */
+const kindOf = (c) => (!c.sub ? 'main' : /우회/.test(c.label ?? '') ? 'detour' : 'spur')
+
+/** 점에서 가장 가까운 본선 코스와 그 거리. */
+function nearestMain(mains, p) {
+  let best = null
+  for (const m of mains) {
+    for (const q of m.detail) {
+      const d = haversine(p, q)
+      if (!best || d < best.distM) best = { course: m, distM: d }
+    }
+  }
+  return best
+}
+
+/**
+ * 하위 번호 코스를 같은 본선 번호끼리 묶는다(서해랑길 64-1~64-6 은 하나로 이어진 지선이다).
+ * 묶음의 시점·종점이 본선 어느 코스에 닿는지 좌표로 잰다. 닿지 않으면(BRANCH_M 초과) null.
+ */
+function groupSubs(built) {
+  const mains = built.filter((c) => !c.sub)
+  const bySeq = new Map()
+  for (const c of built.filter((c) => c.sub)) {
+    if (!bySeq.has(c.seq)) bySeq.set(c.seq, [])
+    bySeq.get(c.seq).push(c)
+  }
+  const groups = []
+  for (const [seq, list] of bySeq) {
+    list.sort((a, b) => a.sub - b.sub)
+    const a = nearestMain(mains, list[0].detail[0])
+    const b = nearestMain(mains, list.at(-1).detail.at(-1))
+    const at = (n) => (n && n.distM <= BRANCH_M ? { courseId: n.course.id, seq: n.course.seq, distM: Math.round(n.distM) } : null)
+    groups.push({
+      seq,
+      kind: kindOf(list[0]),
+      ids: list.map((c) => c.id),
+      from: at(a),
+      to: at(b),
+      lengthM: list.reduce((s, c) => s + c.lengthM, 0),
+      ascentM: list.reduce((s, c) => s + c.ascentM, 0),
+      durationMin: list.reduce((s, c) => s + (c.durationMin ?? 0), 0),
+      // 분기·합류를 못 찾았을 때 경고에 쓴다
+      fromDistM: Math.round(a?.distM ?? Infinity),
+      toDistM: Math.round(b?.distM ?? Infinity),
+    })
+  }
+  return groups
+}
+
 /** CSV 로 덮어쓸 수 있는 필드. 여기 없는 열은 무시된다. */
 const OVERRIDE_FIELDS = [
   'name',
@@ -125,8 +181,7 @@ function loadOfficial(trail) {
   if (!existsSync(path)) throw new Error(`${path} 가 없다. 먼저 npm run sync:durunubi 를 실행하라.`)
   const map = new Map()
   for (const r of JSON.parse(readFileSync(path, 'utf8')).courses) {
-    if (r.sub) continue // 지선·우회 노선은 아직 다루지 않는다 (TRAILS.md 4.2)
-    map.set(String(r.seq), {
+    map.set(r.sub ? `${r.seq}-${r.sub}` : String(r.seq), {
       crsIdx: r.crsIdx,
       km: r.km,
       min: r.minutes,
@@ -224,16 +279,13 @@ function durationMin(km, ascentM) {
 function buildTrail(trail) {
   const outDir = join(OUT_ROOT, trail.id)
   const outCourse = join(outDir, 'course')
-  const all = listCourses(trail)
-  const subs = all.filter((c) => c.sub)
-  const courses = all.filter((c) => !c.sub)
+  const courses = listCourses(trail)
   const overrides = loadOverrides(trail.metaCsv)
   const official = loadOfficial(trail)
 
   // ── 1. GPX 파싱 + 고도 캐시 결합 ─────────────────────────
   const built = []
   const warnings = []
-  if (subs.length) warnings.push(`지선·우회로 ${subs.length}개는 아직 다루지 않는다 (TRAILS.md 4.2)`)
 
   for (const c of courses) {
     const { name, points, nonstandard, duplicateTracks } = parseGpx(c.path)
@@ -264,6 +316,7 @@ function buildTrail(trail) {
       // 지점명·주소·교통편·지역은 공식 자료에서. 틀린 곳만 아래 CSV 가 고친다.
       ...officialPlaces(off),
       label: off?.label ?? '',
+      kind: kindOf({ sub: c.sub, label: off?.label }),
       stamp: off?.stamp ?? null,
       lengthM,
       km: r1(lengthM / 1000),
@@ -288,9 +341,15 @@ function buildTrail(trail) {
   }
 
   // ── 2. 지점명 보정 ───────────────────────────────────────
-  // "앞 코스 종점 = 다음 코스 시점" 은 본선에만 성립한다. 지선·우회로는 위에서 뺐다.
-  const chained = chainFill(built)
-  const junctions = normalizeJunctions(built)
+  // "앞 코스 종점 = 다음 코스 시점" 은 본선에만 성립한다. 지선·우회로는 자기 시종점을 그대로 쓴다.
+  const mains = built.filter((c) => !c.sub)
+  // 같은 번호의 지선끼리는 이어져 있다(서해랑길 64-1~64-6, 접합부 0~2m). 그 안에서만 연쇄로 채운다
+  const subRuns = [...new Set(built.filter((c) => c.sub).map((c) => c.seq))].map((seq) =>
+    built.filter((c) => c.sub && c.seq === seq).sort((a, b) => a.sub - b.sub),
+  )
+  for (const run of subRuns) chainFill(run)
+  const chained = chainFill(mains)
+  const junctions = normalizeJunctions(mains)
   const regionFixes = normalizeRegions(built)
 
   // CSV 덮어쓰기는 맨 마지막 (수기 보정이 최우선)
@@ -311,7 +370,7 @@ function buildTrail(trail) {
   // 이게 없으면 1코스 종점에 '부산역'을 적어도 2코스 시점은 여전히 비어 있어,
   // 접합부마다 같은 값을 두 번씩 적어야 한다(89곳 중복 입력).
   // chainFill 은 빈 값만 채우므로 CSV 값을 덮어쓸 위험이 없다.
-  const chainedAfterCsv = chainFill(built)
+  const chainedAfterCsv = chainFill(mains)
   const regionsAfterCsv = normalizeRegions(built)
 
   // ── 3. 파생 지표 ─────────────────────────────────────────
@@ -332,7 +391,19 @@ function buildTrail(trail) {
     // 공식 거리는 표시용 참고값. 지도 선과 일치해야 하므로 distanceKm 은 우리 값을 쓴다.
     c.officialKm = off?.km ?? null
 
-    if (!c.name) c.name = `${c.seq}코스`
+    if (!c.name) c.name = `${c.id}코스`
+  }
+
+  // 지선·우회로 묶음: 어느 본선 코스에서 갈라져 어디로 합류하는가
+  const groups = groupSubs(built)
+  for (const g of groups) {
+    if (!g.from || !g.to) {
+      warnings.push(`${g.ids.join('·')}: 본선과 닿는 곳을 못 찾았다 (시점 ${g.fromDistM}m · 종점 ${g.toDistM}m, 기준 ${BRANCH_M}m)`)
+    }
+    for (const id of g.ids) {
+      const c = built.find((x) => x.id === id)
+      c.group = { ids: g.ids, from: g.from, to: g.to }
+    }
   }
 
   // ── 4. 출력 ──────────────────────────────────────────────
@@ -342,8 +413,12 @@ function buildTrail(trail) {
   const index = built.map((c) => ({
     id: c.id,
     seq: c.seq,
-    // 우회 노선은 아직 없다. 이 필드를 검사하는 옛 MCP 서버 사본(README 의 설치 방법)이 깨지지 않게 남긴다.
-    isAlt: false,
+    // 옛 MCP 서버 사본(README 의 설치 방법)이 이 필드로 본선만 고른다
+    isAlt: c.kind !== 'main',
+    // main 본선 · spur 지선 · detour 우회로. 구간 선택·합계·고도 프로필은 본선만 쓴다
+    kind: c.kind,
+    // 지선·우회로 묶음: 같은 번호의 하위 코스들과, 갈라지는(from)·합류하는(to) 본선 코스. 본선은 없다
+    group: c.group ?? undefined,
     name: c.name,
     // 공식 코스명의 부제 (예: '영덕 블루로드 1, 2코스', '바우길 09구간')
     label: c.label || '',
@@ -395,8 +470,10 @@ function buildTrail(trail) {
     )
   }
 
-  const totalKm = r1(built.reduce((s, c) => s + c.lengthM, 0) / 1000)
-  const totalAscentM = built.reduce((s, c) => s + c.ascentM, 0)
+  // 합계는 본선만. 지선·우회로는 groups 에 따로 담는다
+  const totalKm = r1(mains.reduce((s, c) => s + c.lengthM, 0) / 1000)
+  const totalAscentM = mains.reduce((s, c) => s + c.ascentM, 0)
+  const groupsOut = groups.map(({ fromDistM, toDistM, lengthM, ...g }) => ({ ...g, km: r1(lengthM / 1000) }))
   writeFileSync(
     join(outDir, 'meta.json'),
     JSON.stringify(
@@ -405,7 +482,9 @@ function buildTrail(trail) {
         trail: trail.id,
         trailName: trail.name,
         courseCount: built.length,
-        mainCourseCount: built.length,
+        mainCourseCount: mains.length,
+        // 지선·우회로 묶음 (본선 합계에 들어가지 않는다)
+        groups: groupsOut,
         // 코스별 반올림값을 더하면 오차가 쌓인다. 원시 미터로 합산한 뒤 반올림한다.
         totalKm,
         totalAscentM,
@@ -446,12 +525,16 @@ function buildTrail(trail) {
   )
 
   // ── 5. 리포트 ────────────────────────────────────────────
-  const sum = (f) => built.reduce((s, c) => s + f(c), 0)
+  const sum = (f) => mains.reduce((s, c) => s + f(c), 0)
   const size = (p) => (readFileSync(p).length / 1024).toFixed(1) + 'KB'
   const courseDirKB = built.reduce((s, c) => s + readFileSync(join(outCourse, `${c.id}.json`)).length, 0)
 
-  console.log(`\n# ${trail.name} — ${built.length}개 코스\n`)
-  console.log('합계')
+  console.log(`\n# ${trail.name} — 본선 ${mains.length}개${groups.length ? ` + 지선·우회로 ${built.length - mains.length}개` : ''}\n`)
+  for (const g of groupsOut) {
+    const where = (x) => (x ? `${x.seq}코스(${x.distM}m)` : '없음')
+    console.log(`  ${g.kind === 'detour' ? '우회로' : '지선'} ${g.ids[0]}${g.ids.length > 1 ? `~${g.ids.at(-1)}` : ''}  ${g.km} km · 갈라짐 ${where(g.from)} → 합류 ${where(g.to)}`)
+  }
+  console.log('합계 (본선)')
   console.log(`  거리        ${r1(sum((c) => c.lengthM) / 1000).toLocaleString()} km`)
   console.log(`  누적 상승   ${sum((c) => c.ascentM).toLocaleString()} m  (${(sum((c) => c.ascentM) / sum((c) => c.km)).toFixed(1)} m/km)`)
   console.log(`  예상 시간   ${Math.round(sum((c) => c.durationMin) / 60).toLocaleString()} 시간`)
@@ -461,8 +544,8 @@ function buildTrail(trail) {
 
   console.log('\n좌표 단순화')
   console.log(`  원본        ${sum((c) => c.rawPoints).toLocaleString()}점`)
-  console.log(`  오버뷰 ε${SIMPLIFY_OVERVIEW_M}m  ${sum((c) => c.overview.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.overview.length) / built.length)})`)
-  console.log(`  상세   ε${SIMPLIFY_DETAIL_M}m   ${sum((c) => c.detail.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.detail.length) / built.length)})`)
+  console.log(`  오버뷰 ε${SIMPLIFY_OVERVIEW_M}m  ${sum((c) => c.overview.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.overview.length) / mains.length)})`)
+  console.log(`  상세   ε${SIMPLIFY_DETAIL_M}m   ${sum((c) => c.detail.length).toLocaleString()}점 (코스당 평균 ${Math.round(sum((c) => c.detail.length) / mains.length)})`)
 
   console.log('\n지점명')
   console.log(`  연쇄 보정   시점 ${chained.start} · 종점 ${chained.end} · 지역 ${chained.region}`)
@@ -499,13 +582,15 @@ function buildTrail(trail) {
     for (const w of warnings) console.log(`  - ${w}`)
   }
 
-  const first = built[0]
-  const last = built.at(-1)
+  const first = mains[0]
+  const last = mains.at(-1)
   return {
     id: trail.id,
     name: trail.name,
     span: trail.span,
-    courseCount: built.length,
+    // 본선 코스 수. 지선·우회로는 따로
+    courseCount: mains.length,
+    subCourseCount: built.length - mains.length,
     totalKm,
     totalAscentM,
     bbox: [

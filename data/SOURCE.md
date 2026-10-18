@@ -12,10 +12,10 @@
 |---|---|---|---|---|
 | 남파랑길 | https://www.durunubi.kr/namparang-course-list.do | `data/gpx_durunubi/` | `data/durunubi/namparang.json` | 수집 중 (90개) |
 | 해파랑길 | https://www.durunubi.kr/haeparang-course-list.do | `data/durunubi/gpx/haeparang/` | `data/durunubi/haeparang.json` | 수집 중 (50개) |
-| 서해랑길 | https://www.durunubi.kr/seohaerang-course-list.do | `data/durunubi/gpx/seohaerang/` | `data/durunubi/seohaerang.json` | 예정 (109개) |
+| 서해랑길 | https://www.durunubi.kr/seohaerang-course-list.do | `data/durunubi/gpx/seohaerang/` | `data/durunubi/seohaerang.json` | 수집 중 (109개) |
 | DMZ 평화의 길 | https://www.durunubi.kr/dmz-course-list.do | `data/durunubi/gpx/dmz/` | `data/durunubi/dmz.json` | 예정 (48개) |
 
-길 정의(공공 API `routeIdx`, 사이트 `serviceFlag`)는 `scripts/lib/trails.mjs`. 1번은 남파랑길, 1-2번은 해파랑길의
+길 정의(공공 API `routeIdx`, 사이트 `serviceFlag`)는 `scripts/lib/trails.mjs`. 1번은 남파랑길, 1-2번은 해파랑길, 1-3번은 서해랑길의
 검증 결과다. 3번의 예시 수치는 남파랑길 기준이다. 다른 길을 붙이면 그 길의 검증 결과를 같은 형식으로 더한다.
 
 ---
@@ -115,6 +115,32 @@ git 이력에는 남아 있다.
 
 4코스 GPX 의 트랙 이름은 `251230-해파랑길 4코스(길천삼거리~신암입구 차량이용구간 지정, 공사현황 반영 트랙 수정)` 다.
 공사 구간을 차량으로 이동하도록 고친 판본이라 공식 거리보다 짧은 것으로 보인다(사실만 기록한다).
+
+---
+
+## 1-3. GPX 노선 — 서해랑길 (`data/durunubi/gpx/seohaerang/`)
+
+출처·저작권·라이선스·받는 방법·준수 방식은 1번(남파랑길)과 같다. 다른 점만 적는다.
+
+| 항목 | 내용 |
+|---|---|
+| **처음 받은 날** | 2026-10-18 (`npm run sync:durunubi -- --trail=seohaerang`, 이후 매주 자동 점검) |
+| **파일 수** | 109개 — 본선 103 (`서해랑길_1코스.gpx` ~ `서해랑길_103코스.gpx`) + 지선 6 (64-1~64-6) · 26 MB. 이름은 두루누비가 주는 그대로 |
+| **기록** | `data/durunubi/seohaerang.json` — 코스별 GPX 경로 · SHA1 · 크기 · 연결성 점검 결과 |
+| **출처 표기** | `data/durunubi/gpx/seohaerang/README.md`, 이 문서, README, 앱 지도 하단(길별 목록 페이지 링크) |
+
+### 검증 결과 (2026-10-18)
+
+| 항목 | 결과 |
+|---|---|
+| 코스 번호 | 본선 1~103 빠짐없음 + 지선 64-1~64-6 (공공 API 51 · 사이트 목록 보충 58) |
+| 본선 총 거리 | **1,630.3 km** (공식 표기 합계 1,642.5 km, -0.75%) |
+| 공식 거리와 2% 안쪽 | 73 / 109 코스 (5% 안쪽 103개). 가장 큰 차이 81코스 18.3/21.9km — 끊긴 곳 없음(점 간격 300m 초과 0) |
+| 본선 접합부 102곳 | 모두 **41m 이내** · 시·종점 ↔ 공식 좌표 최대 43m |
+| 지선 | 64-1~64-6 접합부 0~2m. 64코스 선에서 20m 지점에서 갈라져 83코스 선에서 4m 지점으로 합류 |
+| 중복 트랙 | 17개 코스 — 같은 노선이 트랙 2개. 원본은 고치지 않고 파서가 첫 트랙만 읽는다 |
+| 제작 도구(`creator`) | Korea Tourism Organization 83 · GPS Visualizer 14 · GPS TrackMaker 12 |
+| 공식 `<ele>` | 91개 코스에 누락·0값·음수 → 쓰지 않는다. DEM 34,934점 / 402요청 / null 0 (5번) |
 
 ---
 
