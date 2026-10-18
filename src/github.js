@@ -12,6 +12,8 @@
 const API = 'https://api.github.com'
 const RAW = 'https://raw.githubusercontent.com'
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
 const HEADERS = {
   Accept: 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
@@ -68,6 +70,14 @@ export function createClient(cfg) {
     return body
   }
 
+  /**
+   * 쓰기 직전 읽기용 URL. `t` 는 캐시 무력화용이다.
+   * 브라우저 no-store 만으로는 부족하다 — GitHub 쪽이 같은 URL 에 대해 커밋 직후
+   * 한동안 이전 sha 를 돌려줄 때가 있어, 그 sha 로 PUT 하면 409 "does not match" 가 난다.
+   */
+  const freshContentsUrl = (path) =>
+    `${contentsPath(path)}?ref=${encodeURIComponent(branch)}&t=${Date.now()}`
+
   const contentsPath = (path) =>
     `/repos/${cfg.owner}/${cfg.repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`
 
@@ -103,7 +113,7 @@ export function createClient(cfg) {
     async getFileJson(path) {
       let r
       try {
-        r = await api(`${contentsPath(path)}?ref=${encodeURIComponent(branch)}`, {
+        r = await api(freshContentsUrl(path), {
           cache: 'no-store',
         })
       } catch (e) {
@@ -125,7 +135,11 @@ export function createClient(cfg) {
     /** 쓰기에 필요한 현재 sha. 파일이 없으면 null. */
     async headSha(path) {
       try {
-        const r = await api(`${contentsPath(path)}?ref=${encodeURIComponent(branch)}`)
+        // no-store: 브라우저 HTTP 캐시(max-age=60)가 방금 올린 파일을 "없음"으로 답하면
+        // sha 없이 PUT 해서 422 "sha wasn't supplied" 가 난다.
+        const r = await api(freshContentsUrl(path), {
+          cache: 'no-store',
+        })
         return r?.sha ?? null
       } catch (e) {
         if (e.status === 404) return null
@@ -138,11 +152,17 @@ export function createClient(cfg) {
      * 그 사이 다른 곳에서 바뀌었으면 409 가 오고, 호출부가 다시 읽어 병합한다.
      */
     async putFile(path, base64, { message, sha }) {
-      return api(contentsPath(path), {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, content: base64, branch, ...(sha ? { sha } : {}) }),
-      })
+      try {
+        return await api(contentsPath(path), {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, content: base64, branch, ...(sha ? { sha } : {}) }),
+        })
+      } catch (e) {
+        // 어느 리포의 어느 파일에서 실패했는지 메시지에 남긴다.
+        if (e instanceof GitHubError) e.message = `${e.message} (${cfg.repo}/${path})`
+        throw e
+      }
     },
 
     putJson(path, value, opts) {
@@ -182,8 +202,42 @@ export function createClient(cfg) {
     async putBlobIfAbsent(path, blob, message) {
       const sha = await this.headSha(path)
       if (sha) return { skipped: true, path }
-      await this.putBlob(path, blob, { message })
-      return { skipped: false, path }
+      for (let attempt = 0; ; attempt++) {
+        try {
+          await this.putBlob(path, blob, { message })
+          return { skipped: false, path }
+        } catch (e) {
+          // 확인과 쓰기 사이에 이미 생겼다(이전 동기화가 올렸거나 API 복제 지연).
+          // 사진은 한 번 올리면 바뀌지 않으므로 있는 것으로 충분하다.
+          if (e.status === 422 && /sha/i.test(e.message)) return { skipped: true, path }
+          // 409: 다른 기기가 같은 브랜치에 동시에 커밋해 브랜치 끝이 움직였다.
+          // 파일 경로는 겹치지 않으므로 잠시 뒤 그대로 다시 보내면 된다.
+          if (e.status !== 409 || attempt >= 2) throw e
+          await sleep(1000 * 2 ** attempt)
+        }
+      }
+    },
+
+    /**
+     * 파일을 지운다. 이미 없으면 아무것도 하지 않는다.
+     * 409(다른 기기의 동시 커밋)는 던진다 — 호출부가 대기 목록에 남겨 다음 동기화 때 다시 지운다.
+     * @returns {Promise<boolean>} 실제로 지웠으면 true
+     */
+    async deleteFile(path, message) {
+      const sha = await this.headSha(path)
+      if (!sha) return false
+      try {
+        await api(contentsPath(path), {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, sha, branch }),
+        })
+        return true
+      } catch (e) {
+        // 확인과 삭제 사이에 이미 지워졌다.
+        if (e.status === 404) return false
+        throw e
+      }
     },
 
     /** 토큰이 가리키는 사용자. */

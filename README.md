@@ -34,6 +34,7 @@
 | 원격 저장 | GitHub Contents API (`fetch`, SDK 없음) | — |
 | EXIF | `exifr` — 사진 등록 시에만 지연 로딩 | 26KB |
 | ZIP | `fflate` — 백업 시에만 지연 로딩 | 9KB |
+| 사진 | 긴 변 1024px WebP(미지원 브라우저는 JPEG)로 축소·EXIF 제거, 업로드 후 로컬 사본 삭제 | — |
 | 호스팅 | GitHub Pages | — |
 
 첫 로딩은 **JS 64KB + CSS 10KB + 데이터 38KB (gzip)**. 차트·HTTP·상태관리 라이브러리를 쓰지 않는다.

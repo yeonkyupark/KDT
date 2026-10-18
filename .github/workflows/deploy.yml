@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    # 앱의 기록 동기화 커밋은 notes.json 만 바꾼다. 앱은 이 파일을 raw 에서 실행 중에 읽으므로 재배포가 필요 없다.
+    # public/data/ 의 나머지(코스 데이터)는 빌드에 실려야 하므로 제외하지 않는다.
+    paths-ignore:
+      - 'public/data/notes.json'
   workflow_dispatch:
 
 permissions:

@@ -8,8 +8,11 @@
  *
  * ZIP 구조
  *   notes.json          모든 노트 메타데이터 (삭제 표시된 것 포함)
- *   photos/{id}.jpg     저장용 이미지 (최대변 1280px)
- *   thumbs/{id}.jpg     썸네일 (256px)
+ *   photos/{id}.jpg     저장용 이미지 (긴 변 1024px)
+ *   thumbs/{id}.jpg     썸네일 (280px)
+ *
+ * 내용은 대개 WebP 지만 이름은 사진 리포와 같이 `.jpg` 다. 가져올 때 내용으로 형식을 정한다.
+ * 동기화가 끝난 사진은 로컬에서 지워지므로 대부분 사진 리포에서 받아 담는다.
  */
 
 import { allNotesRaw, getPhoto, putNoteRaw, saveNote } from './store.js'
@@ -24,12 +27,28 @@ function stamp() {
   return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}`
 }
 
+/** 내용으로 MIME 형식을 정한다. 이름이 `.jpg` 여도 내용은 대개 WebP 다. */
+function imageType(bytes) {
+  if (String.fromCharCode(...bytes.subarray(8, 12)) === 'WEBP') return 'image/webp'
+  if (bytes[0] === 0x89 && bytes[1] === 0x50) return 'image/png'
+  return 'image/jpeg'
+}
+
+/** 로컬 Blob 이 있으면 그것을, 없으면 사진 리포에서 받는다. 못 받으면 null. */
+async function photoBytes(blob, url) {
+  if (blob) return new Uint8Array(await blob.arrayBuffer())
+  if (!url) return null
+  const res = await fetch(url, { cache: 'no-store' }).catch(() => null)
+  return res?.ok ? new Uint8Array(await res.arrayBuffer()) : null
+}
+
 /**
  * 백업 ZIP 을 만들어 내려준다.
  * @param {(msg: string) => void} [onProgress]
- * @returns {Promise<{notes: number, photos: number, bytes: number, name: string}>}
+ * @param {{remoteUrl?: (note: object, kind: 'full'|'thumb') => string|null}} [opts]
+ * @returns {Promise<{notes: number, photos: number, missing: number, bytes: number, name: string}>}
  */
-export async function exportZip(onProgress) {
+export async function exportZip(onProgress, { remoteUrl } = {}) {
   const { zip } = await import('fflate')
 
   const notes = await allNotesRaw()
@@ -38,20 +57,23 @@ export async function exportZip(onProgress) {
   /** @type {Record<string, [Uint8Array, object]>} */
   const files = {}
   let photoCount = 0
+  let missing = 0
 
   for (const [i, n] of notes.entries()) {
     if (n.deleted) continue
+    const hasPhoto = Boolean(n.photo || n.thumb)
 
-    const full = await getPhoto(n.id)
-    // JPEG 는 이미 압축되어 있다. 다시 압축하면 CPU만 쓰고 크기는 그대로다.
+    const full = await photoBytes(await getPhoto(n.id), remoteUrl?.(n, 'full'))
+    // 이미 압축된 이미지다. 다시 압축하면 CPU만 쓰고 크기는 그대로다.
     if (full) {
-      files[`photos/${n.id}.jpg`] = [new Uint8Array(await full.arrayBuffer()), { level: 0 }]
+      files[`photos/${n.id}.jpg`] = [full, { level: 0 }]
       photoCount++
+    } else if (hasPhoto) {
+      missing++
     }
-    if (n.thumb) {
-      files[`thumbs/${n.id}.jpg`] = [new Uint8Array(await n.thumb.arrayBuffer()), { level: 0 }]
-    }
-    if (i % 20 === 0) onProgress?.(`사진 ${photoCount}장 담는 중…`)
+    const thumb = await photoBytes(n.thumb, remoteUrl?.(n, 'thumb'))
+    if (thumb) files[`thumbs/${n.id}.jpg`] = [thumb, { level: 0 }]
+    if (i % 5 === 0) onProgress?.(`사진 ${photoCount}장 담는 중…`)
   }
 
   // Blob 은 JSON 으로 직렬화되지 않으므로 빼고 담는다. 사진은 위에서 별도 파일로 들어갔다.
@@ -78,7 +100,7 @@ export async function exportZip(onProgress) {
   // 다운로드가 시작될 시간을 준 뒤 해제한다
   setTimeout(() => URL.revokeObjectURL(url), 10_000)
 
-  return { notes: meta.length, photos: photoCount, bytes: blob.size, name }
+  return { notes: meta.length, photos: photoCount, missing, bytes: blob.size, name }
 }
 
 /**
@@ -130,13 +152,13 @@ export async function importZip(file, onProgress) {
     const rec = {
       ...(mine ?? {}),
       ...n,
-      thumb: thumbBytes ? new Blob([thumbBytes], { type: 'image/jpeg' }) : (mine?.thumb ?? null),
+      thumb: thumbBytes ? new Blob([thumbBytes], { type: imageType(thumbBytes) }) : (mine?.thumb ?? null),
     }
 
     if (fullBytes) {
       // saveNote 는 updatedAt 을 지금으로 바꾼다. 백업의 시각을 지켜야 하므로
       // 사진만 saveNote 로 넣고 노트는 putNoteRaw 로 덮어쓴다.
-      await saveNote(rec, new Blob([fullBytes], { type: 'image/jpeg' }))
+      await saveNote(rec, new Blob([fullBytes], { type: imageType(fullBytes) }))
       photos++
     }
     await putNoteRaw(rec)

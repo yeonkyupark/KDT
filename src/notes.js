@@ -115,8 +115,10 @@ export function createNotes({ host, view, courses, sync }) {
     expBtn.disabled = true
     try {
       const { exportZip } = await import('./backup.js')
-      const r = await exportZip((m) => (backupMsg.textContent = m))
-      backupMsg.textContent = `${r.name} · 기록 ${r.notes}개 · 사진 ${r.photos}장 · ${formatBytes(r.bytes)}`
+      const r = await exportZip((m) => (backupMsg.textContent = m), { remoteUrl })
+      backupMsg.textContent =
+        `${r.name} · 기록 ${r.notes}개 · 사진 ${r.photos}장 · ${formatBytes(r.bytes)}` +
+        (r.missing ? ` · 사진 ${r.missing}장은 받지 못해 빠졌습니다 (네트워크 확인 후 다시 시도)` : '')
     } catch (e) {
       backupMsg.textContent = `내보내기 실패 — ${e.message}`
     } finally {
@@ -157,6 +159,15 @@ export function createNotes({ host, view, courses, sync }) {
   if (sync) {
     gearBtn.onclick = () => sync.openSettings()
     syncBtn.onclick = async () => {
+      // 옛 코드로는 동기화하지 않는다. 새 버전이 있으면 다시 연다.
+      const v = await sync.ensureLatestVersion()
+      if (v !== 'latest') {
+        setSyncMsg(
+          v === 'reloading' ? '새 버전으로 다시 불러오는 중…' : '새 버전 배포 중입니다. 잠시 후 다시 시도하세요',
+          v === 'stale' ? 'bad' : '',
+        )
+        return
+      }
       try {
         await sync.run()
       } catch {
@@ -171,6 +182,7 @@ export function createNotes({ host, view, courses, sync }) {
         if (st.pulled) bits.push(`내림 ${st.pulled}`)
         if (st.photos?.uploaded) bits.push(`사진 ${st.photos.uploaded}장`)
         if (st.photos?.restored) bits.push(`사진 복구 ${st.photos.restored}장`)
+        if (st.photos?.removed) bits.push(`사진 정리 ${st.photos.removed}장`)
         setSyncMsg(bits.length ? `완료 · ${bits.join(' · ')}` : '변경 없음', 'ok')
         // 원격에서 사라졌고 로컬 원본도 없는 사진은 되살릴 수 없다. 조용히 넘기지 않는다.
         if (st.photos?.orphaned) {
@@ -747,7 +759,8 @@ export function createNotes({ host, view, courses, sync }) {
           draft: { ...cur },
           image: null,
           near: null,
-          existingThumbUrl: cur.thumb ? URL.createObjectURL(cur.thumb) : null,
+          // 업로드가 끝난 사진은 로컬 썸네일이 없다 — 원격 URL 로 보여 준다
+          existingThumbUrl: cur.thumb ? URL.createObjectURL(cur.thumb) : remoteUrl(cur, 'thumb'),
         })
       }
       delBtn.onclick = async () => {
