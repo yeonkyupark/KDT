@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-24T15:37:06.920Z",
+ "updatedAt": "2026-10-24T15:38:23.527Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -298,6 +298,50 @@
     "thumb": "namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561_t.jpg",
     "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561.jpg",
     "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561_t.jpg"
+   }
+  },
+  {
+   "id": "bb6bba8f-10c3-4894-9664-a072d6d0e3ee",
+   "trail": "namparang",
+   "lat": 34.93414309972222,
+   "lng": 128.04783269972222,
+   "courseId": "35",
+   "takenAt": "2026-10-05T04:55:49.000Z",
+   "createdAt": "2026-10-24T15:37:20.768Z",
+   "updatedAt": "2026-10-24T15:37:20.768Z",
+   "title": "사천 노을전망교",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/bb6bba8f-10c3-4894-9664-a072d6d0e3ee.jpg",
+    "thumb": "namparang/2026/bb6bba8f-10c3-4894-9664-a072d6d0e3ee_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/bb6bba8f-10c3-4894-9664-a072d6d0e3ee.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/bb6bba8f-10c3-4894-9664-a072d6d0e3ee_t.jpg"
+   }
+  },
+  {
+   "id": "3623bc44-7cb5-49e3-b54b-c259c18168f8",
+   "trail": "namparang",
+   "lat": 34.9322735,
+   "lng": 128.0537657,
+   "courseId": "35",
+   "takenAt": "2026-10-05T05:08:04.000Z",
+   "createdAt": "2026-10-24T15:37:52.825Z",
+   "updatedAt": "2026-10-24T15:37:52.825Z",
+   "title": "남파랑길 36코스 시점 (대방사거리)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8.jpg",
+    "thumb": "namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8_t.jpg"
    }
   }
  ]
