@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-18T05:59:58.415Z",
+ "updatedAt": "2026-10-24T15:37:06.920Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -166,6 +166,138 @@
     "thumb": "namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104_t.jpg",
     "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104.jpg",
     "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/f10de5a8-e81f-4059-9694-2c77ebaf3104_t.jpg"
+   }
+  },
+  {
+   "id": "159c295c-fe67-406c-8e2c-267532b002ae",
+   "trail": "namparang",
+   "lat": 34.93760029972222,
+   "lng": 128.05668929972222,
+   "courseId": "35",
+   "takenAt": "2026-10-05T01:19:59.000Z",
+   "createdAt": "2026-10-24T14:49:02.910Z",
+   "updatedAt": "2026-10-24T14:49:44.088Z",
+   "title": "경남 사천 각산 대방사",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/159c295c-fe67-406c-8e2c-267532b002ae.jpg",
+    "thumb": "namparang/2026/159c295c-fe67-406c-8e2c-267532b002ae_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/159c295c-fe67-406c-8e2c-267532b002ae.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/159c295c-fe67-406c-8e2c-267532b002ae_t.jpg"
+   }
+  },
+  {
+   "id": "a84c380e-4b54-496d-a290-a97201b7dfb1",
+   "trail": "namparang",
+   "lat": 34.94404779972222,
+   "lng": 128.06182,
+   "courseId": "35",
+   "takenAt": "2026-10-05T02:11:57.000Z",
+   "createdAt": "2026-10-24T15:08:34.462Z",
+   "updatedAt": "2026-10-24T15:10:03.075Z",
+   "title": "경남 사천 각선 전망대(2)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/a84c380e-4b54-496d-a290-a97201b7dfb1.jpg",
+    "thumb": "namparang/2026/a84c380e-4b54-496d-a290-a97201b7dfb1_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/a84c380e-4b54-496d-a290-a97201b7dfb1.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/a84c380e-4b54-496d-a290-a97201b7dfb1_t.jpg"
+   }
+  },
+  {
+   "id": "75dc05b7-a0d6-4a8b-9d29-8d7e39b76b5b",
+   "trail": "namparang",
+   "lat": 34.94347309972222,
+   "lng": 128.0578725,
+   "courseId": "35",
+   "takenAt": "2026-10-05T02:02:44.000Z",
+   "createdAt": "2026-10-24T15:09:50.327Z",
+   "updatedAt": "2026-10-24T15:09:50.327Z",
+   "title": "경남 사천 각산 정상석",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/75dc05b7-a0d6-4a8b-9d29-8d7e39b76b5b.jpg",
+    "thumb": "namparang/2026/75dc05b7-a0d6-4a8b-9d29-8d7e39b76b5b_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/75dc05b7-a0d6-4a8b-9d29-8d7e39b76b5b.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/75dc05b7-a0d6-4a8b-9d29-8d7e39b76b5b_t.jpg"
+   }
+  },
+  {
+   "id": "da5b1a3e-c043-4319-8b25-b4b8732b6d90",
+   "trail": "namparang",
+   "lat": 34.944157499999996,
+   "lng": 128.06380269972223,
+   "courseId": "35",
+   "takenAt": "2026-10-05T02:16:25.000Z",
+   "createdAt": "2026-10-24T15:12:00.048Z",
+   "updatedAt": "2026-10-24T15:20:03.710Z",
+   "title": "각산 전망대 끝자락에서 임도로 이어지는 지점",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/da5b1a3e-c043-4319-8b25-b4b8732b6d90.jpg",
+    "thumb": "namparang/2026/da5b1a3e-c043-4319-8b25-b4b8732b6d90_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/da5b1a3e-c043-4319-8b25-b4b8732b6d90.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/da5b1a3e-c043-4319-8b25-b4b8732b6d90_t.jpg"
+   }
+  },
+  {
+   "id": "4523f891-3926-4f11-9dd6-e17545559e3a",
+   "trail": "namparang",
+   "lat": 34.9598115,
+   "lng": 128.05298199972222,
+   "courseId": "35",
+   "takenAt": "2026-10-05T03:14:21.000Z",
+   "createdAt": "2026-10-24T15:18:30.353Z",
+   "updatedAt": "2026-10-24T15:19:06.257Z",
+   "title": "각산에서 바라본 송포동",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/4523f891-3926-4f11-9dd6-e17545559e3a.jpg",
+    "thumb": "namparang/2026/4523f891-3926-4f11-9dd6-e17545559e3a_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/4523f891-3926-4f11-9dd6-e17545559e3a.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/4523f891-3926-4f11-9dd6-e17545559e3a_t.jpg"
+   }
+  },
+  {
+   "id": "e374f36a-2823-4ccf-8186-e381168a1561",
+   "trail": "namparang",
+   "lat": 34.9529117,
+   "lng": 128.03438109972222,
+   "courseId": "35",
+   "takenAt": "2026-10-05T04:10:55.000Z",
+   "createdAt": "2026-10-24T15:23:59.677Z",
+   "updatedAt": "2026-10-24T15:24:19.345Z",
+   "title": "서진이네 건어물",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561.jpg",
+    "thumb": "namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/e374f36a-2823-4ccf-8186-e381168a1561_t.jpg"
    }
   }
  ]
