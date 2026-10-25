@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T15:12:27.405Z",
+ "generatedAt": "2026-10-25T21:36:07.840Z",
  "trail": "dmz",
  "trailName": "DMZ 평화의 길",
  "courseCount": 48,
@@ -159,13 +159,13 @@
     "seq": 33,
     "distM": 4
    },
-   "ascentM": 1083,
+   "ascentM": 1092,
    "durationMin": 1950,
    "km": 96.3
   }
  ],
- "totalKm": 492.1,
- "totalAscentM": 8749,
+ "totalKm": 492.5,
+ "totalAscentM": 8752,
  "elevation": {
   "source": "srtm30m (opentopodata)",
   "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",

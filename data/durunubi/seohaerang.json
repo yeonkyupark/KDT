@@ -7,7 +7,7 @@
   "site": "두루누비 사이트 코스 목록 (www.durunubi.kr/api/course/list) — 공공 API 에 없는 코스 보충",
   "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비 표기. 공공데이터포털 API 는 이용허락범위 제한 없음, 더 엄격한 쪽을 지킨다"
  },
- "updatedAt": "2026-10-18T06:11:48.016Z",
+ "updatedAt": "2026-10-25T21:35:01.967Z",
  "checks": {
   "maxJunctionGap": {
    "at": "9/10",
@@ -1250,7 +1250,7 @@
    "seq": 37,
    "sub": 0,
    "label": "",
-   "source": "site",
+   "source": "public",
    "km": 19.6,
    "minutes": 360,
    "level": 1,
@@ -1261,7 +1261,7 @@
    "summary": "- 서해바다와 갯벌을 바라보며 마을과 마을을 잇는 밭과 염전을 지나는 코스",
    "contents": "- 서해바다와 갯벌을 바라보며 마을과 이어진 밭과 염전을 지나는 코스",
    "tourInfo": "- 6.25전쟁 때 북한군에 의해 건물이 불타고 교인이 몰상당한 역사가 있는 '야월교회'\n- 바닷바람으로 친환경 에너지를 생산하는 풍력발전기",
-   "warning": "",
+   "warning": "<두우리 데크 파손 구간 우회 안내>\n서해랑길 37코스 염산면 두우리에서 상정녹색체험마을 방면 도로변 보행데크가 파손되어 있습니다.\n이용객께서는 안전을 위해 칠산로 갓길을 따라 이동하여 주시고, 차량 통행에 각별히 유의하여 주시기 바랍니다.",
    "startAddress": "전라남도 영광군 염산면 봉남리 1012-378",
    "endAddress": "전라남도 영광군 백수읍 하사리 1066-15",
    "startLatLng": [
@@ -1272,7 +1272,7 @@
     35.2589399647,
     126.3434699737
    ],
-   "publicModified": null,
+   "publicModified": "20261021060337",
    "gpxFilePath": "/data/koreamobility/file/2025/08/321917f2e5d54ed2b9b86402debac20a.gpx",
    "file": "서해랑길_37코스.gpx",
    "sha1": "8a2cecea3b2f0f906f80f4d1dcef4ed0981ea0df",
@@ -2304,7 +2304,7 @@
    "seq": 64,
    "sub": 4,
    "label": "지선4코스",
-   "source": "public",
+   "source": "site",
    "km": 19.5,
    "minutes": 390,
    "level": 3,
@@ -2326,7 +2326,7 @@
     36.8485202082,
     126.6579323262
    ],
-   "publicModified": "20251021121323",
+   "publicModified": null,
    "gpxFilePath": "/data/koreamobility/course/summap/T_CRS_MNG0000005381.gpx",
    "file": "서해랑길_64-4(지선4코스).gpx",
    "sha1": "c11d99176cdc3e06729782b891b1189ba9fa7856",
@@ -2338,7 +2338,7 @@
    "seq": 64,
    "sub": 5,
    "label": "지선5코스",
-   "source": "public",
+   "source": "site",
    "km": 19.6,
    "minutes": 360,
    "level": 2,
@@ -2360,7 +2360,7 @@
     36.7939441279,
     126.7833368294
    ],
-   "publicModified": "20251021121355",
+   "publicModified": null,
    "gpxFilePath": "/data/koreamobility/course/summap/T_CRS_MNG0000005382.gpx",
    "file": "서해랑길_64-5(지선5코스).gpx",
    "sha1": "fc00f49cdf2b0bea553087c17c8fa51352f980e8",
@@ -3120,7 +3120,7 @@
    "seq": 86,
    "sub": 0,
    "label": "",
-   "source": "site",
+   "source": "public",
    "km": 14.1,
    "minutes": 270,
    "level": 1,
@@ -3142,11 +3142,11 @@
     37.0264964271,
     126.7947746906
    ],
-   "publicModified": null,
-   "gpxFilePath": "/data/koreamobility/course/summap/T_CRS_MNG0000005360.gpx",
+   "publicModified": "20261022124601",
+   "gpxFilePath": "/data/koreamobility/file/2026/10/3c1a0bfa8d0e43d39554676f9552aec3.gpx",
    "file": "서해랑길_86코스.gpx",
-   "sha1": "776e633a48c624e683d1c427cccd77679e9d757f",
-   "bytes": 142736
+   "sha1": "f1faffdf7d56d3d14d1dd18e563b8f479b4a67df",
+   "bytes": 123395
   },
   {
    "crsIdx": "T_CRS_MNG0000005361",

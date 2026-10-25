@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-10-18T15:12:27.405Z",
+ "generatedAt": "2026-10-25T21:36:07.840Z",
  "trail": "haeparang",
  "trailName": "해파랑길",
  "courseCount": 50,
  "mainCourseCount": 50,
  "groups": [],
  "totalKm": 730.6,
- "totalAscentM": 9575,
+ "totalAscentM": 9583,
  "elevation": {
   "source": "srtm30m (opentopodata)",
   "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",

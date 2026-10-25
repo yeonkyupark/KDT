@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T15:12:27.405Z",
+ "generatedAt": "2026-10-25T21:36:07.840Z",
  "defaultTrail": "namparang",
  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)",
  "trails": [
@@ -46,7 +46,7 @@
    "courseCount": 50,
    "subCourseCount": 0,
    "totalKm": 730.6,
-   "totalAscentM": 9575,
+   "totalAscentM": 9583,
    "bbox": [
     128.37349,
     35.09969,
@@ -81,8 +81,8 @@
    "span": "해남 땅끝 → 인천 강화",
    "courseCount": 103,
    "subCourseCount": 6,
-   "totalKm": 1630.3,
-   "totalAscentM": 20214,
+   "totalKm": 1630.4,
+   "totalAscentM": 20212,
    "bbox": [
     126.09864,
     34.29245,
@@ -117,8 +117,8 @@
    "span": "인천 강화 → 강원 고성",
    "courseCount": 34,
    "subCourseCount": 14,
-   "totalKm": 492.1,
-   "totalAscentM": 8749,
+   "totalKm": 492.5,
+   "totalAscentM": 8752,
    "bbox": [
     126.43456,
     37.59281,
