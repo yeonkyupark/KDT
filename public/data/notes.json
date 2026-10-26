@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-26T14:37:27.826Z",
+ "updatedAt": "2026-10-26T15:16:37.928Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -474,6 +474,94 @@
     "thumb": "namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e_t.jpg",
     "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e.jpg",
     "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e_t.jpg"
+   }
+  },
+  {
+   "id": "bd7d16a8-3905-4367-8ce5-ac3fd97c35f5",
+   "trail": "namparang",
+   "lat": 34.8578169,
+   "lng": 128.01272289972223,
+   "courseId": "37",
+   "takenAt": "2026-10-06T02:58:37.000Z",
+   "createdAt": "2026-10-26T15:07:48.083Z",
+   "updatedAt": "2026-10-26T15:07:48.083Z",
+   "title": "남파랑길 37코스 시점 (창선파출소)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/bd7d16a8-3905-4367-8ce5-ac3fd97c35f5.jpg",
+    "thumb": "namparang/2026/bd7d16a8-3905-4367-8ce5-ac3fd97c35f5_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/bd7d16a8-3905-4367-8ce5-ac3fd97c35f5.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/bd7d16a8-3905-4367-8ce5-ac3fd97c35f5_t.jpg"
+   }
+  },
+  {
+   "id": "995baed8-6254-4105-bf8f-fed18f81c102",
+   "trail": "namparang",
+   "lat": 34.93287209972222,
+   "lng": 128.0579859,
+   "courseId": "35",
+   "takenAt": "2026-10-05T00:53:36.000Z",
+   "createdAt": "2026-10-26T15:10:40.737Z",
+   "updatedAt": "2026-10-26T15:16:01.005Z",
+   "title": "남파랑길 35코스 시점 (대방교차로)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/995baed8-6254-4105-bf8f-fed18f81c102.jpg",
+    "thumb": "namparang/2026/995baed8-6254-4105-bf8f-fed18f81c102_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/995baed8-6254-4105-bf8f-fed18f81c102.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/995baed8-6254-4105-bf8f-fed18f81c102_t.jpg"
+   }
+  },
+  {
+   "id": "dc9a5f27-2e50-4a94-b776-42e7f7fd8ab3",
+   "trail": "namparang",
+   "lat": 34.9394615,
+   "lng": 128.20019219999998,
+   "courseId": "33",
+   "takenAt": "2026-10-04T04:53:59.000Z",
+   "createdAt": "2026-10-26T15:11:55.954Z",
+   "updatedAt": "2026-10-26T15:14:01.431Z",
+   "title": "남파랑길 33코스 시점 (임포항)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/dc9a5f27-2e50-4a94-b776-42e7f7fd8ab3.jpg",
+    "thumb": "namparang/2026/dc9a5f27-2e50-4a94-b776-42e7f7fd8ab3_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/dc9a5f27-2e50-4a94-b776-42e7f7fd8ab3.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/dc9a5f27-2e50-4a94-b776-42e7f7fd8ab3_t.jpg"
+   }
+  },
+  {
+   "id": "b5a2c663-a701-4c9d-a014-4aff8fa08893",
+   "trail": "namparang",
+   "lat": 34.928603499999994,
+   "lng": 128.12258669972223,
+   "courseId": "34",
+   "takenAt": "2026-10-03T23:56:40.000Z",
+   "createdAt": "2026-10-26T15:13:00.076Z",
+   "updatedAt": "2026-10-26T15:15:00.209Z",
+   "title": "남파랑길 34코스 시점 (하이면사무소)",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/b5a2c663-a701-4c9d-a014-4aff8fa08893.jpg",
+    "thumb": "namparang/2026/b5a2c663-a701-4c9d-a014-4aff8fa08893_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/b5a2c663-a701-4c9d-a014-4aff8fa08893.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/b5a2c663-a701-4c9d-a014-4aff8fa08893_t.jpg"
    }
   }
  ]
