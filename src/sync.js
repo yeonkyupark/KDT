@@ -144,7 +144,10 @@ export function createSync(getSettings) {
       if (n.photo) {
         // 목록을 못 얻었거나 파일이 멀쩡하면 건드리지 않는다.
         if (!present) continue
-        const gone = [n.photo.full, n.photo.thumb].filter((x) => x && !present.has(x))
+        const gone = []
+        for (const p of [n.photo.full, n.photo.thumb].filter(Boolean)) {
+          if (!present.has(p) && !(await photosClient.headSha(p))) gone.push(p)
+        }
         if (!gone.length) {
           await dropLocalCopy(n) // 이전 버전이 남겨 둔 로컬 사본
           continue
