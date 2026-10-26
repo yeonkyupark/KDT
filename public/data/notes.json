@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-26T04:00:56.068Z",
+ "updatedAt": "2026-10-26T14:37:27.826Z",
  "notes": [
   {
    "id": "10d95a46-9cb7-4aca-9436-e7bcc9a81b66",
@@ -408,6 +408,72 @@
     "thumb": "namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8_t.jpg",
     "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8.jpg",
     "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/3623bc44-7cb5-49e3-b54b-c259c18168f8_t.jpg"
+   }
+  },
+  {
+   "id": "24f55866-5cac-4c39-aad0-403b3f9e10de",
+   "trail": "namparang",
+   "lat": 34.894894199999996,
+   "lng": 128.00422789972222,
+   "courseId": "36",
+   "takenAt": "2026-10-06T01:01:42.000Z",
+   "createdAt": "2026-10-26T14:00:48.435Z",
+   "updatedAt": "2026-10-26T14:00:48.435Z",
+   "title": "율도고개",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/24f55866-5cac-4c39-aad0-403b3f9e10de.jpg",
+    "thumb": "namparang/2026/24f55866-5cac-4c39-aad0-403b3f9e10de_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/24f55866-5cac-4c39-aad0-403b3f9e10de.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/24f55866-5cac-4c39-aad0-403b3f9e10de_t.jpg"
+   }
+  },
+  {
+   "id": "1a47fd28-dc29-4beb-9548-d1688776b05d",
+   "trail": "namparang",
+   "lat": 34.8724732,
+   "lng": 127.9931409,
+   "courseId": "36",
+   "takenAt": "2026-10-06T02:04:06.000Z",
+   "createdAt": "2026-10-26T14:07:03.968Z",
+   "updatedAt": "2026-10-26T14:07:48.245Z",
+   "title": "산도곡고개",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/1a47fd28-dc29-4beb-9548-d1688776b05d.jpg",
+    "thumb": "namparang/2026/1a47fd28-dc29-4beb-9548-d1688776b05d_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/1a47fd28-dc29-4beb-9548-d1688776b05d.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/1a47fd28-dc29-4beb-9548-d1688776b05d_t.jpg"
+   }
+  },
+  {
+   "id": "44447c74-83e8-4a23-ace5-0a981ee9127e",
+   "trail": "namparang",
+   "lat": 34.862155299722225,
+   "lng": 128.0036953,
+   "courseId": "36",
+   "takenAt": "2026-10-06T02:42:59.000Z",
+   "createdAt": "2026-10-26T14:13:55.418Z",
+   "updatedAt": "2026-10-26T14:37:05.657Z",
+   "title": "창선면 상죽리",
+   "memo": "",
+   "rating": 0,
+   "locationSource": "exif",
+   "address": "",
+   "deleted": false,
+   "photo": {
+    "full": "namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e.jpg",
+    "thumb": "namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e_t.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e.jpg",
+    "thumbUrl": "https://raw.githubusercontent.com/yeonkyupark/photo-repo/main/namparang/2026/44447c74-83e8-4a23-ace5-0a981ee9127e_t.jpg"
    }
   }
  ]
