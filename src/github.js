@@ -184,15 +184,18 @@ export function createClient(cfg) {
      */
     async listPaths() {
       try {
+        // 브랜치 끝 커밋을 캐시 없이 얻고, 그 sha 로 트리를 읽는다 (sha 기준이라 캐시돼도 정확)
+        const ref = await api(
+          `/repos/${cfg.owner}/${cfg.repo}/git/ref/heads/${encodeURIComponent(branch)}?t=${Date.now()}`,
+          { cache: 'no-store' },
+        )
         const r = await api(
-          `/repos/${cfg.owner}/${cfg.repo}/git/trees/${encodeURIComponent(branch)}?recursive=1`,
+          `/repos/${cfg.owner}/${cfg.repo}/git/trees/${ref.object.sha}?recursive=1`,
+          { cache: 'no-store' },
         )
         if (r?.truncated) return null
         return new Set((r?.tree ?? []).filter((t) => t.type === 'blob').map((t) => t.path))
       } catch (e) {
-        // 파일이 하나도 없는 브랜치는 빈 트리(4b825dc6…)를 가리키는데, GitHub 은
-        // 그 트리를 객체로 저장하지 않아 404 를 준다. 커밋 이력이 있어도 마찬가지다.
-        // 빈 리포(409)도 같은 뜻이다. 둘 다 "파일 없음"이 확실하므로 빈 집합.
         if (e.status === 404 || e.status === 409) return new Set()
         throw e
       }
