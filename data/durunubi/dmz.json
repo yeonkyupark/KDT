@@ -7,7 +7,7 @@
   "site": "두루누비 사이트 코스 목록 (www.durunubi.kr/api/course/list) — 공공 API 에 없는 코스 보충",
   "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비 표기. 공공데이터포털 API 는 이용허락범위 제한 없음, 더 엄격한 쪽을 지킨다"
  },
- "updatedAt": "2026-10-25T21:35:51.959Z",
+ "updatedAt": "2026-11-01T22:41:16.140Z",
  "checks": {
   "maxJunctionGap": {
    "at": "12/13",
@@ -1544,11 +1544,11 @@
     38.4492208064,
     128.4618697688
    ],
-   "publicModified": "20261023062227",
-   "gpxFilePath": "/data/koreamobility/file/2026/10/eeebf373e1554ccca66074be14f27954.gpx",
+   "publicModified": "20261026064645",
+   "gpxFilePath": "/data/koreamobility/file/2026/10/60d3a57fd0c84a28b7319e5a75f598bd.gpx",
    "file": "DMZ_평화의_길_32-1코스(우회로).gpx",
-   "sha1": "505e9b1e573c1168a7d7ed1fd953e663235896af",
-   "bytes": 101220
+   "sha1": "f484be47db64b706d96357b7b1dabb199a430640",
+   "bytes": 100320
   },
   {
    "crsIdx": "T_CRS_MNG0000005657",

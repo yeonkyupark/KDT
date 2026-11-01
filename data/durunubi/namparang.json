@@ -7,7 +7,7 @@
   "site": "두루누비 사이트 코스 목록 (www.durunubi.kr/api/course/list) — 공공 API 에 없는 코스 보충",
   "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비 표기. 공공데이터포털 API 는 이용허락범위 제한 없음, 더 엄격한 쪽을 지킨다"
  },
- "updatedAt": "2026-10-25T21:32:50.624Z",
+ "updatedAt": "2026-11-01T22:38:23.794Z",
  "checks": {
   "maxJunctionGap": {
    "at": "42/43",
@@ -2088,11 +2088,11 @@
     34.8402290326,
     127.4848110136
    ],
-   "publicModified": "20261019125408",
-   "gpxFilePath": "/data/koreamobility/file/2026/05/dbc3c0a7b11148ab90c5228d220aa9b1.gpx",
+   "publicModified": "20261030125348",
+   "gpxFilePath": "/data/koreamobility/file/2026/10/9b900195f15d44f3ba9d031b367d1891.gpx",
    "file": "남파랑길_61코스.gpx",
-   "sha1": "0e1caa13c3a668502c76ef1926d167f448ec07b3",
-   "bytes": 90721
+   "sha1": "012f1294cb984aec2a8fa0451177b508727c8092",
+   "bytes": 82265
   },
   {
    "crsIdx": "T_CRS_MNG0000005179",

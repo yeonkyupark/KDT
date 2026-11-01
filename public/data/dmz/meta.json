@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T21:36:07.840Z",
+ "generatedAt": "2026-11-01T22:41:45.513Z",
  "trail": "dmz",
  "trailName": "DMZ 평화의 길",
  "courseCount": 48,
@@ -159,7 +159,7 @@
     "seq": 33,
     "distM": 4
    },
-   "ascentM": 1092,
+   "ascentM": 1091,
    "durationMin": 1950,
    "km": 96.3
   }

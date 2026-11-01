@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T21:36:07.840Z",
+ "generatedAt": "2026-11-01T22:41:45.513Z",
  "defaultTrail": "namparang",
  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)",
  "trails": [
@@ -9,8 +9,8 @@
    "span": "부산 오륙도 → 해남 땅끝탑",
    "courseCount": 90,
    "subCourseCount": 0,
-   "totalKm": 1428.6,
-   "totalAscentM": 27776,
+   "totalKm": 1428.1,
+   "totalAscentM": 27754,
    "bbox": [
     126.52152,
     34.28714,
@@ -81,8 +81,8 @@
    "span": "해남 땅끝 → 인천 강화",
    "courseCount": 103,
    "subCourseCount": 6,
-   "totalKm": 1630.4,
-   "totalAscentM": 20212,
+   "totalKm": 1628.1,
+   "totalAscentM": 20122,
    "bbox": [
     126.09864,
     34.29245,
