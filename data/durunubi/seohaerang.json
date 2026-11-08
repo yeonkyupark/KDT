@@ -7,7 +7,7 @@
   "site": "두루누비 사이트 코스 목록 (www.durunubi.kr/api/course/list) — 공공 API 에 없는 코스 보충",
   "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비 표기. 공공데이터포털 API 는 이용허락범위 제한 없음, 더 엄격한 쪽을 지킨다"
  },
- "updatedAt": "2026-11-01T22:40:39.752Z",
+ "updatedAt": "2026-11-08T22:44:41.245Z",
  "checks": {
   "maxJunctionGap": {
    "at": "9/10",
@@ -1646,7 +1646,7 @@
     35.7137821801,
     126.6020345036
    ],
-   "publicModified": "20260416043707",
+   "publicModified": "20261102060341",
    "gpxFilePath": "/data/koreamobility/file/2026/04/cb66f91e730b40f2a6726b1ca5e5a326.gpx",
    "file": "서해랑길_48코스.gpx",
    "sha1": "31e860ffd3a20fe4e98f75dc2677a5b161eb92e4",
@@ -2712,7 +2712,7 @@
    "seq": 74,
    "sub": 0,
    "label": "",
-   "source": "site",
+   "source": "public",
    "km": 16.3,
    "minutes": 360,
    "level": 3,
@@ -2734,7 +2734,7 @@
     36.8317500316,
     126.3120000344
    ],
-   "publicModified": null,
+   "publicModified": "20261106081825",
    "gpxFilePath": "/data/koreamobility/course/summap/T_CRS_MNG0000005348.gpx",
    "file": "서해랑길_74코스.gpx",
    "sha1": "ca2e2c4bee953073fd6c5e90a1b20ab135711729",
