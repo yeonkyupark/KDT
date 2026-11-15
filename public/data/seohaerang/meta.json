@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T22:45:22.741Z",
+ "generatedAt": "2026-11-15T23:24:17.861Z",
  "trail": "seohaerang",
  "trailName": "서해랑길",
  "courseCount": 109,
@@ -32,7 +32,7 @@
   }
  ],
  "totalKm": 1628.1,
- "totalAscentM": 20122,
+ "totalAscentM": 20115,
  "elevation": {
   "source": "srtm30m (opentopodata)",
   "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",

@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-11-08T22:45:22.741Z",
+ "generatedAt": "2026-11-15T23:24:17.861Z",
  "trail": "namparang",
  "trailName": "남파랑길",
  "courseCount": 90,
  "mainCourseCount": 90,
  "groups": [],
  "totalKm": 1428.8,
- "totalAscentM": 27580,
+ "totalAscentM": 27604,
  "elevation": {
   "source": "srtm30m (opentopodata)",
   "note": "DEM 추정값. 공식 GPX 의 고도는 코스마다 누락·0값이 있어 쓰지 않는다.",

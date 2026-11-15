@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T22:45:22.741Z",
+ "generatedAt": "2026-11-15T23:24:17.861Z",
  "defaultTrail": "namparang",
  "license": "공공누리 제4유형 (출처표시 + 상업적이용금지 + 변경금지) — 두루누비(한국관광공사)",
  "trails": [
@@ -10,7 +10,7 @@
    "courseCount": 90,
    "subCourseCount": 0,
    "totalKm": 1428.8,
-   "totalAscentM": 27580,
+   "totalAscentM": 27604,
    "bbox": [
     126.52152,
     34.28714,
@@ -82,7 +82,7 @@
    "courseCount": 103,
    "subCourseCount": 6,
    "totalKm": 1628.1,
-   "totalAscentM": 20122,
+   "totalAscentM": 20115,
    "bbox": [
     126.09864,
     34.29245,
